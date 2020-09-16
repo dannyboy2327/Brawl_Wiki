@@ -12,14 +12,26 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.brawlwiki.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_players"
+        android:name="com.example.brawlwiki.ui.players.PlayerFragment"
+        android:label="@string/menu_players"
+        tools:layout="@layout/fragment_players" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.brawlwiki.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_brawlers"
+        android:name="com.example.brawlwiki.ui.brawlers.BrawlersFragment"
+        android:label="@string/menu_brawlers"
+        tools:layout="@layout/fragment_brawlers" />
+
+    <fragment
+        android:id="@+id/nav_clubs"
+        android:name="com.example.brawlwiki.ui.clubs.ClubsFragment"
+        android:label="@string/menu_clubs"
+        tools:layout="@layout/fragment_clubs" />
+
+    <fragment
+        android:id="@+id/nav_maps"
+        android:name="com.example.brawlwiki.ui.maps.MapsFragment"
+        android:label="@string/menu_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

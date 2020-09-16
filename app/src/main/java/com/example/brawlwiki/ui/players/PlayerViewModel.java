@@ -1,16 +1,16 @@
-package com.example.brawlwiki.ui.slideshow;
+package com.example.brawlwiki.ui.players;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class PlayerViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public PlayerViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is a players fragment");
     }
 
     public LiveData<String> getText() {

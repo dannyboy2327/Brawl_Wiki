@@ -12,6 +12,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -23,7 +25,6 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.2.0"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -58,6 +59,10 @@ dependencies {
     implementation "com.google.android.gms:play-services-ads:19.4.0"
     //Google Analytics Library
     implementation "com.google.android.gms:play-services-analytics:17.0.0"
+    //Multidex Library
+    implementation 'com.android.support:multidex:1.0.3'
+
+
 
 
 }
