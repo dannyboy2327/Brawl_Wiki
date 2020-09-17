@@ -13,23 +13,40 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private AdView mAdView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        //Displays Ad Banner for Home Fragment
+        displayAdBannerView(root);
+
+
+        return root;
+    }
+
+    private void displayAdBannerView(View root) {
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
             }
         });
-        return root;
+
+        mAdView = root.findViewById(R.id.adView_main_ad);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }
