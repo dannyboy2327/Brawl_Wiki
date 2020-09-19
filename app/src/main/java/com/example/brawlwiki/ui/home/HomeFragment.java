@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
 
     private PlayerView mPlayerView;
     private SimpleExoPlayer mSimpleExoPlayer;
-    private boolean playWhenReady = true;
+    private boolean playWhenReady = false;
     private int currentWindow = 0;
     private long playbackPosition = 0;
 
@@ -96,8 +96,7 @@ public class HomeFragment extends Fragment {
         mSimpleExoPlayer = new SimpleExoPlayer.Builder(getContext()).build();
         mPlayerView.setPlayer(mSimpleExoPlayer);
         //String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.tutorial;
-        Uri uri = Uri.parse(
-                "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4");
+        Uri uri = Uri.parse("https://streamable.com/zg2dkg");
         MediaSource mediaSource = buildMediaSource(uri);
         mSimpleExoPlayer.setPlayWhenReady(playWhenReady);
         mSimpleExoPlayer.seekTo(currentWindow, playbackPosition);
