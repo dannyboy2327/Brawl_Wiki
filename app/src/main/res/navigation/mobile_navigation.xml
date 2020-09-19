@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_brawlers"
-        android:name="com.example.brawlwiki.ui.brawlers.BrawlersFragment"
+        android:name="com.example.brawlwiki.ui.brawlerStats.BrawlersFragment"
         android:label="@string/menu_brawlers"
         tools:layout="@layout/fragment_brawlers" />
 

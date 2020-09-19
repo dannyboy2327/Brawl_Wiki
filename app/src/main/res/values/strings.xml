@@ -28,4 +28,8 @@
         Y2lkcnMiOlsiMTcyLjExMy4zMy4xMzUiXSwidHlwZSI6ImNsaWVudCJ9XX0.mf3mvOa8SLBpad
         TfLTYjCgr3nn4_uaSsZpOwBhcra0DteniX0oUKC_1UMgNNcu6KRzFtlN45LzCOpBL61l-MDg</string>
 
+    <string-array name="country_code">
+        <item>01</item>
+    </string-array>
+
 </resources>
