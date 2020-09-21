@@ -4,13 +4,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Club implements Serializable {
 
     @SerializedName("mItemClubs")
     @Expose
-    private List<ItemClub> mItemClubs = null;
+    private List<ItemClub> mItemClubs = new ArrayList<>();
     @SerializedName("mPagingClub")
     @Expose
     private PagingClub mPagingClub;
