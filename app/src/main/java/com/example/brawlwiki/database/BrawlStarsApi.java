@@ -1,6 +1,7 @@
 package com.example.brawlwiki.database;
 
 import com.example.brawlwiki.models.clubranking.ClubRankingList;
+import com.example.brawlwiki.models.maps.MapList;
 import com.example.brawlwiki.models.players.Player;
 
 import retrofit2.Call;
@@ -32,4 +33,7 @@ public interface BrawlStarsApi {
 
     @GET("v1/rankings/global/players?limit=100")
     Call<ClubRankingList> getClubList();
+
+    @GET("api/gamemodes.json")
+    Call<MapList> getGameModes();
 }
