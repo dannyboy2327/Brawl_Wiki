@@ -1,12 +1,11 @@
-package com.example.brawlwiki.models.brawlers;
+package com.example.brawlwiki.models.players;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class StarPowerBrawler implements Serializable {
-
+public class Gadget implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -14,7 +13,6 @@ public class StarPowerBrawler implements Serializable {
     @SerializedName("name")
     @Expose
     private String name;
-    private final static long serialVersionUID = 6712378145409824406L;
 
     public Integer getId() {
         return id;
@@ -31,4 +29,5 @@ public class StarPowerBrawler implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
 }

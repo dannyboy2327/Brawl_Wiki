@@ -11,30 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.database.BrawlStarsApi;
-import com.example.brawlwiki.models.clubRanking.Club;
-import com.example.brawlwiki.models.clubRanking.ItemClub;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.brawlwiki.models.clubranking.ClubRankingList;
+import com.example.brawlwiki.models.players.Player;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Header;
 
 public class ClubsFragment extends Fragment {
 
     private static final String LOG_TAG = ClubsFragment.class.getSimpleName();
 
     private ClubsViewModel mClubsViewModel;
-    private List<ItemClub> mItemClubList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -57,26 +51,23 @@ public class ClubsFragment extends Fragment {
                 .build();
 
         BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
-        Call<Club> call = brawlStarsApi.getClubs();
-        call.enqueue(new Callback<Club>() {
+        Call<ClubRankingList> call = brawlStarsApi.getClubList();
+        call.enqueue(new Callback<ClubRankingList>() {
             @Override
-            public void onResponse(Call<Club> call, Response<Club> response) {
+            public void onResponse(Call<ClubRankingList> call, Response<ClubRankingList> response) {
                 if (!response.isSuccessful()) {
-                    Log.d(LOG_TAG, "onResponseNotSuccessful: " + response.code());
-                    return;
+                    Log.d(LOG_TAG, "onResponse: " + response.code());
                 }
 
-                Club club = response.body();
-                club.getItemClubs();
-
-                Log.d(LOG_TAG, "onResponse: " + club.getItemClubs().size());
+                Log.d(LOG_TAG, "onResponse: " + response.body().getItems().size());
             }
 
             @Override
-            public void onFailure(Call<Club> call, Throwable t) {
-                Log.d(LOG_TAG, "onFailure: " + t.getMessage());
+            public void onFailure(Call<ClubRankingList> call, Throwable t) {
+                Log.d(LOG_TAG, "onResponse: " + t.getMessage());
             }
         });
+
         return root;
     }
 }

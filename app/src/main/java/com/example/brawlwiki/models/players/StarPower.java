@@ -1,16 +1,18 @@
-package com.example.brawlwiki.models.playerRanking;
+package com.example.brawlwiki.models.players;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class IconPlayer implements Serializable {
+public class StarPower implements Serializable {
 
     @SerializedName("id")
     @Expose
     private Integer id;
-    private final static long serialVersionUID = -2015030168435806739L;
+    @SerializedName("name")
+    @Expose
+    private String name;
 
     public Integer getId() {
         return id;
@@ -19,4 +21,13 @@ public class IconPlayer implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

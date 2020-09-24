@@ -1,7 +1,7 @@
 package com.example.brawlwiki.database;
 
-import com.example.brawlwiki.R;
-import com.example.brawlwiki.models.clubRanking.Club;
+import com.example.brawlwiki.models.clubranking.ClubRankingList;
+import com.example.brawlwiki.models.players.Player;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -27,6 +27,9 @@ public interface BrawlStarsApi {
                     "MplrGOuof4e4e14ccYWEvWdlZPHlOkmMFvT1wS5n" +
                     "kUJO6t6elgTZ4YdbqMe6YZOJw"
     })
-    @GET("v1/rankings/global/clubs")
-    Call<Club> getClubs();
+    @GET("v1/players/%23G8U29RL")
+    Call<Player> getPlayer();
+
+    @GET("v1/rankings/global/players?limit=100")
+    Call<ClubRankingList> getClubList();
 }

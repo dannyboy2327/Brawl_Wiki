@@ -1,4 +1,4 @@
-package com.example.brawlwiki.models.profile;
+package com.example.brawlwiki.models.players;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class BrawlerStats implements Serializable {
+public class Brawler implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -26,13 +26,12 @@ public class BrawlerStats implements Serializable {
     @SerializedName("highestTrophies")
     @Expose
     private Integer highestTrophies;
-    @SerializedName("mStarPowerStats")
+    @SerializedName("starPowers")
     @Expose
-    private List<StarPowerStats> mStarPowerStats = null;
-    @SerializedName("mGadgetStats")
+    private List<StarPower> starPowers = null;
+    @SerializedName("gadgets")
     @Expose
-    private List<GadgetStats> mGadgetStats = null;
-    private final static long serialVersionUID = 3870019613409421714L;
+    private List<Gadget> gadgets = null;
 
     public Integer getId() {
         return id;
@@ -82,19 +81,19 @@ public class BrawlerStats implements Serializable {
         this.highestTrophies = highestTrophies;
     }
 
-    public List<StarPowerStats> getStarPowerStats() {
-        return mStarPowerStats;
+    public List<StarPower> getStarPowers() {
+        return starPowers;
     }
 
-    public void setStarPowerStats(List<StarPowerStats> starPowerStats) {
-        this.mStarPowerStats = starPowerStats;
+    public void setStarPowers(List<StarPower> starPowers) {
+        this.starPowers = starPowers;
     }
 
-    public List<GadgetStats> getGadgetStats() {
-        return mGadgetStats;
+    public List<Gadget> getGadgets() {
+        return gadgets;
     }
 
-    public void setGadgetStats(List<GadgetStats> gadgetStats) {
-        this.mGadgetStats = gadgetStats;
+    public void setGadgets(List<Gadget> gadgets) {
+        this.gadgets = gadgets;
     }
 }

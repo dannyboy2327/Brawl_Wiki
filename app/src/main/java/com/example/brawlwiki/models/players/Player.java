@@ -1,4 +1,4 @@
-package com.example.brawlwiki.models.profile;
+package com.example.brawlwiki.models.players;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class Stats implements Serializable {
+public class Player implements Serializable {
 
     @SerializedName("tag")
     @Expose
@@ -17,9 +17,9 @@ public class Stats implements Serializable {
     @SerializedName("nameColor")
     @Expose
     private String nameColor;
-    @SerializedName("mIconStats")
+    @SerializedName("icon")
     @Expose
-    private IconStats mIconStats;
+    private Icon icon;
     @SerializedName("trophies")
     @Expose
     private Integer trophies;
@@ -56,13 +56,12 @@ public class Stats implements Serializable {
     @SerializedName("bestTimeAsBigBrawler")
     @Expose
     private Integer bestTimeAsBigBrawler;
-    @SerializedName("mClubStats")
+    @SerializedName("club")
     @Expose
-    private ClubStats mClubStats;
-    @SerializedName("mBrawlerStats")
+    private Club club;
+    @SerializedName("brawlers")
     @Expose
-    private List<BrawlerStats> mBrawlerStats = null;
-    private final static long serialVersionUID = 8624222593677302755L;
+    private List<Brawler> brawlers = null;
 
     public String getTag() {
         return tag;
@@ -88,12 +87,12 @@ public class Stats implements Serializable {
         this.nameColor = nameColor;
     }
 
-    public IconStats getIconStats() {
-        return mIconStats;
+    public Icon getIcon() {
+        return icon;
     }
 
-    public void setIconStats(IconStats iconStats) {
-        this.mIconStats = iconStats;
+    public void setIcon(Icon icon) {
+        this.icon = icon;
     }
 
     public Integer getTrophies() {
@@ -192,19 +191,19 @@ public class Stats implements Serializable {
         this.bestTimeAsBigBrawler = bestTimeAsBigBrawler;
     }
 
-    public ClubStats getClubStats() {
-        return mClubStats;
+    public Club getClub() {
+        return club;
     }
 
-    public void setClubStats(ClubStats clubStats) {
-        this.mClubStats = clubStats;
+    public void setClub(Club club) {
+        this.club = club;
     }
 
-    public List<BrawlerStats> getBrawlerStats() {
-        return mBrawlerStats;
+    public List<Brawler> getBrawlers() {
+        return brawlers;
     }
 
-    public void setBrawlerStats(List<BrawlerStats> brawlerStats) {
-        this.mBrawlerStats = brawlerStats;
+    public void setBrawlers(List<Brawler> brawlers) {
+        this.brawlers = brawlers;
     }
 }

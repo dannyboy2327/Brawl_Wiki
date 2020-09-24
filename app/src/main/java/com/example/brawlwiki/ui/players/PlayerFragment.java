@@ -13,8 +13,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.database.BrawlStarsApi;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PlayerFragment extends Fragment {
+
+    private static final String LOG_TAG = PlayerFragment.class.getSimpleName();
 
     private PlayerViewModel mPlayerViewModel;
 
@@ -30,6 +36,15 @@ public class PlayerFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.brawlstars.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
+
+
         return root;
     }
 }

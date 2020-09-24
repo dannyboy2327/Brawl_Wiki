@@ -1,26 +1,25 @@
-package com.example.brawlwiki.models.profile;
+package com.example.brawlwiki.models.players;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class ClubStats implements Serializable {
+public class Icon implements Serializable {
 
-    @SerializedName("tag")
+    @SerializedName("id")
     @Expose
-    private String tag;
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
-    private final static long serialVersionUID = 5871334190884948478L;
 
-    public String getTag() {
-        return tag;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

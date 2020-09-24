@@ -1,11 +1,12 @@
-package com.example.brawlwiki.models.clubRanking;
+package com.example.brawlwiki.models.clubranking;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class ItemClub implements Serializable {
+public class Item implements Serializable {
+
 
     @SerializedName("tag")
     @Expose
@@ -25,7 +26,6 @@ public class ItemClub implements Serializable {
     @SerializedName("memberCount")
     @Expose
     private Integer memberCount;
-    private final static long serialVersionUID = 3800509838070575829L;
 
     public String getTag() {
         return tag;
@@ -74,4 +74,5 @@ public class ItemClub implements Serializable {
     public void setMemberCount(Integer memberCount) {
         this.memberCount = memberCount;
     }
+
 }
