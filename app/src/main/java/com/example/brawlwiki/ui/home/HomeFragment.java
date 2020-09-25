@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.database.BrawlStarsApi;
+import com.example.brawlwiki.models.players.Player;
 import com.example.brawlwiki.ui.home.profile.ProfileFragment;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
@@ -33,7 +36,15 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class HomeFragment extends Fragment {
+
+    private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
     private HomeViewModel homeViewModel;
 
@@ -60,6 +71,28 @@ public class HomeFragment extends Fragment {
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            }
+        });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.brawlstars.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
+        Call<Player> call = brawlStarsApi.getPlayer();
+        call.enqueue(new Callback<Player>() {
+            @Override
+            public void onResponse(Call<Player> call, Response<Player> response) {
+                if (!response.isSuccessful()) {
+                    Log.d(LOG_TAG, "onResponse not successful: " + response.code());
+                }
+                Log.d(LOG_TAG, "onResponse: " + response.body().getName());
+            }
+
+            @Override
+            public void onFailure(Call<Player> call, Throwable t) {
+                Log.d(LOG_TAG, "onResponse failure: " + t.getMessage());
             }
         });
 

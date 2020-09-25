@@ -36,4 +36,6 @@ public interface BrawlStarsApi {
 
     @GET("api/gamemodes.json")
     Call<MapList> getGameModes();
+
+
 }

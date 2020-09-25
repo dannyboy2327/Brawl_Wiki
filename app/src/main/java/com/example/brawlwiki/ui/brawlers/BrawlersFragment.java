@@ -1,6 +1,7 @@
 package com.example.brawlwiki.ui.brawlers;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.database.BrawlStarsApi;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BrawlersFragment extends Fragment {
+
+    private static final String LOG_TAG = BrawlersFragment.class.getSimpleName();
 
     private BrawlersViewModel mBrawlersViewModel;
 
@@ -30,6 +37,15 @@ public class BrawlersFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.brawlstars.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
+
+
         return root;
     }
 }
