@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
@@ -26,24 +27,10 @@ public class PlayerFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mPlayerViewModel =
-                ViewModelProviders.of(this).get(PlayerViewModel.class);
+        mPlayerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
         View root = inflater.inflate(R.layout.fragment_players, container, false);
-        final TextView textView = root.findViewById(R.id.text_players);
-        mPlayerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.brawlstars.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
-
+        mPlayerViewModel.getTopPlayers();
 
         return root;
     }
