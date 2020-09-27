@@ -14,7 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
-import com.example.brawlwiki.database.BrawlStarsApi;
+import com.example.brawlwiki.network.BrawlStarsApi;
 import com.example.brawlwiki.models.maps.MapList;
 
 import retrofit2.Call;

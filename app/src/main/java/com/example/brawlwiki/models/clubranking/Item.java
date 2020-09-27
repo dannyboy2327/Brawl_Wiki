@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 
-
     @SerializedName("tag")
     @Expose
     private String tag;
@@ -74,5 +73,4 @@ public class Item implements Serializable {
     public void setMemberCount(Integer memberCount) {
         this.memberCount = memberCount;
     }
-
 }

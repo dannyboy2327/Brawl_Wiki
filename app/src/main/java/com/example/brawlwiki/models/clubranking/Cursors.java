@@ -18,5 +18,4 @@ public class Cursors implements Serializable {
     public void setAfter(String after) {
         this.after = after;
     }
-
 }

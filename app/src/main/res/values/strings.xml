@@ -19,14 +19,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Api key -->
-    <string name="api_key">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY
-        3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQi
-        OiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImY5MjdhZGQyLTlkOTgtNDUwZS1iZGUxLWZmMW
-        IwZTYwZjhiMyIsImlhdCI6MTU5MTQxODgyNCwic3ViIjoiZGV2ZWxvcGVyL2VjZDA3MzhhLTI4
-        M2UtNTNlNS0xZWVhLTU0ODE0YmY3YWFjOSIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbW
-        l0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsi
-        Y2lkcnMiOlsiMTcyLjExMy4zMy4xMzUiXSwidHlwZSI6ImNsaWVudCJ9XX0.mf3mvOa8SLBpad
-        TfLTYjCgr3nn4_uaSsZpOwBhcra0DteniX0oUKC_1UMgNNcu6KRzFtlN45LzCOpBL61l-MDg</string>
+    <string name="api_key">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3
+        LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOi
+        JzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjllOTE2ZjhmLTcyMTUtNGJjMC04ODJiLWQ4MGRlY
+        WQzYmZlOSIsImlhdCI6MTYwMDU3MTg4OSwic3ViIjoiZGV2ZWxvcGVyL2VjZDA3MzhhLTI4M2Ut
+        NTNlNS0xZWVhLTU0ODE0YmY3YWFjOSIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI
+        6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcn
+        MiOlsiNzIuMTM0LjE5OS4xMzgiXSwidHlwZSI6ImNsaWVudCJ9XX0.1mOkoNtbw_R3QNGE_LWzB
+        MplrGOuof4e4e14ccYWEvWdlZPHlOkmMFvT1wS5nkUJO6t6elgTZ4YdbqMe6YZOJw</string>
 
     <string-array name="country_code">
         <item>01</item>

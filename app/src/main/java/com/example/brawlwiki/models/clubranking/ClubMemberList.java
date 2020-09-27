@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class ClubRankingList implements Serializable {
+public class ClubMemberList implements Serializable {
 
     @SerializedName("items")
     @Expose

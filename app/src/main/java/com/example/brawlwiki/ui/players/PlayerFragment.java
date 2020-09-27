@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
-import com.example.brawlwiki.database.BrawlStarsApi;
+import com.example.brawlwiki.network.BrawlStarsApi;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
