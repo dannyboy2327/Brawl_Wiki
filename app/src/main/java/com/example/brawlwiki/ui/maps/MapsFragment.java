@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
@@ -34,38 +35,11 @@ public class MapsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mMapsViewModel = ViewModelProviders.of(this).get(MapsViewModel.class);
+        mMapsViewModel = new ViewModelProvider(this).get(MapsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_maps, container, false);
-        final TextView textView = root.findViewById(R.id.text_maps);
-        mMapsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                textView.setText(s);
-            }
-        });
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://cdn.starlist.pro/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        mMapsViewModel.getGameModes();
 
-        BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
-        Call<MapList> call = brawlStarsApi.getGameModes();
-        call.enqueue(new Callback<MapList>() {
-            @Override
-            public void onResponse(Call<MapList> call, Response<MapList> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(LOG_TAG, "onResponse not successful: " + response.code());
-                }
-
-                Log.d(LOG_TAG, "onResponse: " + response.body().getList().size());
-            }
-
-            @Override
-            public void onFailure(Call<MapList> call, Throwable t) {
-                Log.d(LOG_TAG, "onResponse failure: " + t.getMessage());
-            }
-        });
         return root;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.brawlwiki.ui.home.profile;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -16,23 +17,17 @@ import com.example.brawlwiki.R;
 
 public class ProfileFragment extends Fragment {
 
-    private ProfileViewModel mViewModel;
-
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
-    }
+    private ProfileViewModel mProfileViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profile_fragment, container, false);
-    }
+        mProfileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        View root = inflater.inflate(R.layout.profile_fragment, container, false);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        // TODO: Use the ViewModel
+        mProfileViewModel.getPlayerStats();
+
+        return root;
     }
 
 }

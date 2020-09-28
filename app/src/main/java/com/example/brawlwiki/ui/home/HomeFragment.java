@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
@@ -53,8 +54,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         mPlayerView = root.findViewById(R.id.exoPlayer_tutorial);
@@ -64,28 +64,6 @@ public class HomeFragment extends Fragment {
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            }
-        });
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.brawlstars.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        BrawlStarsApi brawlStarsApi = retrofit.create(BrawlStarsApi.class);
-        Call<Player> call = brawlStarsApi.getPlayer();
-        call.enqueue(new Callback<Player>() {
-            @Override
-            public void onResponse(Call<Player> call, Response<Player> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(LOG_TAG, "onResponse not successful: " + response.code());
-                }
-                Log.d(LOG_TAG, "onResponse: " + response.body().getName());
-            }
-
-            @Override
-            public void onFailure(Call<Player> call, Throwable t) {
-                Log.d(LOG_TAG, "onResponse failure: " + t.getMessage());
             }
         });
 

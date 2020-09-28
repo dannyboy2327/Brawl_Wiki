@@ -15,7 +15,6 @@ import com.example.brawlwiki.R;
 
 public class ClubsFragment extends Fragment {
 
-    private static final String LOG_TAG = ClubsFragment.class.getSimpleName();
 
     private ClubsViewModel mClubsViewModel;
 

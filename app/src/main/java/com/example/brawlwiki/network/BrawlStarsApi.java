@@ -37,10 +37,18 @@ public interface BrawlStarsApi {
     Call<PlayerRankingList> getTopPlayerList();
 
     //Get request for all Game Modes in game
+    @Headers({
+            "Accept: application/json",
+            "authorization: Bearer " + ApiClient.API_KEY
+    })
     @GET("api/gamemodes.json")
     Call<MapList> getGameModes();
 
     //Get request for all brawlers in game
+    @Headers({
+            "Accept: application/json",
+            "authorization: Bearer " + ApiClient.API_KEY
+    })
     @GET("api/brawlers.json")
     Call<BrawlerList> getBrawlers();
 }
