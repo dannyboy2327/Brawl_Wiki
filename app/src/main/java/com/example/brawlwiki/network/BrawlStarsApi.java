@@ -2,7 +2,8 @@ package com.example.brawlwiki.network;
 
 import com.example.brawlwiki.models.brawlers.BrawlerList;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
-import com.example.brawlwiki.models.maps.MapList;
+import com.example.brawlwiki.models.gamemodes.GamesModeList;
+import com.example.brawlwiki.models.gamemodes.maps.MapsList;
 import com.example.brawlwiki.models.playerranking.PlayerRankingList;
 import com.example.brawlwiki.models.players.Player;
 
@@ -42,7 +43,15 @@ public interface BrawlStarsApi {
             "authorization: Bearer " + ApiClient.API_KEY
     })
     @GET("api/gamemodes.json")
-    Call<MapList> getGameModes();
+    Call<GamesModeList> getGameModes();
+
+    //Get request for all Maps in game
+    @Headers({
+            "Accept: application/json",
+            "authorization: Bearer " + ApiClient.API_KEY
+    })
+    @GET("api/maps.json")
+    Call<MapsList> getMaps();
 
     //Get request for all brawlers in game
     @Headers({

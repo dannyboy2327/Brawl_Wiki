@@ -1,12 +1,11 @@
-package com.example.brawlwiki.ui.maps;
+package com.example.brawlwiki.ui.gamemodes;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.brawlwiki.models.maps.MapList;
+import com.example.brawlwiki.models.gamemodes.GamesModeList;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
@@ -14,20 +13,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapsViewModel extends ViewModel {
+public class GameModesViewModel extends ViewModel {
 
-    private static final String TAG = MapsViewModel.class.getSimpleName();
+    private static final String TAG = GameModesViewModel.class.getSimpleName();
 
-    MutableLiveData<MapList> mMapListMutableLiveData = new MutableLiveData<>();
+    MutableLiveData<GamesModeList> mGameModesListMutableLiveData = new MutableLiveData<>();
 
-    public MapsViewModel() {}
+    public GameModesViewModel() {}
 
     public void getGameModes() {
         BrawlStarsApi brawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
-        Call<MapList> call = brawlStarsApi.getGameModes();
-        call.enqueue(new Callback<MapList>() {
+        Call<GamesModeList> call = brawlStarsApi.getGameModes();
+        call.enqueue(new Callback<GamesModeList>() {
             @Override
-            public void onResponse(Call<MapList> call, Response<MapList> response) {
+            public void onResponse(Call<GamesModeList> call, Response<GamesModeList> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
                 }
@@ -36,7 +35,7 @@ public class MapsViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<MapList> call, Throwable t) {
+            public void onFailure(Call<GamesModeList> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });

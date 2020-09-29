@@ -1,4 +1,4 @@
-package com.example.brawlwiki.models.maps;
+package com.example.brawlwiki.models.gamemodes.maps;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class MapList implements Serializable {
+public class MapsList implements Serializable {
 
     @SerializedName("status")
     @Expose
     private String status;
     @SerializedName("list")
     @Expose
-    private List<Map> mMapList = null;
+    private List<Maps> mMaps = null;
 
     public String getStatus() {
         return status;
@@ -23,11 +23,12 @@ public class MapList implements Serializable {
         this.status = status;
     }
 
-    public List<Map> getList() {
-        return mMapList;
+    public List<Maps> getList() {
+        return mMaps;
     }
 
-    public void setList(List<Map> mapList) {
-        this.mMapList = mapList;
+    public void setList(List<Maps> maps) {
+        this.mMaps = maps;
     }
+
 }

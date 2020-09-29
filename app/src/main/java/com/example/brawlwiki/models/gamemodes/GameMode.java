@@ -1,11 +1,11 @@
-package com.example.brawlwiki.models.maps;
+package com.example.brawlwiki.models.gamemodes;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Map implements Serializable {
+public class GameMode implements Serializable {
 
     @SerializedName("id")
     @Expose
