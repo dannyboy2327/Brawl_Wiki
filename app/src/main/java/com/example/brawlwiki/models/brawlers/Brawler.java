@@ -1,63 +1,104 @@
 package com.example.brawlwiki.models.brawlers;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
+@Entity(tableName = "brawler_table")
 public class Brawler implements Serializable {
 
+    @PrimaryKey
+    @ColumnInfo(name = "brawler_id")
     @SerializedName("id")
     @Expose
     private Integer id;
+
+    @Ignore
     @SerializedName("avatarId")
     @Expose
     private Integer avatarId;
+
+    @ColumnInfo(name = "brawler_name")
     @SerializedName("name")
     @Expose
     private String name;
+
+    @Ignore
     @SerializedName("hash")
     @Expose
     private String hash;
+
+    @Ignore
     @SerializedName("path")
     @Expose
     private String path;
+
+    @Ignore
     @SerializedName("released")
     @Expose
     private Boolean released;
+
+    @Ignore
     @SerializedName("version")
     @Expose
     private Integer version;
+
+    @Ignore
     @SerializedName("link")
     @Expose
     private String link;
+
+    @ColumnInfo(name = "brawler_url_one")
     @SerializedName("imageUrl")
     @Expose
     private String imageUrl;
+
+    @ColumnInfo(name = "brawler_url_2")
     @SerializedName("imageUrl2")
     @Expose
     private String imageUrl2;
+
+    @ColumnInfo(name = "brawler_class")
     @SerializedName("class")
     @Expose
     private String _class;
+
+    @ColumnInfo(name = "brawler_rarity")
     @SerializedName("rarity")
     @Expose
     private String rarity;
+
+    @Ignore
     @SerializedName("unlock")
     @Expose
     private Integer unlock;
+
+    @ColumnInfo(name = "brawler_description")
     @SerializedName("description")
     @Expose
     private String description;
+
+    @ColumnInfo(name = "brawler_star_power")
     @SerializedName("starPowers")
     @Expose
-    private java.util.List<StarPower> starPowers = null;
+    private List<StarPower> starPowers = null;
+
+    @ColumnInfo(name = "brawlers_gadgets")
     @SerializedName("gadgets")
     @Expose
-    private java.util.List<Gadget> gadgets = null;
+    private List<Gadget> gadgets = null;
+
+    @Ignore
     @SerializedName("videos")
     @Expose
-    private java.util.List<Video> videos = null;
+    private List<Video> videos = null;
 
     public Integer getId() {
         return id;
@@ -171,27 +212,27 @@ public class Brawler implements Serializable {
         this.description = description;
     }
 
-    public java.util.List<StarPower> getStarPowers() {
+    public List<StarPower> getStarPowers() {
         return starPowers;
     }
 
-    public void setStarPowers(java.util.List<StarPower> starPowers) {
+    public void setStarPowers(List<StarPower> starPowers) {
         this.starPowers = starPowers;
     }
 
-    public java.util.List<Gadget> getGadgets() {
+    public List<Gadget> getGadgets() {
         return gadgets;
     }
 
-    public void setGadgets(java.util.List<Gadget> gadgets) {
+    public void setGadgets(List<Gadget> gadgets) {
         this.gadgets = gadgets;
     }
 
-    public java.util.List<Video> getVideos() {
+    public List<Video> getVideos() {
         return videos;
     }
 
-    public void setVideos(java.util.List<Video> videos) {
+    public void setVideos(List<Video> videos) {
         this.videos = videos;
     }
 }
