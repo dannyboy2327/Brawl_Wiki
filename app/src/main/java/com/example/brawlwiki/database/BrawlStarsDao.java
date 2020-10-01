@@ -1,6 +1,6 @@
 package com.example.brawlwiki.database;
 
-import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -11,14 +11,14 @@ import com.example.brawlwiki.models.brawlers.Brawler;
 import java.util.List;
 
 @Dao
-public interface BrawlerDao {
+public interface BrawlStarsDao {
 
     @Insert
-    void insert(Brawler brawler);
+    void insert(List<Brawler> brawlerList);
 
     @Update
-    void update(Brawler brawler);
+    void update(List<Brawler> brawlerList);
 
     @Query("SELECT * FROM brawler_table ORDER BY brawler_id DESC")
-    MutableLiveData<List<Brawler>> getAllBrawlers();
+    LiveData<List<Brawler>> getAllBrawlers();
 }

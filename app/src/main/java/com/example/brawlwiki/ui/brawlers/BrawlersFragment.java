@@ -23,7 +23,6 @@ public class BrawlersFragment extends Fragment {
         mBrawlersViewModel = new ViewModelProvider(this).get(BrawlersViewModel.class);
         View root = inflater.inflate(R.layout.fragment_brawlers, container, false);
 
-        mBrawlersViewModel.getBrawlers();
 
         return root;
     }

@@ -1,46 +1,38 @@
 package com.example.brawlwiki.ui.brawlers;
 
-import android.util.Log;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.brawlwiki.models.brawlers.BrawlerList;
-import com.example.brawlwiki.network.ApiClient;
-import com.example.brawlwiki.network.BrawlStarsApi;
+import com.example.brawlwiki.models.brawlers.Brawler;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.List;
 
-public class BrawlersViewModel extends ViewModel {
+public class BrawlersViewModel extends AndroidViewModel {
 
-    private static final String TAG = BrawlersViewModel.class.getSimpleName();
+    private BrawlersRepository mRepository;
+    private MutableLiveData<List<Brawler>> mAllBrawlers;
+    private LiveData<List<Brawler>> brawlerListLiveData;
 
-    MutableLiveData<BrawlerList> mBrawlerListMutableLiveData = new MutableLiveData<>();
 
-    public BrawlersViewModel() { }
-
-    public void getBrawlers() {
-
-        BrawlStarsApi brawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
-        Call<BrawlerList> call = brawlStarsApi.getBrawlers();
-        call.enqueue(new Callback<BrawlerList>() {
-            @Override
-            public void onResponse(Call<BrawlerList> call, Response<BrawlerList> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                }
-                Log.d(TAG, "onResponse: " + response.body().getBrawlerList().get(0).getName());
-            }
-
-            @Override
-            public void onFailure(Call<BrawlerList> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-
+    public BrawlersViewModel(@NonNull Application application) {
+        super(application);
+        mRepository = new BrawlersRepository(application);
+        brawlerListLiveData = mRepository.getBrawlersList();
     }
+
+    public LiveData<List<Brawler>> getBrawlersList() {
+        return brawlerListLiveData;
+    }
+
+
+    public void insert(List<Brawler> brawlerList) {
+        mRepository.insert(brawlerList);
+    }
+
+
 
 }

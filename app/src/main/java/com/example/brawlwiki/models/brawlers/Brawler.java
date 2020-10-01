@@ -1,9 +1,12 @@
 package com.example.brawlwiki.models.brawlers;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Junction;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -68,7 +71,7 @@ public class Brawler implements Serializable {
     @ColumnInfo(name = "brawler_class")
     @SerializedName("class")
     @Expose
-    private String _class;
+    private String brawler_class;
 
     @ColumnInfo(name = "brawler_rarity")
     @SerializedName("rarity")
@@ -85,12 +88,12 @@ public class Brawler implements Serializable {
     @Expose
     private String description;
 
-    @ColumnInfo(name = "brawler_star_power")
+    @Ignore
     @SerializedName("starPowers")
     @Expose
     private List<StarPower> starPowers = null;
 
-    @ColumnInfo(name = "brawlers_gadgets")
+    @Ignore
     @SerializedName("gadgets")
     @Expose
     private List<Gadget> gadgets = null;
@@ -180,12 +183,12 @@ public class Brawler implements Serializable {
         this.imageUrl2 = imageUrl2;
     }
 
-    public String getClass_() {
-        return _class;
+    public String getBrawler_class() {
+        return brawler_class;
     }
 
-    public void setClass_(String _class) {
-        this._class = _class;
+    public void setBrawler_class(String brawler_class) {
+        this.brawler_class = brawler_class;
     }
 
     public String getRarity() {
