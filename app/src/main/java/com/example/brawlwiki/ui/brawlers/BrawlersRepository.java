@@ -20,25 +20,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BrawlersRepository  {
+public class BrawlersRepository {
 
     private static final String TAG = BrawlersRepository.class.getSimpleName();
-
-    private BrawlStarsDao mBrawlStarsDao;
-    private LiveData<List<Brawler>> mAllBrawlers;
+    private static final BrawlersRepository repoInstance = new BrawlersRepository();
     private BrawlStarsApi mBrawlStarsApi;
     private MutableLiveData<List<Brawler>> brawlerListLiveData = new MutableLiveData<>();
 
-    public BrawlersRepository(Application application) {
-        BrawlStarsDatabase database = BrawlStarsDatabase.getInstance(application);
-        mBrawlStarsDao = database.BrawlStarsDao();
-        mAllBrawlers = mBrawlStarsDao.getAllBrawlers();
+    public static BrawlersRepository getInstance() {
+        return repoInstance;
+    }
+
+    private BrawlersRepository() {
         mBrawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
     }
 
     public LiveData<List<Brawler>> getBrawlersList() {
-        Call<BrawlerList> call = mBrawlStarsApi.getBrawlers();
-        call.enqueue(new Callback<BrawlerList>() {
+        mBrawlStarsApi.getBrawlers().enqueue(new Callback<BrawlerList>() {
             @Override
             public void onResponse(Call<BrawlerList> call, Response<BrawlerList> response) {
                 if (!response.isSuccessful()) {
@@ -53,7 +51,6 @@ public class BrawlersRepository  {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
-
         return brawlerListLiveData;
     }
 
@@ -73,11 +70,5 @@ public class BrawlersRepository  {
         });
     }
 
-    public void update(List<Brawler> brawlerList) {
 
-    }
-
-    public LiveData<List<Brawler>> getAllBrawlers() {
-        return mAllBrawlers;
-    }
 }

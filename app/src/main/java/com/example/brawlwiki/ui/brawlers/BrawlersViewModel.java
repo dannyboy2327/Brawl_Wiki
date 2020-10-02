@@ -3,24 +3,25 @@ package com.example.brawlwiki.ui.brawlers;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.brawlwiki.models.brawlers.Brawler;
 
 import java.util.List;
 
-public class BrawlersViewModel extends AndroidViewModel {
+public class BrawlersViewModel extends ViewModel {
 
-    private BrawlersRepository mRepository;
+    private static final String TAG = BrawlersViewModel.class.getSimpleName();
+
+    private BrawlersRepository mRepository = BrawlersRepository.getInstance();
     private MutableLiveData<List<Brawler>> mAllBrawlers;
     private LiveData<List<Brawler>> brawlerListLiveData;
 
 
-    public BrawlersViewModel(@NonNull Application application) {
-        super(application);
-        mRepository = new BrawlersRepository(application);
+    public BrawlersViewModel() {
+        super();
         brawlerListLiveData = mRepository.getBrawlersList();
     }
 
@@ -32,7 +33,5 @@ public class BrawlersViewModel extends AndroidViewModel {
     public void insert(List<Brawler> brawlerList) {
         mRepository.insert(brawlerList);
     }
-
-
 
 }
