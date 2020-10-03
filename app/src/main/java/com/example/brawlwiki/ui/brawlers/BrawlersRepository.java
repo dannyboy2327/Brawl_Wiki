@@ -42,7 +42,6 @@ public class BrawlersRepository {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
                 }
-                Log.d(TAG, "onResponse: " + response.body().getBrawlerList().size());
                 brawlerListLiveData.setValue(response.body().getBrawlerList());
             }
 
