@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.brawlers.Brawler;
+import com.example.brawlwiki.models.brawlers.BrawlerList;
 
 import java.util.List;
 
@@ -32,6 +33,14 @@ public class BrawlersFragment extends Fragment {
             @Override
             public void onChanged(List<Brawler> brawlerList) {
                 Log.d(TAG, "onChanged: " + mBrawlersViewModel.getBrawlersList().getValue().get(0).getName());
+                for (int i = 0; i < mBrawlersViewModel.getBrawlersList().getValue().size(); i++) {
+                    List<Brawler> mBrawlerList = mBrawlersViewModel.getBrawlersList().getValue();
+                    Brawler brawler = new Brawler(mBrawlerList.get(i).getId(), mBrawlerList.get(i).getName(),
+                            mBrawlerList.get(i).getImageUrl(), mBrawlerList.get(i).getImageUrl2(),
+                            mBrawlerList.get(i).getBrawler_class(), mBrawlerList.get(i).getRarity(),
+                            mBrawlerList.get(i).getDescription());
+                    mBrawlersViewModel.insert(brawler);
+                }
             }
         });
         return root;

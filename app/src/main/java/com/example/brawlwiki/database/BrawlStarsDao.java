@@ -14,7 +14,7 @@ import java.util.List;
 public interface BrawlStarsDao {
 
     @Insert
-    void insert(List<Brawler> brawlerList);
+    void insert(Brawler brawler);
 
     @Update
     void update(List<Brawler> brawlerList);
