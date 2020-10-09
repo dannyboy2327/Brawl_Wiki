@@ -1,12 +1,8 @@
 package com.example.brawlwiki.models.brawlers;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.Junction;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -14,11 +10,10 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(tableName = "brawler_table")
+@Entity(tableName = "brawler")
 public class Brawler implements Serializable {
 
-    @PrimaryKey
-    @ColumnInfo(name = "brawler_id")
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -28,7 +23,6 @@ public class Brawler implements Serializable {
     @Expose
     private Integer avatarId;
 
-    @ColumnInfo(name = "brawler_name")
     @SerializedName("name")
     @Expose
     private String name;
@@ -58,22 +52,18 @@ public class Brawler implements Serializable {
     @Expose
     private String link;
 
-    @ColumnInfo(name = "brawler_url_one")
     @SerializedName("imageUrl")
     @Expose
     private String imageUrl;
 
-    @ColumnInfo(name = "brawler_url_2")
     @SerializedName("imageUrl2")
     @Expose
     private String imageUrl2;
 
-    @ColumnInfo(name = "brawler_class")
     @SerializedName("class")
     @Expose
     private String brawler_class;
 
-    @ColumnInfo(name = "brawler_rarity")
     @SerializedName("rarity")
     @Expose
     private String rarity;
@@ -83,7 +73,6 @@ public class Brawler implements Serializable {
     @Expose
     private Integer unlock;
 
-    @ColumnInfo(name = "brawler_description")
     @SerializedName("description")
     @Expose
     private String description;
@@ -103,8 +92,7 @@ public class Brawler implements Serializable {
     @Expose
     private List<Video> videos = null;
 
-    public Brawler(Integer id, String name, String imageUrl, String imageUrl2, String brawler_class, String rarity, String description) {
-        this.id = id;
+    public Brawler(String name, String imageUrl, String imageUrl2, String brawler_class, String rarity, String description) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.imageUrl2 = imageUrl2;

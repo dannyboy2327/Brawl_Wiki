@@ -1,6 +1,5 @@
 package com.example.brawlwiki.models.brawlers;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -10,16 +9,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-@Entity(tableName = "star_power_table")
+@Entity(tableName = "star_power")
 public class StarPower implements Serializable {
 
-    @PrimaryKey
-    @ColumnInfo(name = "star_power_id")
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
     private Integer id;
 
-    @ColumnInfo(name = "star_power_name")
     @SerializedName("name")
     @Expose
     private String name;
@@ -29,12 +26,10 @@ public class StarPower implements Serializable {
     @Expose
     private String path;
 
-    @ColumnInfo(name = "star_power_description")
     @SerializedName("description")
     @Expose
     private String description;
 
-    @ColumnInfo(name = "star_power_url")
     @SerializedName("imageUrl")
     @Expose
     private String imageUrl;

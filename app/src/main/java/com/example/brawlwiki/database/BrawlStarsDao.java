@@ -19,6 +19,6 @@ public interface BrawlStarsDao {
     @Update
     void update(List<Brawler> brawlerList);
 
-    @Query("SELECT * FROM brawler_table ORDER BY brawler_id DESC")
+    @Query("SELECT * FROM brawler ORDER BY id DESC")
     LiveData<List<Brawler>> getAllBrawlers();
 }

@@ -34,7 +34,7 @@ public class BrawlersFragment extends Fragment {
             public void onChanged(List<Brawler> brawlerList) {
                 Log.d(TAG, "onChanged: " + mBrawlersViewModel.getBrawlersList().getValue().get(0).getName());
                 for (int i = 0; i < mBrawlersViewModel.getBrawlersList().getValue().size(); i++) {
-                    Brawler brawler = new Brawler(brawlerList.get(i).getId(), brawlerList.get(i).getName(),
+                    Brawler brawler = new Brawler(brawlerList.get(i).getName(),
                             brawlerList.get(i).getImageUrl(), brawlerList.get(i).getImageUrl2(),
                             brawlerList.get(i).getBrawler_class(), brawlerList.get(i).getRarity(),
                             brawlerList.get(i).getDescription());
