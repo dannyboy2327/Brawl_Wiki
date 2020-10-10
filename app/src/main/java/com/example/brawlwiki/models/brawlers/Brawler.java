@@ -1,6 +1,7 @@
 package com.example.brawlwiki.models.brawlers;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
@@ -16,7 +17,7 @@ public class Brawler implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer id_brawler;
 
     @Ignore
     @SerializedName("avatarId")
@@ -101,12 +102,12 @@ public class Brawler implements Serializable {
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getId_brawler() {
+        return id_brawler;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_brawler(Integer id_brawler) {
+        this.id_brawler = id_brawler;
     }
 
     public Integer getAvatarId() {

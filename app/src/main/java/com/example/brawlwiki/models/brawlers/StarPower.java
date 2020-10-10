@@ -1,6 +1,7 @@
 package com.example.brawlwiki.models.brawlers;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
@@ -9,13 +10,15 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 @Entity(tableName = "star_power")
 public class StarPower implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer id_starPower;
 
     @SerializedName("name")
     @Expose
@@ -39,12 +42,20 @@ public class StarPower implements Serializable {
     @Expose
     private Boolean released;
 
-    public Integer getId() {
-        return id;
+    @ForeignKey(
+            entity = Brawler.class,
+            parentColumns = "id_brawler",
+            childColumns = "id_fBrawler",
+            onDelete = CASCADE
+    )
+    public Integer id_fBrawler;
+
+    public Integer getId_starPower() {
+        return id_starPower;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_starPower(Integer id_starPower) {
+        this.id_starPower = id_starPower;
     }
 
     public String getName() {
@@ -85,5 +96,13 @@ public class StarPower implements Serializable {
 
     public void setReleased(Boolean released) {
         this.released = released;
+    }
+
+    public Integer getId_fBrawler() {
+        return id_fBrawler;
+    }
+
+    public void setId_fBrawler(Integer id_fBrawler) {
+        this.id_fBrawler = id_fBrawler;
     }
 }

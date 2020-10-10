@@ -13,6 +13,7 @@ import com.example.brawlwiki.database.BrawlStarsDao;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
 import com.example.brawlwiki.models.brawlers.Brawler;
 import com.example.brawlwiki.models.brawlers.BrawlerList;
+import com.example.brawlwiki.models.brawlers.StarPower;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
@@ -59,14 +60,30 @@ public class BrawlersRepository {
     /**
      * Inserts a brawler's data into the database in a background thread
      *
-     * @param brawler
+     * @param brawlerList
      */
 
-    public void insert(final Brawler brawler) {
+    public void insert(final List<Brawler> brawlerList) {
         AppExecutors.getInstance().getDiskIO().execute(new Runnable() {
             @Override
             public void run() {
-                mBrawlStarsDao.insert(brawler);
+                for (int i = 0; i < brawlerList.size(); i++) {
+                    Brawler brawler = new Brawler(brawlerList.get(i).getName(),
+                            brawlerList.get(i).getImageUrl(), brawlerList.get(i).getImageUrl2(),
+                            brawlerList.get(i).getBrawler_class(), brawlerList.get(i).getRarity(),
+                            brawlerList.get(i).getDescription());
+                    mBrawlStarsDao.insert(brawler);
+
+                    Log.d(TAG, "run: " + brawler.getName());
+
+                    List<StarPower> starPowerList = brawlerList.get(i).getStarPowers();
+                    Log.d(TAG, "run: " + starPowerList.size());
+
+                    for (int j = 0; j < starPowerList.size(); j++) {
+                        starPowerList.get(j).setId_fBrawler(brawler.getId_brawler());;
+                    }
+                    mBrawlStarsDao.insertStarPowers(starPowerList);
+                }
             }
         });
     }
