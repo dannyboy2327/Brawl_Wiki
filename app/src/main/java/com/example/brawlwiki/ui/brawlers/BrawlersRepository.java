@@ -13,7 +13,9 @@ import com.example.brawlwiki.database.BrawlStarsDao;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
 import com.example.brawlwiki.models.brawlers.Brawler;
 import com.example.brawlwiki.models.brawlers.BrawlerList;
+import com.example.brawlwiki.models.brawlers.BrawlerWithGadgets;
 import com.example.brawlwiki.models.brawlers.BrawlerWithStarPowers;
+import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
@@ -73,12 +75,19 @@ public class BrawlersRepository {
                     BrawlerWithStarPowers brawlerWithStarPowers =
                             new BrawlerWithStarPowers(brawlerList.get(i), brawlerList.get(i).getStarPowers());
                     mBrawlStarsDao.insert(brawlerWithStarPowers.brawler);
-                    Log.d(TAG, "run: " + brawlerWithStarPowers.brawler.getName());
+                    Log.d(TAG, "Brawler Name: " + brawlerWithStarPowers.brawler.getName());
                     for (StarPower starPower : brawlerWithStarPowers.startPowerList) {
                         starPower.setId_fBrawler(brawlerWithStarPowers.brawler.getId_brawler());
-                        Log.d(TAG, "run: " + starPower.getId_fBrawler());
+                        Log.d(TAG, "StarPower ID: " + starPower.getId_fBrawler());
                     }
                     mBrawlStarsDao.insertStarPowers(brawlerWithStarPowers.startPowerList);
+
+                    BrawlerWithGadgets brawlerWithGadgets = new BrawlerWithGadgets(brawlerList.get(i), brawlerList.get(i).getGadgets());
+                    for (Gadget gadget : brawlerWithGadgets.gadgetList) {
+                        gadget.setId_fBrawler(brawlerWithGadgets.brawler.getId_brawler());
+                        Log.d(TAG, "Gadget ID: " + gadget.getId_fBrawler());
+                    }
+                    mBrawlStarsDao.insertGadgets(brawlerWithGadgets.gadgetList);
                 }
             }
         });

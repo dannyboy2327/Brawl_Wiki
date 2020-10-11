@@ -7,9 +7,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.brawlwiki.models.brawlers.Brawler;
+import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
 
-@Database(entities = {Brawler.class, StarPower.class}, version = 1)
+@Database(entities = {Brawler.class, StarPower.class, Gadget.class}, version = 1)
 public abstract class BrawlStarsDatabase extends RoomDatabase {
 
     private static BrawlStarsDatabase instance;

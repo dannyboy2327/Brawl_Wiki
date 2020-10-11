@@ -1,7 +1,10 @@
 package com.example.brawlwiki.models.brawlers;
 
+import android.support.v4.app.INotificationSideChannel;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
@@ -10,17 +13,17 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import static androidx.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "gadget_table")
+
+@Entity(tableName = "gadget")
 public class Gadget implements Serializable {
 
     @PrimaryKey
-    @ColumnInfo(name = "gadget_id")
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer id_gadget;
 
-    @ColumnInfo(name = "gadget_name")
     @SerializedName("name")
     @Expose
     private String name;
@@ -30,12 +33,10 @@ public class Gadget implements Serializable {
     @Expose
     private String path;
 
-    @ColumnInfo(name = "gadget_description")
     @SerializedName("description")
     @Expose
     private String description;
 
-    @ColumnInfo(name = "gadget_url")
     @SerializedName("imageUrl")
     @Expose
     private String imageUrl;
@@ -45,12 +46,20 @@ public class Gadget implements Serializable {
     @Expose
     private Boolean released;
 
-    public Integer getId() {
-        return id;
+    @ForeignKey(
+            entity = Brawler.class,
+            parentColumns = "id_brawler",
+            childColumns = "id_fBrawler",
+            onDelete = CASCADE
+    )
+    public Integer id_fBrawler;
+
+    public Integer getId_gadget() {
+        return id_gadget;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_gadget(Integer id_gadget) {
+        this.id_gadget = id_gadget;
     }
 
     public String getName() {
@@ -91,5 +100,13 @@ public class Gadget implements Serializable {
 
     public void setReleased(Boolean released) {
         this.released = released;
+    }
+
+    public Integer getId_fBrawler() {
+        return id_fBrawler;
+    }
+
+    public void setId_fBrawler(Integer id_fBrawler) {
+        this.id_fBrawler = id_fBrawler;
     }
 }

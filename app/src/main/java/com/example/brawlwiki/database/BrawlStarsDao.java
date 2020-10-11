@@ -9,6 +9,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.brawlwiki.models.brawlers.Brawler;
+import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
 
 import java.util.List;
@@ -22,6 +23,10 @@ public interface BrawlStarsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertStarPowers(List<StarPower> starPowerList);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertGadgets(List<Gadget> gadgetList);
+
 
     @Update
     void update(List<Brawler> brawlerList);
