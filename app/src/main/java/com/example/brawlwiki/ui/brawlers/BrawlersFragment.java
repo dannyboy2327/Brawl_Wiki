@@ -32,8 +32,7 @@ public class BrawlersFragment extends Fragment {
         mBrawlersViewModel.getBrawlersList().observe(getViewLifecycleOwner(), new Observer<List<Brawler>>() {
             @Override
             public void onChanged(List<Brawler> brawlerList) {
-                Log.d(TAG, "onChanged: " + mBrawlersViewModel.getBrawlersList().getValue().get(0).getName());
-
+                    Log.d(TAG, "onChanged: " + mBrawlersViewModel.getBrawlersList().getValue().get(0).getName());
                     mBrawlersViewModel.insert(brawlerList);
                 }
         });

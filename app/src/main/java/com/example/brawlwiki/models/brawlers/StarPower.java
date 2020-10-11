@@ -15,7 +15,7 @@ import static androidx.room.ForeignKey.CASCADE;
 @Entity(tableName = "star_power")
 public class StarPower implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id_starPower;

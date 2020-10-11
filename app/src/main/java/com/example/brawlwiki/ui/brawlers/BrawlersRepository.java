@@ -13,6 +13,7 @@ import com.example.brawlwiki.database.BrawlStarsDao;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
 import com.example.brawlwiki.models.brawlers.Brawler;
 import com.example.brawlwiki.models.brawlers.BrawlerList;
+import com.example.brawlwiki.models.brawlers.BrawlerWithStarPowers;
 import com.example.brawlwiki.models.brawlers.StarPower;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
@@ -67,22 +68,17 @@ public class BrawlersRepository {
         AppExecutors.getInstance().getDiskIO().execute(new Runnable() {
             @Override
             public void run() {
+
                 for (int i = 0; i < brawlerList.size(); i++) {
-                    Brawler brawler = new Brawler(brawlerList.get(i).getName(),
-                            brawlerList.get(i).getImageUrl(), brawlerList.get(i).getImageUrl2(),
-                            brawlerList.get(i).getBrawler_class(), brawlerList.get(i).getRarity(),
-                            brawlerList.get(i).getDescription());
-                    mBrawlStarsDao.insert(brawler);
-
-                    Log.d(TAG, "run: " + brawler.getName());
-
-                    List<StarPower> starPowerList = brawlerList.get(i).getStarPowers();
-                    Log.d(TAG, "run: " + starPowerList.size());
-
-                    for (int j = 0; j < starPowerList.size(); j++) {
-                        starPowerList.get(j).setId_fBrawler(brawler.getId_brawler());;
+                    BrawlerWithStarPowers brawlerWithStarPowers =
+                            new BrawlerWithStarPowers(brawlerList.get(i), brawlerList.get(i).getStarPowers());
+                    mBrawlStarsDao.insert(brawlerWithStarPowers.brawler);
+                    Log.d(TAG, "run: " + brawlerWithStarPowers.brawler.getName());
+                    for (StarPower starPower : brawlerWithStarPowers.startPowerList) {
+                        starPower.setId_fBrawler(brawlerWithStarPowers.brawler.getId_brawler());
+                        Log.d(TAG, "run: " + starPower.getId_fBrawler());
                     }
-                    mBrawlStarsDao.insertStarPowers(starPowerList);
+                    mBrawlStarsDao.insertStarPowers(brawlerWithStarPowers.startPowerList);
                 }
             }
         });
