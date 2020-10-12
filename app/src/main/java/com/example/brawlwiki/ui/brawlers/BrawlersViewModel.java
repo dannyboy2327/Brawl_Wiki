@@ -33,4 +33,8 @@ public class BrawlersViewModel extends AndroidViewModel {
         mBrawlersRepository.insert(brawlerList);
     }
 
+
+    public List<Brawler> getBrawlers() {
+        return mBrawlersRepository.getBrawlers();
+    }
 }

@@ -20,6 +20,7 @@ import com.example.brawlwiki.models.brawlers.StarPower;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,12 +33,19 @@ public class BrawlersRepository {
     private BrawlStarsApi mBrawlStarsApi;
     private BrawlStarsDao mBrawlStarsDao;
     private MutableLiveData<List<Brawler>> brawlerListLiveData = new MutableLiveData<>();
+    private List<Brawler> mBrawlerList = new ArrayList<>();
 
     public BrawlersRepository(Application application) {
         BrawlStarsDatabase brawlStarsDatabase = BrawlStarsDatabase.getInstance(application);
         mBrawlStarsDao = brawlStarsDatabase.BrawlStarsDao();
         mBrawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
     }
+
+    /**
+     * Method retrieves a lists of brawlers from two different brawl stars API depending on fragment
+     *
+     * @return LiveData<List<Brawler> lists of brawlers from the API
+     */
 
     public LiveData<List<Brawler>> getBrawlersList() {
         mBrawlStarsApi.getBrawlers().enqueue(new Callback<BrawlerList>() {
@@ -61,7 +69,7 @@ public class BrawlersRepository {
 
 
     /**
-     * Inserts a brawler's data into the database in a background thread
+     * Method to insert a brawler's own personal data as well a brawlers start powers and gadgets
      *
      * @param brawlerList
      */
@@ -94,4 +102,13 @@ public class BrawlersRepository {
     }
 
 
+    public List<Brawler> getBrawlers() {
+        AppExecutors.getInstance().getDiskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mBrawlerList = mBrawlStarsDao.getBrawlers();
+            }
+        });
+        return mBrawlerList;
+    }
 }

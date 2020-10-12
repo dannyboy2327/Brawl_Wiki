@@ -92,7 +92,8 @@ public class Brawler implements Serializable {
     @Expose
     private List<Video> videos = null;
 
-    public Brawler(String name, String imageUrl, String imageUrl2, String brawler_class, String rarity, String description) {
+    public Brawler(Integer id_brawler, String name, String imageUrl, String imageUrl2, String brawler_class, String rarity, String description) {
+        this.id_brawler = id_brawler;
         this.name = name;
         this.imageUrl = imageUrl;
         this.imageUrl2 = imageUrl2;

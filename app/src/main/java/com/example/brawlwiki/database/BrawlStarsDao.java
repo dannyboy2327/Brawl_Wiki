@@ -1,14 +1,13 @@
 package com.example.brawlwiki.database;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
-import androidx.room.Update;
 
 import com.example.brawlwiki.models.brawlers.Brawler;
+
 import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
 
@@ -27,10 +26,7 @@ public interface BrawlStarsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertGadgets(List<Gadget> gadgetList);
 
+    @Query("SELECT * FROM brawler")
+    List<Brawler> getBrawlers();
 
-    @Update
-    void update(List<Brawler> brawlerList);
-
-    @Query("SELECT * FROM brawler ORDER BY id_brawler DESC")
-    LiveData<List<Brawler>> getAllBrawlers();
 }
