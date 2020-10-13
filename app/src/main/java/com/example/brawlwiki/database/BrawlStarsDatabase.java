@@ -9,13 +9,15 @@ import androidx.room.RoomDatabase;
 import com.example.brawlwiki.models.brawlers.Brawler;
 import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
+import com.example.brawlwiki.models.clubranking.Item;
 
-@Database(entities = {Brawler.class, StarPower.class, Gadget.class}, version = 1)
+@Database(entities = {Brawler.class, StarPower.class, Gadget.class, Item.class}, version = 1)
 public abstract class BrawlStarsDatabase extends RoomDatabase {
 
     private static BrawlStarsDatabase instance;
 
     public abstract BrawlStarsDao BrawlStarsDao();
+    public abstract ClubDao ClubDao();
 
     public static synchronized BrawlStarsDatabase getInstance(Context context) {
         if (instance == null) {

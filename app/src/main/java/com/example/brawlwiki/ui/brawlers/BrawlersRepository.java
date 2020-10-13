@@ -44,11 +44,11 @@ public class BrawlersRepository {
     /**
      * Method retrieves a lists of brawlers from two different brawl stars API depending on fragment
      *
-     * @return LiveData<List<Brawler> lists of brawlers from the API
+             * @return LiveData<List<Brawler> lists of brawlers from the API
      */
 
-    public LiveData<List<Brawler>> getBrawlersList() {
-        mBrawlStarsApi.getBrawlers().enqueue(new Callback<BrawlerList>() {
+            public LiveData<List<Brawler>> getBrawlersList() {
+                mBrawlStarsApi.getBrawlers().enqueue(new Callback<BrawlerList>() {
             @Override
             public void onResponse(@NonNull Call<BrawlerList> call, @NonNull Response<BrawlerList> response) {
                 if (!response.isSuccessful()) {

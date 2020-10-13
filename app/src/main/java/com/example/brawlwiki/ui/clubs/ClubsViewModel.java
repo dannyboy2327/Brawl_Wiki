@@ -1,50 +1,44 @@
 package com.example.brawlwiki.ui.clubs;
 
+import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.brawlwiki.models.brawlers.BrawlerList;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
+import com.example.brawlwiki.models.clubranking.Item;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 import com.example.brawlwiki.ui.brawlers.BrawlersViewModel;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ClubsViewModel extends ViewModel {
+public class ClubsViewModel extends AndroidViewModel {
 
     private static final String TAG = ClubsViewModel.class.getSimpleName();
 
-    MutableLiveData<ClubMemberList> mClubMemberListMutableLiveData = new MutableLiveData<>();
+    private ClubsRepository mClubsRepository;
+    private LiveData<List<Item>> mListLiveData;
 
-    public ClubsViewModel() {
+    public ClubsViewModel(Application application) {
+        super(application);
+        mClubsRepository = new ClubsRepository(application);
+        mListLiveData = mClubsRepository.getClubList();
     }
 
-    public void getClubList() {
-
-        BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
-        Call<ClubMemberList> call = brawlStarsApi.getClubList();
-        call.enqueue(new Callback<ClubMemberList>() {
-            @Override
-            public void onResponse(Call<ClubMemberList> call, Response<ClubMemberList> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                }
-
-                Log.d(TAG, "onResponse: " + response.body().getItems().size());
-
-            }
-
-            @Override
-            public void onFailure(Call<ClubMemberList> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
+    public void insertClubList(ClubMemberList clubMemberList) {
+        mClubsRepository.insertClubList(clubMemberList);
     }
 
+    public LiveData<List<Item>> getClubList() {
+        return mListLiveData;
+    }
 }
