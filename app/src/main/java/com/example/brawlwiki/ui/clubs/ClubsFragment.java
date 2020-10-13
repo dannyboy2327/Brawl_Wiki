@@ -11,7 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.brawlwiki.Adapters.ClubsAdapter;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
 import com.example.brawlwiki.models.clubranking.Item;
@@ -47,11 +50,20 @@ public class ClubsFragment extends Fragment {
         mClubsViewModel.getClubList().observe(getViewLifecycleOwner(), new Observer<List<Item>>() {
             @Override
             public void onChanged(List<Item> items) {
-
+                createClubAdapter(items);
             }
         });
 
         return root;
+    }
+
+    private void createClubAdapter(List<Item> items) {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+       // RecyclerView recyclerView;
+       // recyclerView.setLayoutManager(linearLayoutManager);
+       // recyclerView.setHasFixedSize(true);
+       // ClubsAdapter clubsAdapter= new ClubsAdapter(getContext(), items);
+       // recyclerView.setAdapter(clubsAdapter);
     }
 
     private void getClubMemberList() {
