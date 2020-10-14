@@ -13,14 +13,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.brawlwiki.Adapters.ClubsAdapter;
+import com.example.brawlwiki.adapters.ClubsAdapter;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.databinding.FragmentClubsBinding;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
 import com.example.brawlwiki.models.clubranking.Item;
-import com.example.brawlwiki.models.players.Club;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
