@@ -25,6 +25,11 @@ public class Item implements Serializable {
     private String name;
 
     @ColumnInfo
+    @SerializedName("badgeId")
+    @Expose
+    private Integer badgeId;
+
+    @ColumnInfo
     @SerializedName("trophies")
     @Expose
     private Integer trophies;
@@ -39,12 +44,7 @@ public class Item implements Serializable {
     @Expose
     private Integer memberCount;
 
-    @ColumnInfo
-    @SerializedName("badge")
-    @Expose
-    private Integer badgeId;
-
-    public Item(@NonNull String tag, String name,  Integer trophies, Integer rank, Integer memberCount, Integer badgeId) {
+    public Item(@NonNull String tag, String name, Integer badgeId, Integer trophies, Integer rank, Integer memberCount) {
         this.tag = tag;
         this.name = name;
         this.badgeId = badgeId;
