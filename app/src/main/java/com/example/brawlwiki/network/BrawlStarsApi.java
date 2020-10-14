@@ -26,7 +26,7 @@ public interface BrawlStarsApi {
             "Accept: application/json",
             "authorization: Bearer " + ApiClient.API_KEY
     })
-    @GET("v1/rankings/global/players?limit=100")
+    @GET("v1/rankings/global/clubs?before=eyJwb3MiOjEwMH0&limit=101")
     Call<ClubMemberList> getClubList();
 
     //Get request for a list of top players and their ranks
