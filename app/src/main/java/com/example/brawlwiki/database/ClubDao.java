@@ -16,6 +16,6 @@ public interface ClubDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertClubList(Item item);
 
-    @Query("SELECT * FROM club")
+    @Query("SELECT * FROM club ORDER BY rank ASC")
     LiveData<List<Item>> getClubList();
 }

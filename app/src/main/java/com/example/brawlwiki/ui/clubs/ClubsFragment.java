@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brawlwiki.Adapters.ClubsAdapter;
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.databinding.FragmentClubsBinding;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
 import com.example.brawlwiki.models.clubranking.Item;
 import com.example.brawlwiki.models.players.Club;
@@ -36,6 +38,7 @@ public class ClubsFragment extends Fragment {
     private BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
     private ClubsViewModel mClubsViewModel;
     private ClubMemberList mClubMemberList;
+    private FragmentClubsBinding mFragmentClubsBinding;
 
     @Nullable
     @Override
@@ -43,7 +46,8 @@ public class ClubsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         mClubsViewModel = new ViewModelProvider(this).get(ClubsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_clubs, container, false);
+        mFragmentClubsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_clubs, container, false);
+        View root = mFragmentClubsBinding.getRoot();
 
         getClubMemberList();
 
@@ -59,17 +63,16 @@ public class ClubsFragment extends Fragment {
 
     private void createClubAdapter(List<Item> items) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-       // RecyclerView recyclerView;
-       // recyclerView.setLayoutManager(linearLayoutManager);
-       // recyclerView.setHasFixedSize(true);
-       // ClubsAdapter clubsAdapter= new ClubsAdapter(getContext(), items);
-       // recyclerView.setAdapter(clubsAdapter);
+        mFragmentClubsBinding.rvClubs.setLayoutManager(linearLayoutManager);
+        mFragmentClubsBinding.rvClubs.setHasFixedSize(true);
+        ClubsAdapter clubsAdapter= new ClubsAdapter(getContext(), items);
+        mFragmentClubsBinding.rvClubs.setAdapter(clubsAdapter);
     }
 
     private void getClubMemberList() {
         brawlStarsApi.getClubList().enqueue(new Callback<ClubMemberList>() {
             @Override
-            public void onResponse(Call<ClubMemberList> call, Response<ClubMemberList> response) {
+            public void onResponse(@NonNull Call<ClubMemberList> call, @NonNull Response<ClubMemberList> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
                 }

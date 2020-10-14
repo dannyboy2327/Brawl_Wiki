@@ -38,7 +38,7 @@ public class ClubsRepository {
             public void run() {
                 for (Item item : mClubMemberList.getItems()) {
                     mClubDao.insertClubList(item);
-                //    Log.d(TAG, "run: " + "\n" + item.getName() + "\n" + item.getRank() + "\n" + item.getTrophies() + "\n"  + item.getMemberCount() + "\n"+ item.getBadgeId());
+                    //Log.d(TAG, "run: " + "\n" + item.getTag() + "\n" + item.getName() + "\n" + item.getRank() + "\n" + item.getTrophies() + "\n"  + item.getMemberCount() + "\n"+ item.getBadgeId());
                 }
             }
         });
