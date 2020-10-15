@@ -1,72 +1,35 @@
 package com.example.brawlwiki.ui.brawlers;
 
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
+
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.brawlwiki.database.AppExecutors;
 import com.example.brawlwiki.database.BrawlStarsDao;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
 import com.example.brawlwiki.models.brawlers.Brawler;
-import com.example.brawlwiki.models.brawlers.BrawlerList;
 import com.example.brawlwiki.models.brawlers.BrawlerWithGadgets;
 import com.example.brawlwiki.models.brawlers.BrawlerWithStarPowers;
 import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
-import com.example.brawlwiki.network.ApiClient;
-import com.example.brawlwiki.network.BrawlStarsApi;
 
-import java.util.ArrayList;
+
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BrawlersRepository {
 
     private static final String TAG = BrawlersRepository.class.getSimpleName();
-    private BrawlStarsApi mBrawlStarsApi;
+
     private BrawlStarsDao mBrawlStarsDao;
-    private MutableLiveData<List<Brawler>> brawlerListLiveData = new MutableLiveData<>();
-    private List<Brawler> mBrawlerList = new ArrayList<>();
+    private LiveData<List<Brawler>> mBrawlerLiveData;
 
     public BrawlersRepository(Application application) {
         BrawlStarsDatabase brawlStarsDatabase = BrawlStarsDatabase.getInstance(application);
         mBrawlStarsDao = brawlStarsDatabase.BrawlStarsDao();
-        mBrawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
+        mBrawlerLiveData = mBrawlStarsDao.getBrawlers();
     }
-
-    /**
-     * Method retrieves a lists of brawlers from two different brawl stars API depending on fragment
-     *
-             * @return LiveData<List<Brawler> lists of brawlers from the API
-     */
-
-            public LiveData<List<Brawler>> getBrawlersList() {
-                mBrawlStarsApi.getBrawlers().enqueue(new Callback<BrawlerList>() {
-            @Override
-            public void onResponse(@NonNull Call<BrawlerList> call, @NonNull Response<BrawlerList> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                }
-
-                assert response.body() != null;
-                brawlerListLiveData.setValue(response.body().getBrawlerList());
-            }
-
-            @Override
-            public void onFailure(@NonNull  Call<BrawlerList> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-        return brawlerListLiveData;
-    }
-
 
     /**
      * Method to insert a brawler's own personal data as well a brawlers start powers and gadgets
@@ -101,14 +64,8 @@ public class BrawlersRepository {
         });
     }
 
-
-    public List<Brawler> getBrawlers() {
-        AppExecutors.getInstance().getDiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                mBrawlerList = mBrawlStarsDao.getBrawlers();
-            }
-        });
-        return mBrawlerList;
+    public LiveData<List<Brawler>> getBrawlersList() {
+        return mBrawlerLiveData;
     }
+
 }

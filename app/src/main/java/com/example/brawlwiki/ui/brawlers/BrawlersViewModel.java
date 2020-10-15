@@ -7,25 +7,22 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.brawlwiki.models.brawlers.Brawler;
+import com.example.brawlwiki.models.brawlers.StarPower;
 
 import java.util.List;
 
 public class BrawlersViewModel extends AndroidViewModel {
 
     private static final String TAG = BrawlersViewModel.class.getSimpleName();
+
     private BrawlersRepository mBrawlersRepository;
-    private MutableLiveData<List<Brawler>> mAllBrawlers;
-    private LiveData<List<Brawler>> brawlerListLiveData;
+    private LiveData<List<Brawler>> mListLiveData;
 
 
     public BrawlersViewModel(Application application) {
         super(application);
         mBrawlersRepository = new BrawlersRepository(application);
-        brawlerListLiveData = mBrawlersRepository.getBrawlersList();
-    }
-
-    public LiveData<List<Brawler>> getBrawlersList() {
-        return brawlerListLiveData;
+        mListLiveData = mBrawlersRepository.getBrawlersList();
     }
 
 
@@ -33,8 +30,8 @@ public class BrawlersViewModel extends AndroidViewModel {
         mBrawlersRepository.insert(brawlerList);
     }
 
-
-    public List<Brawler> getBrawlers() {
-        return mBrawlersRepository.getBrawlers();
+    public LiveData<List<Brawler>> getBrawlersList() {
+        return  mListLiveData;
     }
+
 }
