@@ -1,46 +1,33 @@
 package com.example.brawlwiki.ui.players;
 
-import android.util.Log;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
+import com.example.brawlwiki.models.playerranking.PlayerItem;
 import com.example.brawlwiki.models.playerranking.PlayerRankingList;
-import com.example.brawlwiki.network.ApiClient;
-import com.example.brawlwiki.network.BrawlStarsApi;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.List;
 
-public class PlayerViewModel extends ViewModel {
 
-    private static final String TAG = PlayerViewModel.class.getSimpleName();
+public class PlayerViewModel extends AndroidViewModel {
 
-    MutableLiveData<PlayerRankingList> mPlayerRankingListMutableLiveData = new MutableLiveData<>();
+    private PlayerRepository mPlayerRepository;
+    private LiveData<List<PlayerItem>> mListLiveData;
 
-    public PlayerViewModel() {
+    public PlayerViewModel(Application application) {
+        super(application);
+        mPlayerRepository = new PlayerRepository(application);
+        mListLiveData = mPlayerRepository.getAllPlayers();
     }
 
-    public  void getTopPlayers() {
-        BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
-        Call<PlayerRankingList> call = brawlStarsApi.getTopPlayerList();
-        call.enqueue(new Callback<PlayerRankingList>() {
-            @Override
-            public void onResponse(Call<PlayerRankingList> call, Response<PlayerRankingList> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                }
-
-                Log.d(TAG, "onResponse: " + response.body().getItems().size());
-            }
-
-            @Override
-            public void onFailure(Call<PlayerRankingList> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
+    public void insertPlayerList(PlayerRankingList playerRankingList) {
+        mPlayerRepository.insertPlayerList(playerRankingList);
     }
 
+    public LiveData<List<PlayerItem>> getAllPlayers() {
+        return mListLiveData;
+    }
 }
