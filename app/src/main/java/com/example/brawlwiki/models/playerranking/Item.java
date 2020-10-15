@@ -1,10 +1,13 @@
 package com.example.brawlwiki.models.playerranking;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+@Entity(tableName = "player")
 public class Item implements Serializable {
 
     @SerializedName("tag")

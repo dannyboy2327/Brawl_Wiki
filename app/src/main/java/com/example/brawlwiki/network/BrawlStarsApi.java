@@ -34,7 +34,7 @@ public interface BrawlStarsApi {
             "Accept: application/json",
             "authorization: Bearer " + ApiClient.API_KEY
     })
-    @GET("v1/rankings/global/players?limit=100")
+    @GET("v1/rankings/global/players?before=eyJwb3MiOjEwMH0&limit=101")
     Call<PlayerRankingList> getTopPlayerList();
 
     //Get request for all Game Modes in game
