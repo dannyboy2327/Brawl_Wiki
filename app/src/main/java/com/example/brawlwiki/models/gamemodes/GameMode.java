@@ -1,51 +1,86 @@
 package com.example.brawlwiki.models.gamemodes;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+@Entity(tableName = "game mode")
 public class GameMode implements Serializable {
 
+    @NonNull
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
+
+    @ColumnInfo
     @SerializedName("name")
     @Expose
     private String name;
+
+    @Ignore
     @SerializedName("hash")
     @Expose
     private String hash;
+
+    @Ignore
     @SerializedName("disabled")
     @Expose
     private Boolean disabled;
+
+    @Ignore
     @SerializedName("version")
     @Expose
     private Integer version;
+
+    @ColumnInfo
     @SerializedName("title")
     @Expose
     private String title;
+
+    @Ignore
     @SerializedName("tutorial")
     @Expose
     private String tutorial;
+
+    @ColumnInfo
     @SerializedName("description")
     @Expose
     private String description;
+
+    @ColumnInfo
     @SerializedName("shortDescription")
     @Expose
     private String shortDescription;
+
+    @Ignore
     @SerializedName("sort1")
     @Expose
     private Integer sort1;
+
+    @Ignore
     @SerializedName("sort2")
     @Expose
     private Integer sort2;
+
+    @Ignore
     @SerializedName("link")
     @Expose
     private String link;
+
+    @ColumnInfo
     @SerializedName("imageUrl")
     @Expose
     private String imageUrl;
+
+    @ColumnInfo
     @SerializedName("imageUrl2")
     @Expose
     private String imageUrl2;

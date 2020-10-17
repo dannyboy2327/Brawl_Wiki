@@ -10,9 +10,10 @@ import com.example.brawlwiki.models.brawlers.Brawler;
 import com.example.brawlwiki.models.brawlers.Gadget;
 import com.example.brawlwiki.models.brawlers.StarPower;
 import com.example.brawlwiki.models.clubranking.Item;
+import com.example.brawlwiki.models.gamemodes.GameMode;
 import com.example.brawlwiki.models.playerranking.PlayerItem;
 
-@Database(entities = {Brawler.class, StarPower.class, Gadget.class, Item.class, PlayerItem.class}, version = 2)
+@Database(entities = {Brawler.class, StarPower.class, Gadget.class, Item.class, PlayerItem.class, GameMode.class}, version = 3)
 public abstract class BrawlStarsDatabase extends RoomDatabase {
 
     private static BrawlStarsDatabase instance;
@@ -20,6 +21,7 @@ public abstract class BrawlStarsDatabase extends RoomDatabase {
     public abstract BrawlStarsDao BrawlStarsDao();
     public abstract ClubDao ClubDao();
     public abstract PlayerDao PlayerDao();
+    public abstract GameModeDao GameModeDao();
 
     public static synchronized BrawlStarsDatabase getInstance(Context context) {
         if (instance == null) {

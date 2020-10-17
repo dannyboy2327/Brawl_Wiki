@@ -4,4 +4,21 @@
     <color name="colorPrimaryDark">#7D2DE8</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="navDrawerBackground">#F5BAF2</color>
+
+    <!-- Banner Colors -->
+    <color name="hotZone">#FD5B73</color>
+    <color name="presentBlunder">#B4D2FF</color>
+    <color name="loneStar">#00E5E0</color>
+    <color name="takeDown">#FA582F</color>
+    <color name="training">#FF275A</color>
+    <color name="siege">#FA582F</color>
+    <color name="bossFight">#FF275A</color>
+    <color name="roboRumble">#FF275A</color>
+    <color name="brawlBall">#B4D2FF</color>
+    <color name="bigGame">#FF275A</color>
+    <color name="heist">#D244CF</color>
+    <color name="duoShowdown">#1AA410</color>
+    <color name="showdown">#1AA410</color>
+    <color name="gemGrab">#9A2899</color>
+    <color name="bounty">#00E5E0</color>
 </resources>

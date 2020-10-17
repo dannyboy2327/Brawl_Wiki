@@ -1,44 +1,42 @@
 package com.example.brawlwiki.ui.gamemodes;
 
+import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.brawlwiki.models.gamemodes.GameMode;
 import com.example.brawlwiki.models.gamemodes.GamesModeList;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GameModesViewModel extends ViewModel {
+public class GameModesViewModel extends AndroidViewModel {
 
     private static final String TAG = GameModesViewModel.class.getSimpleName();
 
-    MutableLiveData<GamesModeList> mGameModesListMutableLiveData = new MutableLiveData<>();
+    private GameModesRepository mGameModesRepository;
+    private LiveData<List<GameMode>> mListLiveData;
 
-    public GameModesViewModel() {}
+    public GameModesViewModel(Application application) {
+        super(application);
+        mGameModesRepository = new GameModesRepository(application);
+        mListLiveData = mGameModesRepository.getGameModes();
+    }
 
-    public void getGameModes() {
-        BrawlStarsApi brawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
-        Call<GamesModeList> call = brawlStarsApi.getGameModes();
-        call.enqueue(new Callback<GamesModeList>() {
-            @Override
-            public void onResponse(Call<GamesModeList> call, Response<GamesModeList> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                }
+    public void insertGameMode(List<GameMode> gameModeList) {
+        mGameModesRepository.insertGameMode(gameModeList);
+    }
 
-                Log.d(TAG, "onResponse: " + response.body().getList().size());
-            }
-
-            @Override
-            public void onFailure(Call<GamesModeList> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-
+    public LiveData<List<GameMode>> getGameModes() {
+        return mListLiveData;
     }
 }
