@@ -10,13 +10,18 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.databinding.FragmentHomeBinding;
 import com.example.brawlwiki.network.BrawlStarsApi;
 import com.example.brawlwiki.models.players.Player;
+import com.example.brawlwiki.ui.home.profile.ProfileFragment;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
@@ -41,12 +46,7 @@ public class HomeFragment extends Fragment {
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
     private HomeViewModel homeViewModel;
-
-    private AdView mAdView;
-
-    private ImageButton mImageButton;
-
-    private PlayerView mPlayerView;
+    private FragmentHomeBinding mBinding;
     private SimpleExoPlayer mSimpleExoPlayer;
     private boolean playWhenReady = false;
     private int currentWindow = 0;
@@ -55,20 +55,18 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+        View root = mBinding.getRoot();
 
-        mPlayerView = root.findViewById(R.id.exoPlayer_tutorial);
-
-        mImageButton = root.findViewById(R.id.imageButton_search_player);
         //OnClickListener to swap Fragments
-        mImageButton.setOnClickListener(new View.OnClickListener() {
+        mBinding.imageButtonSearchPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             }
         });
 
         //Displays Ad Banner for Home Fragment
-        displayAdBannerView(root);
+        displayAdBannerView();
 
         return root;
     }
@@ -77,19 +75,17 @@ public class HomeFragment extends Fragment {
     /**
      * Loads an Ad for the home fragment
      *
-     * @param root The root source of the layout for home fragment
      */
 
-    private void displayAdBannerView(View root) {
+    private void displayAdBannerView() {
         MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
 
-        mAdView = root.findViewById(R.id.adView_main_ad);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mBinding.adViewMainAd.loadAd(adRequest);
     }
 
     /**
@@ -98,7 +94,7 @@ public class HomeFragment extends Fragment {
 
     private void initializePlayer() {
         mSimpleExoPlayer = new SimpleExoPlayer.Builder(getContext()).build();
-        mPlayerView.setPlayer(mSimpleExoPlayer);
+        mBinding.exoPlayerTutorial.setPlayer(mSimpleExoPlayer);
         //String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.tutorial;
         Uri uri = Uri.parse("https://streamable.com/zg2dkg");
         MediaSource mediaSource = buildMediaSource(uri);
@@ -125,7 +121,7 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("InlinedApi")
     private void hideSystemUi() {
-        mPlayerView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+        mBinding.exoPlayerTutorial.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
         | View.SYSTEM_UI_FLAG_FULLSCREEN
         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY

@@ -1,7 +1,6 @@
 package com.example.brawlwiki.ui.brawlers;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +33,7 @@ public class BrawlersFragment extends Fragment {
 
     private static final String TAG = BrawlersFragment.class.getSimpleName();
 
-    private BrawlStarsApi brawlStarsApi = ApiClient.getBrawlListClient().create(BrawlStarsApi.class);
+    private BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
     private BrawlersViewModel mBrawlersViewModel;
     private FragmentBrawlersBinding mFragmentBrawlersBinding;
 
@@ -54,7 +53,6 @@ public class BrawlersFragment extends Fragment {
         mBrawlersViewModel.getBrawlersList().observe(getViewLifecycleOwner(), new Observer<List<Brawler>>() {
             @Override
             public void onChanged(List<Brawler> brawlers) {
-                //Log.d(TAG, "onChanged: " + brawlers.size());
                 createBrawlersAdapter(brawlers);
             }
         });
@@ -74,14 +72,12 @@ public class BrawlersFragment extends Fragment {
     private void getBrawlerList() {
         brawlStarsApi.getBrawlers().enqueue(new Callback<BrawlerList>() {
             @Override
-            public void onResponse(@NonNull Call<BrawlerList> call, @NonNull Response<BrawlerList> response) {
+            public void onResponse(@NonNull  Call<BrawlerList> call, @NonNull Response<BrawlerList> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
                 }
-
                 assert response.body() != null;
                 List<Brawler> brawlerList = response.body().getBrawlerList();
-                Log.d(TAG, "onResponse: " + brawlerList.size());
                 mBrawlersViewModel.insert(brawlerList);
             }
 
