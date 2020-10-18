@@ -8,27 +8,26 @@ import java.util.List;
 
 public class BrawlerList implements Serializable {
 
-    @SerializedName("status")
-    @Expose
-    private String status;
-    @SerializedName("list")
+    @SerializedName("items")
     @Expose
     private List<Brawler> mBrawlerList = null;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    @SerializedName("paging")
+    @Expose
+    private Paging paging;
 
     public List<Brawler> getBrawlerList() {
         return mBrawlerList;
     }
 
-    public void set(List<Brawler> brawlerList) {
-        this.mBrawlerList = brawlerList;
+    public void setBrawlerList(List<Brawler> brawlerList) {
+        mBrawlerList = brawlerList;
     }
 
+    public Paging getPaging() {
+        return paging;
+    }
+
+    public void setPaging(Paging paging) {
+        this.paging = paging;
+    }
 }
