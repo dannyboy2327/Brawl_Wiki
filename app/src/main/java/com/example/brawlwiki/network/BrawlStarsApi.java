@@ -58,6 +58,6 @@ public interface BrawlStarsApi {
             "Accept: application/json",
             "authorization: Bearer " + ApiClient.API_KEY
     })
-    @GET("api/brawlers.json")
+    @GET("v1/brawlers")
     Call<BrawlerList> getBrawlers();
 }

@@ -21,4 +21,13 @@
     <color name="showdown">#1AA410</color>
     <color name="gemGrab">#9A2899</color>
     <color name="bounty">#00E5E0</color>
+
+    <!-- Brawlers Background -->
+    <color name="trophy">#DAF8FB</color>
+    <color name="rare">#13FF65</color>
+    <color name="super_rare">#0BD7FE</color>
+    <color name="epic">#F277FB</color>
+    <color name="mythic">#EB4959</color>
+    <color name="legendary">#FFEF4D</color>
+
 </resources>
