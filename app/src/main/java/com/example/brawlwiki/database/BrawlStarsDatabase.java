@@ -5,20 +5,22 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
+import com.example.brawlwiki.database.converters.GadgetConverter;
+import com.example.brawlwiki.database.converters.StarPowerConverter;
 import com.example.brawlwiki.models.brawlers.Brawler;
-import com.example.brawlwiki.models.brawlers.Gadget;
-import com.example.brawlwiki.models.brawlers.StarPower;
 import com.example.brawlwiki.models.clubranking.Item;
 import com.example.brawlwiki.models.gamemodes.GameMode;
 import com.example.brawlwiki.models.playerranking.PlayerItem;
 
-@Database(entities = {Brawler.class, StarPower.class, Gadget.class, Item.class, PlayerItem.class, GameMode.class}, version = 3)
+@Database(entities = {Brawler.class, Item.class, PlayerItem.class, GameMode.class}, version = 4)
+@TypeConverters({StarPowerConverter.class, GadgetConverter.class})
 public abstract class BrawlStarsDatabase extends RoomDatabase {
 
     private static BrawlStarsDatabase instance;
 
-    public abstract BrawlStarsDao BrawlStarsDao();
+    public abstract BrawlersDao BrawlersDao();
     public abstract ClubDao ClubDao();
     public abstract PlayerDao PlayerDao();
     public abstract GameModeDao GameModeDao();
