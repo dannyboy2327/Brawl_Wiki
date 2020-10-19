@@ -1,14 +1,13 @@
 package com.example.brawlwiki.ui.players;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
 import com.example.brawlwiki.database.AppExecutors;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
 import com.example.brawlwiki.database.PlayerDao;
-import com.example.brawlwiki.models.playerranking.PlayerItem;
+import com.example.brawlwiki.models.playerranking.PlayerRanking;
 import com.example.brawlwiki.models.playerranking.PlayerRankingList;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class PlayerRepository {
 
     private PlayerDao mPlayerDao;
     private PlayerRankingList mPlayerRankingList;
-    private LiveData<List<PlayerItem>> mListLiveData;
+    private LiveData<List<PlayerRanking>> mListLiveData;
 
     public PlayerRepository(Application application) {
         BrawlStarsDatabase brawlStarsDatabase = BrawlStarsDatabase.getInstance(application);
@@ -34,15 +33,15 @@ public class PlayerRepository {
         AppExecutors.getInstance().getDiskIO().execute(new Runnable() {
             @Override
             public void run() {
-                for (PlayerItem playerItem : mPlayerRankingList.getPlayerItems()) {
+                for (PlayerRanking playerRanking : mPlayerRankingList.getPlayerRankingList()) {
                     //Log.d(TAG, "run: " + playerItem.getName() + "\n" + playerItem.getRank() + "\n" + playerItem.getTrophies());
-                    mPlayerDao.insertPlayer(playerItem);
+                    mPlayerDao.insertPlayer(playerRanking);
                 }
             }
         });
     }
 
-    public LiveData<List<PlayerItem>> getAllPlayers() {
+    public LiveData<List<PlayerRanking>> getAllPlayers() {
         return mListLiveData;
     }
 }

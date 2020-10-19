@@ -5,21 +5,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.adapters.PlayersAdapter;
 import com.example.brawlwiki.databinding.FragmentPlayersBinding;
-import com.example.brawlwiki.models.playerranking.PlayerItem;
+import com.example.brawlwiki.models.playerranking.PlayerRanking;
 import com.example.brawlwiki.models.playerranking.PlayerRankingList;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
@@ -29,8 +26,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PlayerFragment extends Fragment {
 
@@ -49,22 +44,22 @@ public class PlayerFragment extends Fragment {
 
         getPlayerRankingList();
 
-        mPlayerViewModel.getAllPlayers().observe(getViewLifecycleOwner(), new Observer<List<PlayerItem>>() {
+        mPlayerViewModel.getAllPlayers().observe(getViewLifecycleOwner(), new Observer<List<PlayerRanking>>() {
             @Override
-            public void onChanged(List<PlayerItem> playerItems) {
-                Log.d(TAG, "onChanged: " + playerItems.size());
-                createPlayersAdapter(playerItems);
+            public void onChanged(List<PlayerRanking> playerRankingList) {
+                //Log.d(TAG, "onChanged: " + playerRankingList.size());
+                createPlayersAdapter(playerRankingList);
             }
         });
 
         return root;
     }
 
-    private void createPlayersAdapter(List<PlayerItem> playerItems) {
+    private void createPlayersAdapter(List<PlayerRanking> playerRankingList) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mBinding.rvPlayers.setLayoutManager(linearLayoutManager);
         mBinding.rvPlayers.setHasFixedSize(true);
-        PlayersAdapter playersAdapter = new PlayersAdapter(getContext(), playerItems);
+        PlayersAdapter playersAdapter = new PlayersAdapter(getContext(), playerRankingList);
         mBinding.rvPlayers.setAdapter(playersAdapter);
     }
 
