@@ -13,7 +13,7 @@ import java.util.List;
 public class GadgetConverter {
 
     @TypeConverter
-    public static List<Gadget> fromStringToStarPower(String value) {
+    public static List<Gadget> fromStringToGadget(String value) {
 
         Type listType = new TypeToken<List<Gadget>>() {}.getType();
 
