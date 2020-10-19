@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Icon implements Serializable {
+public class PlayerRankingIcon implements Serializable {
 
     @SerializedName("id")
     @Expose

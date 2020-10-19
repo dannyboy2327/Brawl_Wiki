@@ -10,17 +10,17 @@ public class PlayerRankingList implements Serializable {
 
     @SerializedName("items")
     @Expose
-    private List<PlayerItem> playerItems = null;
+    private List<PlayerRanking> playerRankingList = null;
     @SerializedName("paging")
     @Expose
     private Paging paging;
 
-    public List<PlayerItem> getPlayerItems() {
-        return playerItems;
+    public List<PlayerRanking> getPlayerRankingList() {
+        return playerRankingList;
     }
 
-    public void setPlayerItems(List<PlayerItem> playerItems) {
-        this.playerItems = playerItems;
+    public void setPlayerRankingList(List<PlayerRanking> playerRankingList) {
+        this.playerRankingList = playerRankingList;
     }
 
     public Paging getPaging() {

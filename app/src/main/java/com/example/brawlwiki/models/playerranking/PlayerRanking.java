@@ -12,8 +12,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-@Entity(tableName = "player")
-public class PlayerItem implements Serializable {
+@Entity(tableName = "player_ranking")
+public class PlayerRanking implements Serializable {
 
     @NonNull
     @PrimaryKey
@@ -26,15 +26,15 @@ public class PlayerItem implements Serializable {
     @Expose
     private String name;
 
-    @Ignore
+    @ColumnInfo
     @SerializedName("nameColor")
     @Expose
     private String nameColor;
 
-    @Ignore
+    @ColumnInfo
     @SerializedName("icon")
     @Expose
-    private Icon icon;
+    private PlayerRankingIcon playerRankingIcon;
 
     @ColumnInfo()
     @SerializedName("trophies")
@@ -46,10 +46,10 @@ public class PlayerItem implements Serializable {
     @Expose
     private Integer rank;
 
-    @Ignore
+    @ColumnInfo
     @SerializedName("club")
     @Expose
-    private Club club;
+    private PlayerRankingClub playerRankingClub;
 
     public String getTag() {
         return tag;
@@ -75,12 +75,12 @@ public class PlayerItem implements Serializable {
         this.nameColor = nameColor;
     }
 
-    public Icon getIcon() {
-        return icon;
+    public PlayerRankingIcon getPlayerRankingIcon() {
+        return playerRankingIcon;
     }
 
-    public void setIcon(Icon icon) {
-        this.icon = icon;
+    public void setPlayerRankingIcon(PlayerRankingIcon playerRankingIcon) {
+        this.playerRankingIcon = playerRankingIcon;
     }
 
     public Integer getTrophies() {
@@ -99,11 +99,11 @@ public class PlayerItem implements Serializable {
         this.rank = rank;
     }
 
-    public Club getClub() {
-        return club;
+    public PlayerRankingClub getPlayerRankingClub() {
+        return playerRankingClub;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
+    public void setPlayerRankingClub(PlayerRankingClub playerRankingClub) {
+        this.playerRankingClub = playerRankingClub;
     }
 }
