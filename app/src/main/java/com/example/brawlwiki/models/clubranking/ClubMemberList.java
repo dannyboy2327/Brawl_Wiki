@@ -10,17 +10,17 @@ public class ClubMemberList implements Serializable {
 
     @SerializedName("items")
     @Expose
-    private List<Item> items = null;
+    private List<ClubRanking> clubRankingList = null;
     @SerializedName("paging")
     @Expose
     private Paging paging;
 
-    public List<Item> getItems() {
-        return items;
+    public List<ClubRanking> getClubRankingList() {
+        return clubRankingList;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setClubRankingList(List<ClubRanking> clubRankingList) {
+        this.clubRankingList = clubRankingList;
     }
 
     public Paging getPaging() {

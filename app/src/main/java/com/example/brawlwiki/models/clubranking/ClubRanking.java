@@ -10,8 +10,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-@Entity(tableName = "club")
-public class Item implements Serializable {
+@Entity(tableName = "club_ranking")
+public class ClubRanking implements Serializable {
 
     @NonNull
     @PrimaryKey
@@ -43,15 +43,6 @@ public class Item implements Serializable {
     @SerializedName("memberCount")
     @Expose
     private Integer memberCount;
-
-    public Item(@NonNull String tag, String name, Integer badgeId, Integer trophies, Integer rank, Integer memberCount) {
-        this.tag = tag;
-        this.name = name;
-        this.badgeId = badgeId;
-        this.trophies = trophies;
-        this.rank = rank;
-        this.memberCount = memberCount;
-    }
 
     public String getTag() {
         return tag;
