@@ -12,60 +12,61 @@
         android:layout_height="match_parent"
         tools:context=".ui.clubs.ClubsFragment">
 
-        <TextView
-            android:id="@+id/tv_club_badge_label"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="Badge"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tv_club_name_label"
-            app:layout_constraintEnd_toStartOf="@+id/tv_club_name_label"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_club_name_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="37dp"
-            android:text="Name"
-            app:layout_constraintEnd_toStartOf="@+id/tv_club_rank_label"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_club_badge_label"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_club_rank_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rank"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tv_club_name_label"
-            app:layout_constraintEnd_toStartOf="@+id/tv_club_trophies_label"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_club_name_label" />
-
-        <TextView
-            android:id="@+id/tv_club_trophies_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trophies"
-            app:layout_constraintEnd_toStartOf="@+id/tv_club_members_label"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_club_rank_label"
-            app:layout_constraintTop_toTopOf="@+id/tv_club_rank_label" />
-
-        <TextView
-            android:id="@+id/tv_club_members_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Members"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tv_club_trophies_label"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_club_trophies_label" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_weight="0.50"
+                android:id="@+id/tv_club_rank_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rank" />
+
+            <TextView
+                android:layout_weight="0.50"
+                android:id="@+id/tv_club_badge_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Badge" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:id="@+id/tv_club_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:id="@+id/tv_club_members_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Members"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:id="@+id/tv_club_trophies_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trophies"
+                android:gravity="center_horizontal" />
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_clubs"
@@ -76,10 +77,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_club_members_label"
+            app:layout_constraintEnd_toEndOf="@+id/ll_layout"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_club_badge_label"
-            app:layout_constraintTop_toBottomOf="@+id/tv_club_badge_label" />
+            app:layout_constraintStart_toStartOf="@+id/ll_layout"
+            app:layout_constraintTop_toBottomOf="@+id/ll_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
