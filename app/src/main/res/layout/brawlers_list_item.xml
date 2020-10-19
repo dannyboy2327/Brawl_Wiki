@@ -5,81 +5,94 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_brawler_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/iv_brawler_image"
-        app:layout_constraintEnd_toEndOf="@+id/iv_brawler_image"
-        app:layout_constraintStart_toStartOf="@+id/iv_brawler_image"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="spike" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/iv_brawler_image"
-        android:layout_width="159dp"
-        android:layout_height="156dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_brawler_name"
-        tools:srcCompat="@tools:sample/avatars" />
+                <TextView
+                    android:id="@+id/tv_brawler_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    tools:text="Shelly" />
 
-    <TextView
-        android:id="@+id/tv_brawler_star_power"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_brawler_star_power"
-        app:layout_constraintTop_toBottomOf="@+id/iv_brawler_image"
-        tools:text="2/2" />
+                <ImageView
+                    android:layout_gravity="end"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/ic_info"/>
 
-    <ImageView
-        android:id="@+id/iv_brawler_gadget"
-        android:layout_width="20dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_brawler_image"
-        app:srcCompat="@drawable/icon_settings" />
+            </FrameLayout>
 
-    <ImageView
-        android:id="@+id/iv_brawler_star_power"
-        android:layout_width="20dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_brawler_gadget"
-        app:layout_constraintTop_toBottomOf="@+id/iv_brawler_image"
-        app:srcCompat="@drawable/icon_settings" />
+            <ImageView
+                android:id="@+id/iv_brawler_image"
+                android:layout_width="180dp"
+                android:layout_height="93dp"
+                android:paddingEnd="60dp"
+                android:paddingRight="60dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/brawler_carl" />
 
-    <TextView
-        android:id="@+id/tv_brawler_gadget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/iv_brawler_gadget"
-        app:layout_constraintTop_toBottomOf="@+id/iv_brawler_image"
-        tools:text="1/1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ff9c38"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="0.2"
+                    android:src="@drawable/brawler_gadget" />
+
+                <TextView
+                    android:id="@+id/tv_brawler_gadget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="0.5"
+                    android:textColor="@android:color/white"
+                    tools:text="2/2" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="0.2"
+                    android:src="@drawable/brawler_star_power" />
+
+                <TextView
+                    android:id="@+id/tv_brawler_star_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="0.5"
+                    android:textColor="@android:color/white"
+                    tools:text="2/2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
