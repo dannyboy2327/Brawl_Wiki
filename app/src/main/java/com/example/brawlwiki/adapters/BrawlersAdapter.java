@@ -1,6 +1,7 @@
 package com.example.brawlwiki.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.brawlers.Brawler;
+import com.example.brawlwiki.models.brawlers.StarPower;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -39,8 +41,8 @@ public class BrawlersAdapter extends RecyclerView.Adapter<BrawlersAdapter.Brawle
     public void onBindViewHolder(@NonNull BrawlersViewHolder holder, int position) {
         Brawler brawler = mBrawlerList.get(position);
         holder.mBrawlerNameTextView.setText(brawler.getName());
-        Picasso.get().load(R.drawable.brawler_gadget).into(holder.mGadgetImageView);
-        Picasso.get().load(R.drawable.brawler_star_power).into(holder.mStarPowerImageView);
+        holder.mGadgetTextView.setText(Integer.toString(brawler.getGadgets().size()) + "/" + Integer.toString(brawler.getGadgets().size()));
+        holder.mStarPowerTextView.setText(Integer.toString(brawler.getStarPowers().size()) + "/" + Integer.toString(brawler.getStarPowers().size()));
 
         switch (brawler.getId()) {
             case 16000000:
@@ -214,9 +216,7 @@ public class BrawlersAdapter extends RecyclerView.Adapter<BrawlersAdapter.Brawle
 
         private TextView mBrawlerNameTextView;
         private ImageView mBrawlerImageView;
-        private ImageView mGadgetImageView;
         private TextView mGadgetTextView;
-        private ImageView mStarPowerImageView;
         private TextView mStarPowerTextView;
 
         public BrawlersViewHolder(@NonNull View itemView) {
@@ -224,9 +224,7 @@ public class BrawlersAdapter extends RecyclerView.Adapter<BrawlersAdapter.Brawle
 
             mBrawlerNameTextView = itemView.findViewById(R.id.tv_brawler_name);
             mBrawlerImageView = itemView.findViewById(R.id.iv_brawler_image);
-            mGadgetImageView = itemView.findViewById(R.id.iv_brawler_gadget);
             mGadgetTextView = itemView.findViewById(R.id.tv_brawler_gadget);
-            mStarPowerImageView = itemView.findViewById(R.id.iv_brawler_star_power);
             mStarPowerTextView = itemView.findViewById(R.id.tv_brawler_star_power);
         }
     }

@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brawlwiki.R;
-import com.example.brawlwiki.models.playerranking.PlayerItem;
+import com.example.brawlwiki.models.playerranking.PlayerRanking;
 
 import java.util.List;
 
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersViewHolder> {
 
-    private List<PlayerItem> mPlayerItemList;
+    private List<PlayerRanking> mPlayerRankingList;
     private Context mContext;
 
-    public PlayersAdapter(Context context, List<PlayerItem> playerItemList) {
+    public PlayersAdapter(Context context, List<PlayerRanking> playerRankingList) {
         mContext = context;
-        mPlayerItemList = playerItemList;
+        mPlayerRankingList = playerRankingList;
     }
 
 
@@ -35,7 +35,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
 
     @Override
     public void onBindViewHolder(@NonNull PlayersViewHolder holder, int position) {
-        PlayerItem playerItem = mPlayerItemList.get(position);
+        PlayerRanking playerItem = mPlayerRankingList.get(position);
         holder.mPlayerRankTextView.setText(Integer.toString(playerItem.getRank()));
         holder.mPlayerNameTextView.setText(playerItem.getName());
         holder.mPlayerTrophiesTextView.setText(Integer.toString(playerItem.getTrophies()));
@@ -43,7 +43,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
 
     @Override
     public int getItemCount() {
-        return mPlayerItemList.size();
+        return mPlayerRankingList.size();
     }
 
     public class PlayersViewHolder extends RecyclerView.ViewHolder {

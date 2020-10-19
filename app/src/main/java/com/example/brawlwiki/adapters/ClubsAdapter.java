@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brawlwiki.R;
-import com.example.brawlwiki.models.clubranking.Item;
+import com.example.brawlwiki.models.clubranking.ClubRanking;
 
 import java.util.List;
 
 public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ClubsViewHolder> {
 
-    private List<Item> mItemList;
+    private List<ClubRanking> mClubRankingList;
     private Context mContext;
 
-    public ClubsAdapter(Context context, List<Item> itemList) {
+    public ClubsAdapter(Context context, List<ClubRanking> clubRankingList) {
         mContext = context;
-        mItemList= itemList;
+        mClubRankingList = clubRankingList;
     }
 
     @NonNull
@@ -34,13 +34,13 @@ public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ClubsViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ClubsViewHolder holder, int position) {
-        Item item = this.mItemList.get(position);
-        holder.mClubNameTextView.setText(item.getName());
-        holder.mClubRankTextView.setText(Integer.toString(item.getRank()));
-        holder.mClubTrophiesTextView.setText(Integer.toString(item.getTrophies()));
-        holder.mClubMembersTextView.setText(Integer.toString(item.getMemberCount()));
+        ClubRanking clubRanking = this.mClubRankingList.get(position);
+        holder.mClubNameTextView.setText(clubRanking.getName());
+        holder.mClubRankTextView.setText(Integer.toString(clubRanking.getRank()));
+        holder.mClubTrophiesTextView.setText(Integer.toString(clubRanking.getTrophies()));
+        holder.mClubMembersTextView.setText(Integer.toString(clubRanking.getMemberCount()));
 
-        switch (item.getBadgeId()) {
+        switch (clubRanking.getBadgeId()) {
             case 8000000:
                 holder.mClubBadgeImageView.setImageResource(R.drawable.ic_blue_skull);
                 break;
@@ -139,7 +139,7 @@ public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ClubsViewHol
 
     @Override
     public int getItemCount() {
-        return mItemList.size();
+        return mClubRankingList.size();
     }
 
     public class ClubsViewHolder extends RecyclerView.ViewHolder {
