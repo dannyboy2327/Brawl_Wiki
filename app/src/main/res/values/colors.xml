@@ -24,10 +24,10 @@
 
     <!-- Brawlers Background -->
     <color name="trophy">#DAF8FB</color>
-    <color name="rare">#13FF65</color>
-    <color name="super_rare">#0BD7FE</color>
-    <color name="epic">#F277FB</color>
-    <color name="mythic">#EB4959</color>
+    <color name="rare">#00ED46</color>
+    <color name="super_rare">#00ADFF</color>
+    <color name="epic">#EB00FF</color>
+    <color name="mythic">#FF3F26</color>
     <color name="legendary">#FFEF4D</color>
 
 </resources>
