@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
-import com.example.brawlwiki.models.clubranking.Item;
+import com.example.brawlwiki.models.clubranking.ClubRanking;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ClubsViewModel extends AndroidViewModel {
     private static final String TAG = ClubsViewModel.class.getSimpleName();
 
     private ClubsRepository mClubsRepository;
-    private LiveData<List<Item>> mListLiveData;
+    private LiveData<List<ClubRanking>> mListLiveData;
 
     public ClubsViewModel(Application application) {
         super(application);
@@ -27,7 +27,7 @@ public class ClubsViewModel extends AndroidViewModel {
         mClubsRepository.insertClubList(clubMemberList);
     }
 
-    public LiveData<List<Item>> getClubList() {
+    public LiveData<List<ClubRanking>> getClubList() {
         return mListLiveData;
     }
 }

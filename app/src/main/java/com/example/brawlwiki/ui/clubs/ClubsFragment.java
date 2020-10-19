@@ -18,7 +18,7 @@ import com.example.brawlwiki.adapters.ClubsAdapter;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.databinding.FragmentClubsBinding;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
-import com.example.brawlwiki.models.clubranking.Item;
+import com.example.brawlwiki.models.clubranking.ClubRanking;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
@@ -49,21 +49,21 @@ public class ClubsFragment extends Fragment {
 
         getClubMemberList();
 
-        mClubsViewModel.getClubList().observe(getViewLifecycleOwner(), new Observer<List<Item>>() {
+        mClubsViewModel.getClubList().observe(getViewLifecycleOwner(), new Observer<List<ClubRanking>>() {
             @Override
-            public void onChanged(List<Item> items) {
-                createClubAdapter(items);
+            public void onChanged(List<ClubRanking> clubRankingList) {
+                createClubAdapter(clubRankingList);
             }
         });
 
         return root;
     }
 
-    private void createClubAdapter(List<Item> items) {
+    private void createClubAdapter(List<ClubRanking> clubRankingList) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mFragmentClubsBinding.rvClubs.setLayoutManager(linearLayoutManager);
         mFragmentClubsBinding.rvClubs.setHasFixedSize(true);
-        ClubsAdapter clubsAdapter= new ClubsAdapter(getContext(), items);
+        ClubsAdapter clubsAdapter= new ClubsAdapter(getContext(), clubRankingList);
         mFragmentClubsBinding.rvClubs.setAdapter(clubsAdapter);
     }
 
