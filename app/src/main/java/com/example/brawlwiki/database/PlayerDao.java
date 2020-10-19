@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.brawlwiki.models.playerranking.PlayerItem;
+import com.example.brawlwiki.models.playerranking.PlayerRanking;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import java.util.List;
 public interface PlayerDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertPlayer(PlayerItem playerItem);
+    void insertPlayer(PlayerRanking playerRanking);
 
-    @Query("SELECT * FROM player ORDER BY rank ASC")
-    LiveData<List<PlayerItem>> getAllPlayers();
+    @Query("SELECT * FROM player_ranking ORDER BY rank ASC")
+    LiveData<List<PlayerRanking>> getAllPlayers();
 }

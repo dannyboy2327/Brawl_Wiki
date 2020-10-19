@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.brawlwiki.models.clubranking.Item;
+import com.example.brawlwiki.models.clubranking.ClubRanking;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import java.util.List;
 public interface ClubDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertClubList(Item item);
+    void insertClubList(ClubRanking clubRanking);
 
-    @Query("SELECT * FROM club ORDER BY rank ASC")
-    LiveData<List<Item>> getClubList();
+    @Query("SELECT * FROM club_ranking ORDER BY rank ASC")
+    LiveData<List<ClubRanking>> getClubList();
 }
