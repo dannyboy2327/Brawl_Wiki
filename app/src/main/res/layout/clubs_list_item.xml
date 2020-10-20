@@ -64,7 +64,6 @@
             tools:text="75" />
 
         <ImageView
-            android:id="@+id/iv_trophy"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_weight="0.50"
