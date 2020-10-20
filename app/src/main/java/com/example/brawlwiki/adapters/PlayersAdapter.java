@@ -168,7 +168,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
                 break;
             //5th trophy
             case 28000030:
-                //holder.mPlayerIconImageView.setImageResource(R.drawable.);
+                holder.mPlayerIconImageView.setImageResource(R.drawable.player_fifth_trophy);
                 break;
             //6th trophy
             case 28000031:
@@ -184,7 +184,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
                 break;
             //darryl
             case 28000034:
-                //holder.mPlayerIconImageView.setImageResource(R.drawable.);
+                holder.mPlayerIconImageView.setImageResource(R.drawable.player_darryl);
                 break;
             //penny
             case 28000035:
@@ -248,7 +248,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
                 break;
             //sprout
             case 28000050:
-                //holder.mPlayerIconImageView.setImageResource(R.drawable.);
+                holder.mPlayerIconImageView.setImageResource(R.drawable.player_sprout);
                 break;
             //surge
             case 28000051:
