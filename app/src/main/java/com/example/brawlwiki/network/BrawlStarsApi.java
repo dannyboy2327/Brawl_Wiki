@@ -5,11 +5,12 @@ import com.example.brawlwiki.models.clubranking.ClubMemberList;
 import com.example.brawlwiki.models.gamemodes.GamesModeList;
 import com.example.brawlwiki.models.gamemodes.maps.MapsList;
 import com.example.brawlwiki.models.playerranking.PlayerRankingList;
-import com.example.brawlwiki.models.players.Player;
+import com.example.brawlwiki.models.profile.Player;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 
 public interface BrawlStarsApi {
 
@@ -18,8 +19,8 @@ public interface BrawlStarsApi {
             "Accept: application/json",
             "authorization: Bearer " + ApiClient.API_KEY
     })
-    @GET("v1/players/%23G8U29RL")
-    Call<Player> getPlayer();
+    @GET("v1/players/{tag}")
+    Call<Player> getPlayer(@Path("tag") String tag);
 
     //Get request for a list of top clubs and their ranks
     @Headers({
