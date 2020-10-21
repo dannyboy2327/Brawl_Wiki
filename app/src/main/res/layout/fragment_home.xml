@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/editTextTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -47,9 +47,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_player_tag_search"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-                app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName" />
+                app:layout_constraintBottom_toBottomOf="@+id/editTextTag"
+                app:layout_constraintStart_toEndOf="@+id/editTextTag"
+                app:layout_constraintTop_toTopOf="@+id/editTextTag" />
 
             <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/exoPlayer_tutorial"
@@ -62,7 +62,7 @@
                 android:layout_marginRight="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextTag" />
 
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adView_main_ad"
