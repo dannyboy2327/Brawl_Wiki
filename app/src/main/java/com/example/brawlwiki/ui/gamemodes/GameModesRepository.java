@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.brawlwiki.database.AppExecutors;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
-import com.example.brawlwiki.database.GameModeDao;
+import com.example.brawlwiki.database.daos.GameModeDao;
 import com.example.brawlwiki.models.gamemodes.GameMode;
 
 import java.util.List;

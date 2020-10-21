@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.brawlwiki.database.AppExecutors;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
-import com.example.brawlwiki.database.PlayerDao;
+import com.example.brawlwiki.database.daos.PlayerDao;
 import com.example.brawlwiki.models.playerranking.PlayerRanking;
 import com.example.brawlwiki.models.playerranking.PlayerRankingList;
 
