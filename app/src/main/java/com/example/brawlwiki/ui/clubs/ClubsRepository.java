@@ -1,14 +1,13 @@
 package com.example.brawlwiki.ui.clubs;
 
 import android.app.Application;
-import android.util.Log;
 
 
 import androidx.lifecycle.LiveData;
 
 import com.example.brawlwiki.database.AppExecutors;
 import com.example.brawlwiki.database.BrawlStarsDatabase;
-import com.example.brawlwiki.database.ClubDao;
+import com.example.brawlwiki.database.daos.ClubDao;
 import com.example.brawlwiki.models.clubranking.ClubMemberList;
 import com.example.brawlwiki.models.clubranking.ClubRanking;
 
