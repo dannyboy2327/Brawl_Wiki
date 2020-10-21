@@ -1,4 +1,4 @@
-package com.example.brawlwiki.database;
+package com.example.brawlwiki.database.daos;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
