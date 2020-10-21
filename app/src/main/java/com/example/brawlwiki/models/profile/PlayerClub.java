@@ -1,25 +1,25 @@
-package com.example.brawlwiki.models.players;
+package com.example.brawlwiki.models.profile;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class StarPower implements Serializable {
+public class PlayerClub implements Serializable {
 
-    @SerializedName("id")
+    @SerializedName("tag")
     @Expose
-    private Integer id;
+    private String tag;
     @SerializedName("name")
     @Expose
     private String name;
 
-    public Integer getId() {
-        return id;
+    public String getTag() {
+        return tag;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public String getName() {
@@ -29,5 +29,4 @@ public class StarPower implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 }

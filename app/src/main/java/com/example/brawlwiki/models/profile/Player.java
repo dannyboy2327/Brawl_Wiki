@@ -1,4 +1,10 @@
-package com.example.brawlwiki.models.players;
+package com.example.brawlwiki.models.profile;
+
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,62 +12,99 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity(tableName = "player")
 public class Player implements Serializable {
 
+    @NonNull
+    @PrimaryKey
     @SerializedName("tag")
     @Expose
     private String tag;
+
+    @ColumnInfo
     @SerializedName("name")
     @Expose
     private String name;
+
+    @ColumnInfo
     @SerializedName("nameColor")
     @Expose
     private String nameColor;
+
+    @ColumnInfo
     @SerializedName("icon")
     @Expose
-    private Icon icon;
+    private PlayerIcon playerIcon;
+
+    @ColumnInfo
     @SerializedName("trophies")
     @Expose
     private Integer trophies;
+
+    @ColumnInfo
     @SerializedName("highestTrophies")
     @Expose
     private Integer highestTrophies;
+
+    @ColumnInfo
     @SerializedName("powerPlayPoints")
     @Expose
     private Integer powerPlayPoints;
+
+    @ColumnInfo
     @SerializedName("highestPowerPlayPoints")
     @Expose
     private Integer highestPowerPlayPoints;
+
+    @ColumnInfo
     @SerializedName("expLevel")
     @Expose
     private Integer expLevel;
+
+    @ColumnInfo
     @SerializedName("expPoints")
     @Expose
     private Integer expPoints;
+
+    @ColumnInfo
     @SerializedName("isQualifiedFromChampionshipChallenge")
     @Expose
     private Boolean isQualifiedFromChampionshipChallenge;
+
+    @ColumnInfo
     @SerializedName("3vs3Victories")
     @Expose
     private Integer _3vs3Victories;
+
+    @ColumnInfo
     @SerializedName("soloVictories")
     @Expose
     private Integer soloVictories;
+
+    @ColumnInfo
     @SerializedName("duoVictories")
     @Expose
     private Integer duoVictories;
+
+    @ColumnInfo
     @SerializedName("bestRoboRumbleTime")
     @Expose
     private Integer bestRoboRumbleTime;
+
+    @ColumnInfo
     @SerializedName("bestTimeAsBigBrawler")
     @Expose
     private Integer bestTimeAsBigBrawler;
+
+    @ColumnInfo
     @SerializedName("club")
     @Expose
-    private Club club;
+    private PlayerClub playerClub;
+
+    @ColumnInfo
     @SerializedName("brawlers")
     @Expose
-    private List<Brawler> brawlers = null;
+    private List<BrawlerStat> brawlerStatList = null;
 
     public String getTag() {
         return tag;
@@ -87,12 +130,12 @@ public class Player implements Serializable {
         this.nameColor = nameColor;
     }
 
-    public Icon getIcon() {
-        return icon;
+    public PlayerIcon getPlayerIcon() {
+        return playerIcon;
     }
 
-    public void setIcon(Icon icon) {
-        this.icon = icon;
+    public void setPlayerIcon(PlayerIcon playerIcon) {
+        this.playerIcon = playerIcon;
     }
 
     public Integer getTrophies() {
@@ -191,19 +234,19 @@ public class Player implements Serializable {
         this.bestTimeAsBigBrawler = bestTimeAsBigBrawler;
     }
 
-    public Club getClub() {
-        return club;
+    public PlayerClub getPlayerClub() {
+        return playerClub;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
+    public void setPlayerClub(PlayerClub playerClub) {
+        this.playerClub = playerClub;
     }
 
-    public List<Brawler> getBrawlers() {
-        return brawlers;
+    public List<BrawlerStat> getBrawlerStatList() {
+        return brawlerStatList;
     }
 
-    public void setBrawlers(List<Brawler> brawlers) {
-        this.brawlers = brawlers;
+    public void setBrawlerStatList(List<BrawlerStat> brawlerStatList) {
+        this.brawlerStatList = brawlerStatList;
     }
 }

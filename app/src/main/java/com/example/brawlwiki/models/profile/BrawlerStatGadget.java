@@ -1,11 +1,11 @@
-package com.example.brawlwiki.models.players;
+package com.example.brawlwiki.models.profile;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Icon implements Serializable {
+public class BrawlerStatGadget implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -29,4 +29,5 @@ public class Icon implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
 }

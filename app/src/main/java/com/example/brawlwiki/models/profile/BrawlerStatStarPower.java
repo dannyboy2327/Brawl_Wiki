@@ -1,11 +1,11 @@
-package com.example.brawlwiki.models.players;
+package com.example.brawlwiki.models.profile;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Gadget implements Serializable {
+public class BrawlerStatStarPower implements Serializable {
 
     @SerializedName("id")
     @Expose
