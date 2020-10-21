@@ -7,30 +7,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.databinding.FragmentHomeBinding;
+import com.example.brawlwiki.models.profile.Player;
+import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
-import com.example.brawlwiki.models.players.Player;
-import com.example.brawlwiki.ui.home.profile.ProfileFragment;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
-import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -38,12 +33,10 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
 
-    private static final String LOG_TAG = HomeFragment.class.getSimpleName();
+    private static final String TAG = HomeFragment.class.getSimpleName();
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding mBinding;
@@ -51,6 +44,7 @@ public class HomeFragment extends Fragment {
     private boolean playWhenReady = false;
     private int currentWindow = 0;
     private long playbackPosition = 0;
+    private BrawlStarsApi mBrawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,6 +56,9 @@ public class HomeFragment extends Fragment {
         mBinding.imageButtonSearchPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String tag = mBinding.editTextTag.getText().toString();
+                getProfile(tag);
+                Navigation.findNavController(v).navigate(R.id.nav_profile);
             }
         });
 
@@ -69,6 +66,25 @@ public class HomeFragment extends Fragment {
         displayAdBannerView();
 
         return root;
+    }
+
+    private void getProfile(String tag) {
+        mBrawlStarsApi.getPlayer(tag).enqueue(new Callback<Player>() {
+            @Override
+            public void onResponse(@NonNull Call<Player> call, @NonNull Response<Player> response) {
+                if (!response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                }
+
+                Player player = response.body();
+                homeViewModel.insertProfile(player);
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Player> call, @NonNull Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
     }
 
 
