@@ -1,11 +1,15 @@
 package com.example.brawlwiki.ui.home.profile;
 
+import android.app.Application;
+import android.provider.ContactsContract;
 import android.util.Log;
 
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.brawlwiki.models.players.Player;
+import com.example.brawlwiki.models.profile.Player;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
@@ -13,31 +17,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProfileViewModel extends ViewModel {
+public class ProfileViewModel extends AndroidViewModel {
 
     private static final String TAG = ProfileViewModel.class.getSimpleName();
+    private ProfileRepository mProfileRepository;
+    private LiveData<Player> mPlayerLiveData;
 
-    MutableLiveData<Player> mPlayerMutableLiveData = new MutableLiveData<>();
+    public ProfileViewModel(Application application){
+        super(application);
+        mProfileRepository = new ProfileRepository(application);
+        mPlayerLiveData = mProfileRepository.getPlayer();
+    }
 
-    public ProfileViewModel(){}
-
-    public void getPlayerStats() {
-        BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
-        Call<Player> call = brawlStarsApi.getPlayer();
-        call.enqueue(new Callback<Player>() {
-            @Override
-            public void onResponse(Call<Player> call, Response<Player> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                }
-                Log.d(TAG, "onResponse: " +response.body().getName());
-            }
-
-            @Override
-            public void onFailure(Call<Player> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
+    public LiveData<Player> getPlayer() {
+        return mPlayerLiveData;
     }
 
 }
