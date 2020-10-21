@@ -40,4 +40,10 @@
         android:name="com.example.brawlwiki.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.brawlwiki.ui.home.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile"/>
 </navigation>
