@@ -38,17 +38,14 @@ public class HomeFragment extends Fragment {
 
     private static final String TAG = HomeFragment.class.getSimpleName();
 
-    private HomeViewModel homeViewModel;
     private FragmentHomeBinding mBinding;
     private SimpleExoPlayer mSimpleExoPlayer;
     private boolean playWhenReady = false;
     private int currentWindow = 0;
     private long playbackPosition = 0;
-    private BrawlStarsApi mBrawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View root = mBinding.getRoot();
 
@@ -56,9 +53,11 @@ public class HomeFragment extends Fragment {
         mBinding.imageButtonSearchPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tag = mBinding.editTextTag.getText().toString();
-                getProfile(tag);
-                Navigation.findNavController(v).navigate(R.id.nav_profile);
+                String tag = "%" + mBinding.editTextTag.getText().toString().substring(1);
+                //Log.d(TAG, "onClick: " + tag);
+                Bundle bundle = new Bundle();
+                bundle.putString("tag", tag);
+                Navigation.findNavController(v).navigate(R.id.nav_profile, bundle);
             }
         });
 
@@ -67,26 +66,6 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
-
-    private void getProfile(String tag) {
-        mBrawlStarsApi.getPlayer(tag).enqueue(new Callback<Player>() {
-            @Override
-            public void onResponse(@NonNull Call<Player> call, @NonNull Response<Player> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse: " + response.code());
-                }
-
-                Player player = response.body();
-                homeViewModel.insertProfile(player);
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Player> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-    }
-
 
     /**
      * Loads an Ad for the home fragment

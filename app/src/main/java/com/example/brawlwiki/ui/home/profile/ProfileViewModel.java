@@ -29,6 +29,10 @@ public class ProfileViewModel extends AndroidViewModel {
         mPlayerLiveData = mProfileRepository.getPlayer();
     }
 
+    public void insertProfile(Player player) {
+        mProfileRepository.insertProfile(player);
+    }
+
     public LiveData<Player> getPlayer() {
         return mPlayerLiveData;
     }

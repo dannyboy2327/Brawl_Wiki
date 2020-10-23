@@ -45,5 +45,6 @@
         android:id="@+id/nav_profile"
         android:name="com.example.brawlwiki.ui.home.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>

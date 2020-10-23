@@ -1,15 +1,509 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.home.profile.ProfileFragment">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Dannyboy" />
+
+            <FrameLayout
+                android:id="@+id/f_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="105dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_profile_name">
+
+                <ImageView
+                    android:id="@+id/iv_profile_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    tools:src="@drawable/player_colette" />
+
+                <TextView
+                    android:id="@+id/tv_profile_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@android:color/holo_blue_dark"
+                    tools:text="#GBU29RL" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toEndOf="@+id/f_layout"
+                app:layout_constraintTop_toTopOf="@+id/f_layout">
+
+                <ImageView
+                    android:id="@+id/iv_level_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_level" />
+
+                <TextView
+                    android:id="@+id/tv_profile_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    tools:text="170" />
+
+                <TextView
+                    android:id="@+id/tv_profile_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="1379/1730" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/f_layout"
+                app:layout_constraintStart_toEndOf="@id/f_layout">
+
+                <ImageView
+                    android:id="@+id/iv_trophy_icon"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_trophy" />
+
+                <TextView
+                    android:id="@+id/tv_profile_trophies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="21117" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_highest_trophies_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="32dp"
+                android:text="Highest Trophies"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_highest_power_play_points_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/f_layout" />
+
+            <TextView
+                android:id="@+id/tv_highest_power_play_points_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Highest Power Play Points"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_most_challenge_wins_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_highest_trophies_label" />
+
+            <TextView
+                android:id="@+id/tv_most_challenge_wins_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Most challenge wins"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_highest_power_play_points_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_highest_power_play_points_label" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_highest_trophies_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_highest_trophies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="21117" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_trophy" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/tv_highest_power_play_points_label"
+                app:layout_constraintStart_toStartOf="@id/tv_highest_power_play_points_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_highest_power_play_points_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_highest_power_play_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="556" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_power_play_points" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/tv_most_challenge_wins_label"
+                app:layout_constraintStart_toStartOf="@id/tv_most_challenge_wins_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_most_challenge_wins_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_power_play_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="68" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_power_play_points" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_3_vs_3_victories_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="3 vs 3 victories"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
+            <TextView
+                android:id="@+id/tv_solo_victories_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solo victories"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_highest_power_play_points_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_highest_power_play_points_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_3_vs_3_victories_label" />
+
+            <TextView
+                android:id="@+id/tv_duo_victories_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duo victories"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_most_challenge_wins_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_most_challenge_wins_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_solo_victories_label" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_3_vs_3_victories_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_3_vs_3_victories_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_3_vs_3_victories_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_3_vs_3_victories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="6326" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_three_vs_three_victories" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_solo_victories_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_solo_victories_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_solo_victories_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_solo_victories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="714" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_solo_victories" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_duo_victories_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_duo_victories_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_duo_victories_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_duo_victories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="158" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_duo_victories" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_best_robo_rumble_time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Best robo rumble time"
+                android:textAllCaps="true"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_highest_trophies_label"
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout5" />
+
+            <TextView
+                android:id="@+id/tv_best_time_big_brawler_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Best time as big brawler"
+                android:textAllCaps="true"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_highest_power_play_points_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_highest_power_play_points_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_best_robo_rumble_time_label" />
+
+            <TextView
+                android:id="@+id/tv_qualification_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qualified for championship"
+                android:textAllCaps="true"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_most_challenge_wins_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_most_challenge_wins_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_best_time_big_brawler_label" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_best_robo_rumble_time_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_best_robo_rumble_time_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_best_robo_rumble_time_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_robo_rumble_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="5" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_duo_victories" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_best_time_big_brawler_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_best_time_big_brawler_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_best_time_big_brawler_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_big_brawler_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="0" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_duo_victories" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_qualification_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_qualification_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_qualification_label">
+
+                <TextView
+                    android:id="@+id/tv_profile_qualification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingStart="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    tools:text="True" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_duo_victories" />
+
+            </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frame_layout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </layout>
