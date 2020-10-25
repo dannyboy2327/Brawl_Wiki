@@ -20,12 +20,19 @@ import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder> {
 
+
     private List<BrawlerStat> mBrawlerStatList;
     private Context mContext;
+    private final BrawlerClickListener mBrawlerClickListener;
 
-    public ProfileAdapter(Context context, List<BrawlerStat> brawlerStatList) {
+    public interface BrawlerClickListener {
+        void onBrawlerClick(BrawlerStat brawlerStat);
+    }
+
+    public ProfileAdapter(Context context, List<BrawlerStat> brawlerStatList, BrawlerClickListener brawlerClickListener) {
         mContext = context;
         mBrawlerStatList = brawlerStatList;
+        mBrawlerClickListener = brawlerClickListener;
     }
 
     @NonNull
@@ -202,6 +209,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
                 Picasso.get().load(R.drawable.brawler_colette).into(holder.mBrawlerImageView);
                 //holder.mBrawlerImageView.setBackgroundColor(holder.mBrawlerImageView.getResources().getColor(R.color.));
                 break;
+            case 16000040:
+                Picasso.get().load(R.drawable.brawler_amber).into(holder.mBrawlerImageView);
+                holder.mBrawlerImageView.setBackgroundColor(holder.mBrawlerImageView.getResources().getColor(R.color.legendary));
+                break;
             default:
         }
     }
@@ -211,7 +222,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
         return mBrawlerStatList.size();
     }
 
-    public class ProfileViewHolder extends RecyclerView.ViewHolder {
+    public class ProfileViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mTrophyTextView;
         private ImageView mBrawlerImageView;
@@ -229,6 +240,14 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
             mPowerTextView = itemView.findViewById(R.id.tv_profile_power_level);
             mGadgetTextView = itemView.findViewById(R.id.tv_profile_brawler_gadget);
             mStarPowerTextView = itemView.findViewById(R.id.tv_profile_brawler_star_power);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            BrawlerStat brawlerStat = mBrawlerStatList.get(position);
+            mBrawlerClickListener.onBrawlerClick(brawlerStat);
         }
     }
 }

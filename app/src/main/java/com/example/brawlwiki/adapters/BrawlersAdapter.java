@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.brawlers.Brawler;
 import com.example.brawlwiki.models.brawlers.StarPower;
+import com.example.brawlwiki.models.profile.BrawlerStat;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -200,6 +201,10 @@ public class BrawlersAdapter extends RecyclerView.Adapter<BrawlersAdapter.Brawle
             case 16000039:
                 Picasso.get().load(R.drawable.brawler_colette).into(holder.mBrawlerImageView);
                 //holder.mBrawlerImageView.setBackgroundColor(holder.mBrawlerImageView.getResources().getColor(R.color.));
+                break;
+            case 16000040:
+                Picasso.get().load(R.drawable.brawler_amber).into(holder.mBrawlerImageView);
+                holder.mBrawlerImageView.setBackgroundColor(holder.mBrawlerImageView.getResources().getColor(R.color.legendary));
                 break;
             default:
         }

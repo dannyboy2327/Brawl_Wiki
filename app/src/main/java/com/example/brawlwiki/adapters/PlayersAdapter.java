@@ -266,6 +266,10 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
             case 28000054:
                 holder.mPlayerIconImageView.setImageResource(R.drawable.player_colette);
                 break;
+            //amber
+            case 28000055:
+                holder.mPlayerIconImageView.setImageResource(R.drawable.player_amber);
+                break;
             default:
         }
 
