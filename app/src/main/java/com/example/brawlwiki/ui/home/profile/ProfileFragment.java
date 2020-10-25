@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -22,6 +23,7 @@ import android.widget.GridLayout;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.adapters.ProfileAdapter;
 import com.example.brawlwiki.databinding.FragmentProfileBinding;
+import com.example.brawlwiki.models.profile.BrawlerStat;
 import com.example.brawlwiki.models.profile.Player;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
@@ -46,6 +48,7 @@ public class ProfileFragment extends Fragment {
         View root = mBinding.getRoot();
 
         //Log.d(TAG, "onCreateView: " + getArguments().getString("tag"));
+        assert getArguments() != null;
         getProfile(getArguments().getString("tag"));
 
         mProfileViewModel.getPlayer().observe(getViewLifecycleOwner(), new Observer<Player>() {
@@ -335,7 +338,15 @@ public class ProfileFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mBinding.rvProfile.setLayoutManager(linearLayoutManager);
         mBinding.rvProfile.setHasFixedSize(true);
-        ProfileAdapter profileAdapter = new ProfileAdapter(getContext(), player.getBrawlerStatList());
+        ProfileAdapter profileAdapter = new ProfileAdapter(getContext(), player.getBrawlerStatList(), new ProfileAdapter.BrawlerClickListener() {
+            @Override
+            public void onBrawlerClick(BrawlerStat brawlerStat) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("brawler_stat", brawlerStat);
+                Navigation.findNavController(getView()).navigate(R.id.nav_brawler_details, bundle);
+            }
+        });
+
         mBinding.rvProfile.setAdapter(profileAdapter);
     }
 
