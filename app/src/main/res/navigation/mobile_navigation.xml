@@ -47,4 +47,10 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
+    <fragment
+        android:id="@+id/nav_brawler_details"
+        android:name="com.example.brawlwiki.ui.home.profile.brawler.BrawlerDetailsFragment"
+        android:label="Brawler"
+        tools:layout="@layout/fragment_brawler_details" />
+
 </navigation>
