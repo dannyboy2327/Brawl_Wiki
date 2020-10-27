@@ -10,6 +10,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         tools:context=".ui.home.profile.brawler.BrawlerDetailsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -211,7 +212,9 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="@+id/first_header"
                 app:layout_constraintStart_toStartOf="@+id/first_header"
-                app:layout_constraintTop_toBottomOf="@+id/first_header">
+                app:layout_constraintTop_toBottomOf="@+id/first_header"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -262,14 +265,14 @@
                 android:id="@+id/description_header"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimaryDark"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="@+id/second_header"
                 app:layout_constraintStart_toStartOf="@+id/second_header"
-                app:layout_constraintTop_toBottomOf="@+id/second_header">
+                app:layout_constraintTop_toBottomOf="@+id/second_header"
+                android:layout_marginLeft="8dp">
 
                 <TextView
                     style="@style/shadow_text"
@@ -296,12 +299,12 @@
                     android:layout_margin="8dp"
                     android:fontFamily="@font/nougat_extra_black"
                     android:gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white" />
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ly_star_power"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -309,7 +312,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="@+id/description_header"
                 app:layout_constraintStart_toStartOf="@+id/description_header"
-                app:layout_constraintTop_toBottomOf="@+id/description_header">
+                app:layout_constraintTop_toBottomOf="@+id/description_header" >
 
                 <TextView
                     style="@style/shadow_text"
@@ -331,6 +334,43 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_details_star_power"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintEnd_toEndOf="@+id/ly_star_power"
+                app:layout_constraintStart_toStartOf="@+id/ly_star_power"
+                app:layout_constraintTop_toBottomOf="@+id/ly_star_power"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    style="@style/shadow_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lilita_one_regular"
+                    android:gravity="center_horizontal"
+                    android:text="Gadgets"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_details_gadget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
