@@ -1,160 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardElevation="4dp"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="32dp">
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="16dp"
+    android:elevation="4dp">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <FrameLayout
-        android:id="@+id/layout_header"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/black"
-        android:orientation="horizontal"
-        android:paddingStart="60dp"
-        android:paddingTop="2dp"
-        android:paddingEnd="58dp"
-        android:paddingBottom="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingLeft="60dp"
-        android:paddingRight="58dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/ic_trophy"
-            android:layout_marginRight="24dp" />
-
-        <TextView
-            android:id="@+id/tv_profile_brawler_trophy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            tools:text="527" />
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:id="@+id/fl_image_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_header"
-       >
-
-        <ImageView
-            android:id="@+id/iv_profile_brawler_image"
+        <FrameLayout
+            android:id="@+id/fl_details_header_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_dark"
-            android:scaleType="fitStart"
-            android:src="@drawable/brawler_colette" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_profile_brawler_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:text="Colette"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:background="@android:color/black"
-            android:orientation="horizontal"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="Power"
-                android:textAllCaps="true"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="10sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_profile_power_level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="10"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ff9c38"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_image_layout"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:src="@drawable/brawler_gadget" />
-
-        <TextView
-            android:id="@+id/tv_profile_brawler_gadget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="0.5"
-            android:textColor="@android:color/white"
-            tools:text="2/2" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/brawler_star_power"
-            android:layout_marginLeft="8dp" />
-
-        <TextView
-            android:id="@+id/tv_profile_brawler_star_power"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="0.5"
-            android:textColor="@android:color/white"
-            tools:text="2/2" />
-    </LinearLayout>
+                android:layout_gravity="center_vertical">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/ll_header"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_trophy"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/nougat_extra_black"
+                        android:gravity="end"
+                        android:text="Trophies"
+                        android:textAllCaps="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_profile_brawler_trophy"
+                        style="@style/shadow_text"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lilita_one_regular"
+                        android:gravity="end"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="1000" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="@id/ll_header"
+                    app:layout_constraintStart_toStartOf="@id/ll_header"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_header">
+
+                    <ImageView
+                        android:id="@+id/iv_profile_brawler_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/brawler_leon" />
+
+                    <TextView
+                        android:id="@+id/tv_profile_brawler_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Leon"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/lilita_one_regular"
+                        style="@style/shadow_text"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="bottom|start"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="4dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|bottom"
+                        android:background="@android:color/black"
+                        android:padding="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Power"
+                            android:fontFamily="@font/nougat_extra_black"
+                            android:textColor="@android:color/darker_gray"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:textAlignment="gravity"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_profile_power_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="10"
+                            android:textSize="20sp"
+                            android:textColor="@android:color/white"
+                            android:fontFamily="@font/lilita_one_regular"
+                            android:layout_marginEnd="8dp"
+                            android:textAlignment="gravity"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="8dp" />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="@+id/fl_header"
+                    app:layout_constraintEnd_toEndOf="@+id/fl_header"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_header"
+                    android:background="#ffa500">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/brawler_gadget"
+                            android:layout_weight="2"/>
+
+                        <TextView
+                            android:id="@+id/tv_profile_brawler_gadget"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="2/2"
+                            android:fontFamily="@font/lilita_one_regular"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="2dp"
+                            style="@style/shadow_text"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/brawler_star_power"
+                            android:layout_weight="2"/>
+
+                        <TextView
+                            android:id="@+id/tv_profile_brawler_star_power"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="2/2"
+                            android:fontFamily="@font/lilita_one_regular"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="2dp"
+                            style="@style/shadow_text"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
