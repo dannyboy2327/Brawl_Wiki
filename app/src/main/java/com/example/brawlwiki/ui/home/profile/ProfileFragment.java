@@ -87,17 +87,19 @@ public class ProfileFragment extends Fragment {
     private void applyProfileData(Player player) {
 
         setProfileIcon(player);
+        setProfileAdapter(player);
 
         mBinding.tvProfileName.setText(player.getName());
         mBinding.tvProfileName.setTextColor(Color.parseColor("#" + player.getNameColor().substring(2)));
-        mBinding.tvProfileTag.setText(player.getTag());
+        mBinding.tvProfileTag.setText("#" + player.getTag().substring(1));
+
         mBinding.tvProfileLevel.setText(Integer.toString(player.getExpLevel()));
         mBinding.tvProfileExp.setText(Integer.toString(player.getExpPoints()) + "/" + Integer.toString(30 + (10 * player.getExpLevel())));
         mBinding.tvProfileTrophies.setText(Integer.toString(player.getTrophies()));
 
         mBinding.tvProfileHighestTrophies.setText(Integer.toString(player.getHighestTrophies()));
+        //mBinding.tvProfilePowerPlayPoints.setText(Integer.toString(player.getPowerPlayPoints()));
         mBinding.tvProfileHighestPowerPlayPoints.setText(Integer.toString(player.getHighestPowerPlayPoints()));
-        mBinding.tvProfilePowerPlayPoints.setText(Integer.toString(player.getPowerPlayPoints()));
 
         mBinding.tvProfile3Vs3Victories.setText(Integer.toString(player.get3vs3Victories()));
         mBinding.tvProfileSoloVictories.setText(Integer.toString(player.getSoloVictories()));
@@ -106,6 +108,7 @@ public class ProfileFragment extends Fragment {
         mBinding.tvProfileRoboRumbleTime.setText(Integer.toString(player.getBestRoboRumbleTime()));
         mBinding.tvProfileBigBrawlerTime.setText(Integer.toString(player.getBestTimeAsBigBrawler()));
         mBinding.tvProfileQualification.setText(player.getIsQualifiedFromChampionshipChallenge().toString());
+
     }
 
     private void setProfileIcon(Player player) {
@@ -335,8 +338,8 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setProfileAdapter(Player player) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        mBinding.rvProfile.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        mBinding.rvProfile.setLayoutManager(gridLayoutManager);
         mBinding.rvProfile.setHasFixedSize(true);
         ProfileAdapter profileAdapter = new ProfileAdapter(getContext(), player.getBrawlerStatList(), new ProfileAdapter.BrawlerClickListener() {
             @Override
