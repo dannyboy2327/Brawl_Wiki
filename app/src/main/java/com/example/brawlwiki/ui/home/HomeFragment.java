@@ -1,6 +1,8 @@
 package com.example.brawlwiki.ui.home;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.databinding.FragmentHomeBinding;
@@ -45,7 +48,7 @@ public class HomeFragment extends Fragment {
     private long playbackPosition = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, final Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View root = mBinding.getRoot();
 
@@ -55,6 +58,11 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 String tag = "%" + mBinding.editTextTag.getText().toString().substring(1);
                 //Log.d(TAG, "onClick: " + tag);
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("MyTag", tag);
+                editor.apply();
+
                 Bundle bundle = new Bundle();
                 bundle.putString("tag", tag);
                 Navigation.findNavController(v).navigate(R.id.nav_profile, bundle);
