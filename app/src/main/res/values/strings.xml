@@ -241,10 +241,17 @@
     <string name="gadget_surge_one">Surge overloads his circuits and teleports a short distance forward.</string>
     <string name="gadget_colette_one">Colette\'s next shot deals 40% of her current health as damage.</string>
 
+    <!-- About Settings -->
+    <string name="settings_about">BrawlWiki is your open source to all the content available in Brawl Stars to provide
+        you with a fun experience to get a better understanding of your personal stats, past/present game modes, and
+        all brawlers currently available in the game, and top rankings of players/clubs across the globe! \n\nThe app will
+        be updated at a steady pace to provide you with the best stats/information and new content. </string>
 
     <!-- country codes -->
     <string-array name="country_code">
         <item>01</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
