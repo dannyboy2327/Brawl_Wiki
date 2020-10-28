@@ -53,4 +53,21 @@
         android:label="Brawler"
         tools:layout="@layout/fragment_brawler_details" />
 
+    <fragment
+        android:id="@+id/nav_profile_settings"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.ProfileSettingsFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile_settings" />
+
+    <fragment
+        android:id="@+id/nav_notifications"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.NotificationsFragment"
+        android:label="Notifications" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about"/>
+
 </navigation>
