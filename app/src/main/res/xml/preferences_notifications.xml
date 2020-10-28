@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="switch_preference_notification"
+        android:summaryOff="Notifications off"
+        android:summaryOn="Notifications on"
+        android:title="BrawlWiki Reminders" />
+</PreferenceScreen>
