@@ -1,5 +1,6 @@
 package com.example.brawlwiki.ui.home.profile.brawler;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
