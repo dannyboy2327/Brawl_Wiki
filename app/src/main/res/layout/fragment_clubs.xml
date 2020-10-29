@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.clubs.ClubsFragment">
+        tools:context=".ui.clubs.ClubsFragment"
+        android:background="@color/colorPrimary">
 
         <LinearLayout
             android:id="@+id/ll_layout"
@@ -19,26 +20,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:layout_weight="0.50"
+                android:layout_weight="0.25"
                 android:id="@+id/tv_club_rank_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/lilita_one_regular"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
                 android:text="Rank" />
-
-            <TextView
-                android:layout_weight="0.50"
-                android:id="@+id/tv_club_badge_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Badge" />
 
             <TextView
                 android:layout_weight="1"
@@ -46,25 +46,24 @@
                 android:id="@+id/tv_club_name_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:fontFamily="@font/lilita_one_regular"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:text="Club Name"
+                android:textAllCaps="true"
                 android:gravity="center_horizontal" />
 
             <TextView
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:id="@+id/tv_club_members_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Members"
-                android:gravity="center_horizontal" />
-
-            <TextView
-                android:layout_weight="1"
+                android:layout_weight=".5"
                 android:textAlignment="center"
                 android:id="@+id/tv_club_trophies_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lilita_one_regular"
+                android:textColor="@android:color/white"
                 android:text="Trophies"
+                android:textAllCaps="true"
                 android:gravity="center_horizontal" />
 
         </LinearLayout>
@@ -75,11 +74,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="@+id/ll_layout"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/ll_layout"
             app:layout_constraintTop_toBottomOf="@+id/ll_layout" />
 
