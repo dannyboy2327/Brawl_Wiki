@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
@@ -41,5 +42,6 @@ public class ProfileSettingsFragment extends Fragment {
     private void deletePlayerTag() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         sharedPreferences.edit().clear().apply();
+        Navigation.findNavController(getView()).navigate(R.id.nav_home);
     }
 }
