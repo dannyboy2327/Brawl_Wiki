@@ -3,35 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp" >
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#79648A"
+        android:background="@color/colorPrimaryDark"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_player_rank"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_weight="0.50"
+            android:layout_weight="0.25"
             android:background="#695877"
+            android:fontFamily="@font/nougat_extra_black"
             android:ellipsize="end"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textAlignment="center"
-            android:textColor="#79648A"
-            android:textStyle="bold"
             tools:text="200" />
 
         <ImageView
@@ -39,34 +36,34 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_weight="0.50"
+            android:layout_weight="0.25"
             tools:src="@drawable/player_bea" />
 
         <TextView
             android:id="@+id/tv_player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:ellipsize="end"
+            android:fontFamily="@font/lilita_one_regular"
             android:textAlignment="center"
-            tools:text="Dannyboy2327"
-            tools:textColor="@android:color/white" />
+            tools:text="Dannyboy2327" />
 
         <ImageView
             android:id="@+id/iv_trophy"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_weight="0.50"
+            android:layout_weight="0.25"
             android:src="@drawable/ic_trophy" />
 
         <TextView
             android:id="@+id/tv_player_trophies"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.5"
+            android:fontFamily="@font/lilita_one_regular"
             android:ellipsize="end"
             android:textAlignment="center"
             android:textColor="@android:color/white"
