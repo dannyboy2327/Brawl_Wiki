@@ -27,7 +27,7 @@ public interface BrawlStarsApi {
             "Accept: application/json",
             "authorization: Bearer " + ApiClient.API_KEY
     })
-    @GET("v1/rankings/global/clubs?before=eyJwb3MiOjEwMH0&limit=101")
+    @GET("v1/rankings/global/clubs?before=eyJwb3MiOjEwMH0&limit=100")
     Call<ClubMemberList> getClubList();
 
     //Get request for a list of top players and their ranks
@@ -35,7 +35,7 @@ public interface BrawlStarsApi {
             "Accept: application/json",
             "authorization: Bearer " + ApiClient.API_KEY
     })
-    @GET("v1/rankings/global/players?before=eyJwb3MiOjEwMH0&limit=101")
+    @GET("v1/rankings/global/players?before=eyJwb3MiOjEwMH0&limit=100")
     Call<PlayerRankingList> getTopPlayerList();
 
     //Get request for all Game Modes in game
