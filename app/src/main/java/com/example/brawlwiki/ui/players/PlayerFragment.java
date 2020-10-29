@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -54,6 +55,7 @@ public class PlayerFragment extends Fragment {
 
         return root;
     }
+
 
     private void createPlayersAdapter(List<PlayerRanking> playerRankingList) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());

@@ -94,7 +94,7 @@ public class ProfileFragment extends Fragment {
         mBinding.tvProfileTag.setText("#" + player.getTag().substring(1));
 
         mBinding.tvProfileLevel.setText(Integer.toString(player.getExpLevel()));
-        mBinding.tvProfileExp.setText(Integer.toString(player.getExpPoints()) + "/" + Integer.toString(30 + (10 * player.getExpLevel())));
+        mBinding.tvProfileExp.setText(Integer.toString(player.getExpPoints()));
         mBinding.tvProfileTrophies.setText(Integer.toString(player.getTrophies()));
 
         mBinding.tvProfileHighestTrophies.setText(Integer.toString(player.getHighestTrophies()));
