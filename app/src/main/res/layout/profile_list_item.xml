@@ -33,6 +33,7 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimaryDark"
+                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -105,7 +106,7 @@
                         android:layout_marginBottom="4dp"/>
 
                     <LinearLayout
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|bottom"
                         android:background="@android:color/black"
@@ -133,10 +134,8 @@
                             android:textSize="20sp"
                             android:textColor="@android:color/white"
                             android:fontFamily="@font/lilita_one_regular"
-                            android:layout_marginEnd="8dp"
                             android:textAlignment="gravity"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="8dp" />
+                            android:layout_gravity="center_vertical" />
                     </LinearLayout>
 
                 </FrameLayout>

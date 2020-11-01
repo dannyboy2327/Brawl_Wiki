@@ -50,10 +50,10 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/bt_reset_profile"
+            android:id="@+id/bt_reset_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reset Profile"
+            android:text="Reset Tag"
             android:textAllCaps="true"
             android:fontFamily="@font/lilita_one_regular"
             android:textColor="@android:color/white"
@@ -66,6 +66,63 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_gamer_tag"/>
+
+        <LinearLayout
+            android:id="@+id/layout_token"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_reset_tag"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player Token"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/lilita_one_regular"/>
+
+            <TextView
+                android:id="@+id/tv_player_token"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="#G8U29RL"
+                android:ellipsize="end"
+                android:fontFamily="@font/nougat_extra_black"/>
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/bt_reset_token"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset Token"
+            android:textAllCaps="true"
+            android:fontFamily="@font/lilita_one_regular"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_token"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
