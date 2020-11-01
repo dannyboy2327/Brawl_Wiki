@@ -189,6 +189,11 @@ public class BrawlerGadgetsAdapter extends RecyclerView.Adapter<BrawlerGadgetsAd
                 holder.mGadgetBadgeImageView.setImageResource(R.drawable.gadget_darryl_one);
                 holder.mGadgetDescriptionTextView.setText(R.string.gadget_darryl_one);
                 break;
+            //Darryl Tar Barrel
+            case 23000313:
+                holder.mGadgetBadgeImageView.setImageResource(R.drawable.gadget_darryl_two);
+                holder.mGadgetDescriptionTextView.setText(R.string.gadget_darryl_two);
+                break;
             //Penny Pocket Detonator
             case 23000248:
                 holder.mGadgetBadgeImageView.setImageResource(R.drawable.gadget_penny_one);
@@ -248,6 +253,11 @@ public class BrawlerGadgetsAdapter extends RecyclerView.Adapter<BrawlerGadgetsAd
             case 23000271:
                 holder.mGadgetBadgeImageView.setImageResource(R.drawable.gadget_bea_one);
                 holder.mGadgetDescriptionTextView.setText(R.string.gadget_bea_one);
+                break;
+            //Bea Rattled Hive
+            case 23000312:
+                holder.mGadgetBadgeImageView.setImageResource(R.drawable.gadget_bea_two);
+                holder.mGadgetDescriptionTextView.setText(R.string.gadget_bea_two);
                 break;
             //Emz Friendzoner
             case 23000274:
