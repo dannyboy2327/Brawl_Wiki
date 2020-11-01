@@ -3,6 +3,8 @@ package com.example.brawlwiki.ui.home;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,29 +15,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.preference.PreferenceManager;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.databinding.FragmentHomeBinding;
-import com.example.brawlwiki.models.profile.Player;
-import com.example.brawlwiki.network.ApiClient;
-import com.example.brawlwiki.network.BrawlStarsApi;
+
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -52,43 +45,39 @@ public class HomeFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View root = mBinding.getRoot();
 
-        //OnClickListener to swap Fragments
+        setTagToEditText();
+        onSearchProfileClick();
+
+        return root;
+    }
+
+    private void setTagToEditText() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        if (!sharedPreferences.getString("MyTag", "").isEmpty()) {
+            mBinding.editTextTag.setText("#" + sharedPreferences.getString("MyTag", "").substring(1));
+        }
+    }
+
+    private void onSearchProfileClick() {
         mBinding.imageButtonSearchPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tag = "%" + mBinding.editTextTag.getText().toString().substring(1);
                 //Log.d(TAG, "onClick: " + tag);
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("MyTag", tag);
-                editor.apply();
+                setTagToSharePreferences(tag);
 
                 Bundle bundle = new Bundle();
                 bundle.putString("tag", tag);
                 Navigation.findNavController(v).navigate(R.id.nav_profile, bundle);
             }
         });
-
-        //Displays Ad Banner for Home Fragment
-        displayAdBannerView();
-
-        return root;
     }
 
-    /**
-     * Loads an Ad for the home fragment
-     *
-     */
-
-    private void displayAdBannerView() {
-        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mBinding.adViewMainAd.loadAd(adRequest);
+    private void setTagToSharePreferences(String tag) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("MyTag", tag);
+        editor.apply();
     }
 
     /**
@@ -98,8 +87,8 @@ public class HomeFragment extends Fragment {
     private void initializePlayer() {
         mSimpleExoPlayer = new SimpleExoPlayer.Builder(getContext()).build();
         mBinding.exoPlayerTutorial.setPlayer(mSimpleExoPlayer);
-        //String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.tutorial;
-        Uri uri = Uri.parse("https://streamable.com/zg2dkg");
+        String path = RawResourceDataSource.buildRawResourceUri(R.raw.tutorial).toString();
+        Uri uri = RawResourceDataSource.buildRawResourceUri(R.raw.tutorial);
         MediaSource mediaSource = buildMediaSource(uri);
         mSimpleExoPlayer.setPlayWhenReady(playWhenReady);
         mSimpleExoPlayer.seekTo(currentWindow, playbackPosition);
