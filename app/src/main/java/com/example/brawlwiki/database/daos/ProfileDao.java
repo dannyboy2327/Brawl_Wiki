@@ -18,4 +18,7 @@ public interface ProfileDao {
 
     @Query("SELECT * FROM player ")
     LiveData<Player> getPlayer();
+
+    @Query("SELECT * FROM player")
+    Player getPlayerSync();
 }
