@@ -30,12 +30,6 @@
         tools:layout="@layout/fragment_clubs" />
 
     <fragment
-        android:id="@+id/nav_game_modes"
-        android:name="com.example.brawlwiki.ui.gamemodes.GameModesFragment"
-        android:label="@string/menu_game_modes"
-        tools:layout="@layout/fragment_game_modes" />
-
-    <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.brawlwiki.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
