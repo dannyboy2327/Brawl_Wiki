@@ -4,13 +4,19 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -28,6 +34,9 @@ import com.example.brawlwiki.models.profile.Player;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +47,8 @@ public class ProfileFragment extends Fragment {
 
     private ProfileViewModel mProfileViewModel;
     private FragmentProfileBinding mBinding;
-    private BrawlStarsApi mBrawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
+    private final BrawlStarsApi mBrawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
+    private boolean isConnected;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -47,16 +57,20 @@ public class ProfileFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         View root = mBinding.getRoot();
 
-        //Log.d(TAG, "onCreateView: " + getArguments().getString("tag"));
-        assert getArguments() != null;
-        getProfile(getArguments().getString("tag"));
+
+        getActiveNetwork();
+
+        if (isConnected) {
+            String tag = getProfileTag();
+            getProfileData(tag);
+        }
 
         mProfileViewModel.getPlayer().observe(getViewLifecycleOwner(), new Observer<Player>() {
             @Override
             public void onChanged(Player player) {
                 //Log.d(TAG, "onChanged: " + player.getName() + "\n" + player.getTrophies());
                 if (!(player == null)) {
-                    applyProfileData(player);
+                    setProfileData(player);
                     setProfileIcon(player);
                     setProfileAdapter(player);
                 }
@@ -66,14 +80,33 @@ public class ProfileFragment extends Fragment {
         return root;
     }
 
-    private void getProfile(String tag) {
-        mBrawlStarsApi.getPlayer(tag).enqueue(new Callback<Player>() {
+    private void getActiveNetwork() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+        //Log.d(TAG, "getActiveNetwork: " + isConnected);
+    }
+
+    private String getProfileTag() {
+        //Log.d(TAG, "onCreateView: " + getArguments().getString("tag"));
+        return getArguments().getString("tag");
+    }
+
+    private void getProfileData(String tag) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        mBrawlStarsApi.getPlayer("Bearer " + sharedPreferences.getString("MyToken", ""), tag).enqueue(new Callback<Player>() {
             @Override
             public void onResponse(@NonNull Call<Player> call, @NonNull Response<Player> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
                 }
-                applyProfileData(response.body());
+
+                Log.d(TAG, "onResponse: ");
+                assert response.body() != null;
+                setProfileData(response.body());
+                setProfileIcon(response.body());
+                setProfileAdapter(response.body());
                 mProfileViewModel.insertProfile(response.body());
             }
 
@@ -84,10 +117,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void applyProfileData(Player player) {
-
-        setProfileIcon(player);
-        setProfileAdapter(player);
+    private void setProfileData(Player player) {
 
         mBinding.tvProfileName.setText(player.getName());
         mBinding.tvProfileName.setTextColor(Color.parseColor("#" + player.getNameColor().substring(2)));
@@ -338,8 +368,12 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setProfileAdapter(Player player) {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        mBinding.rvProfile.setLayoutManager(gridLayoutManager);
+        int orientation = getOrientation();
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mBinding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else {
+            mBinding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        }
         mBinding.rvProfile.setHasFixedSize(true);
         ProfileAdapter profileAdapter = new ProfileAdapter(getContext(), player.getBrawlerStatList(), new ProfileAdapter.BrawlerClickListener() {
             @Override
@@ -351,6 +385,10 @@ public class ProfileFragment extends Fragment {
         });
 
         mBinding.rvProfile.setAdapter(profileAdapter);
+    }
+
+    private int getOrientation() {
+        return getActivity().getResources().getConfiguration().orientation;
     }
 
 }

@@ -1,5 +1,9 @@
 package com.example.brawlwiki.ui.clubs;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +16,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.brawlwiki.adapters.ClubsAdapter;
@@ -33,10 +38,10 @@ public class ClubsFragment extends Fragment {
 
     private static final String TAG = ClubsFragment.class.getSimpleName();
 
-    private BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
+    private final BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
     private ClubsViewModel mClubsViewModel;
-    private ClubMemberList mClubMemberList;
     private FragmentClubsBinding mFragmentClubsBinding;
+    private boolean isConnected;
 
     @Nullable
     @Override
@@ -47,16 +52,31 @@ public class ClubsFragment extends Fragment {
         mFragmentClubsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_clubs, container, false);
         View root = mFragmentClubsBinding.getRoot();
 
-        getClubMemberList();
+        getActiveNetwork();
+
+        if (isConnected) {
+            getClubMemberList();
+        }
+
 
         mClubsViewModel.getClubList().observe(getViewLifecycleOwner(), new Observer<List<ClubRanking>>() {
             @Override
             public void onChanged(List<ClubRanking> clubRankingList) {
-                createClubAdapter(clubRankingList);
+                if (!(clubRankingList == null)) {
+                    createClubAdapter(clubRankingList);
+                }
             }
         });
 
         return root;
+    }
+
+    private void getActiveNetwork() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+        //Log.d(TAG, "getActiveNetwork: " + isConnected);
     }
 
     private void createClubAdapter(List<ClubRanking> clubRankingList) {
@@ -68,18 +88,21 @@ public class ClubsFragment extends Fragment {
     }
 
     private void getClubMemberList() {
-        brawlStarsApi.getClubList().enqueue(new Callback<ClubMemberList>() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        brawlStarsApi.getClubList("Bearer " + sharedPreferences.getString("MyToken", "")).enqueue(new Callback<ClubMemberList>() {
             @Override
             public void onResponse(@NonNull Call<ClubMemberList> call, @NonNull Response<ClubMemberList> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
                 }
-                mClubMemberList = response.body();
-                mClubsViewModel.insertClubList(mClubMemberList);
+
+                mClubsViewModel.insertClubList(response.body());
+                assert response.body() != null;
+                createClubAdapter(response.body().getClubRankingList());
             }
 
             @Override
-            public void onFailure(Call<ClubMemberList> call, Throwable t) {
+            public void onFailure(@NonNull Call<ClubMemberList> call, @NonNull Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
