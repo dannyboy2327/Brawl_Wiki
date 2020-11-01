@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "230711924835",
+    "firebase_url": "https://brawl-wiki.firebaseio.com",
+    "project_id": "brawl-wiki",
+    "storage_bucket": "brawl-wiki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230711924835:android:cfeb32459993f5cfb00056",
+        "android_client_info": {
+          "package_name": "com.example.brawlwiki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230711924835-ce1eb2hdcjkpmrtt6qcvb81m97lok2rs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKJqH1JBQypdt1znnrcqXvNB9j3wHx3X4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230711924835-ce1eb2hdcjkpmrtt6qcvb81m97lok2rs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
