@@ -1,5 +1,6 @@
 package com.example.brawlwiki.ui.settings;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,8 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.TokenLoginActivity;
 import com.example.brawlwiki.databinding.FragmentSettingsBinding;
 
 
@@ -37,13 +40,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        mBinding.tvSettingsNotifications.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToNotificationsFragment();
-            }
-        });
-
         mBinding.tvSettingsAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,22 +51,34 @@ public class SettingsFragment extends Fragment {
     }
 
     private void goToFragment() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String myTag = sharedPreferences.getString("MyTag", "");
+        String myToken = sharedPreferences.getString("MyToken", "");
         //Log.d(TAG, "goToFragment: " + myTag);
-        if (myTag.equals("")) {
-            Navigation.findNavController(getView()).navigate(R.id.nav_home);
+        if (myTag.equals("") && myToken.equals("")) {
+            Toast.makeText(getContext(), "Please input your token to access brawl stars data.", Toast.LENGTH_LONG).show();
+            goToLoginActivity();
+
         } else {
+
+            if (myTag.equals("")) {
+                Toast.makeText(getContext(), "Tag is missing. Please input your tag on home screen", Toast.LENGTH_LONG).show();
+            } else if(myToken.equals("")) {
+                Toast.makeText(getContext(), "Token is missing. Please input your token on initial screen", Toast.LENGTH_LONG).show();
+            }
+
             Navigation.findNavController(getView()).navigate(R.id.nav_profile_settings);
         }
 
+    }
+
+    private void goToLoginActivity() {
+        Intent intent = new Intent(getActivity().getApplicationContext(), TokenLoginActivity.class);
+        startActivity(intent);
     }
 
     private void goToAboutFragment() {
         Navigation.findNavController(getView()).navigate(R.id.nav_about);
     }
 
-    private void goToNotificationsFragment() {
-        Navigation.findNavController(getView()).navigate(R.id.nav_notifications);
-    }
 }
