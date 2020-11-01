@@ -1,5 +1,6 @@
 package com.example.brawlwiki.ui.settings.settingsoptions;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.brawlwiki.R;
+import com.example.brawlwiki.TokenLoginActivity;
 import com.example.brawlwiki.databinding.FragmentProfileSettingsBinding;
 
 
@@ -27,21 +29,45 @@ public class ProfileSettingsFragment extends Fragment {
         View root = mBinding.getRoot();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        mBinding.tvPlayerTag.setText("#" + sharedPreferences.getString("MyTag", "").substring(1));
+        String tag = sharedPreferences.getString("MyTag", "");
+        if (!tag.equals("")) {
+            mBinding.tvPlayerTag.setText("#" + sharedPreferences.getString("MyTag", "").substring(1));
+        } else {
+            mBinding.tvPlayerTag.setText(sharedPreferences.getString("MyTag", ""));
+        }
+        mBinding.tvPlayerToken.setText(sharedPreferences.getString("MyToken", ""));
 
-        mBinding.btResetProfile.setOnClickListener(new View.OnClickListener() {
+        mBinding.btResetTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deletePlayerTag();
             }
         });
 
+        mBinding.btResetToken.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePlayerToken();
+            }
+        });
+
         return root;
+    }
+
+    private void deletePlayerToken() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        sharedPreferences.edit().remove("MyToken").apply();
+        goToTokenLoginActivity();
+    }
+
+    private void goToTokenLoginActivity() {
+        Intent intent = new Intent(getContext(), TokenLoginActivity.class);
+        startActivity(intent);
     }
 
     private void deletePlayerTag() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        sharedPreferences.edit().clear().apply();
+        sharedPreferences.edit().remove("MyTag").apply();
         Navigation.findNavController(getView()).navigate(R.id.nav_home);
     }
 }
