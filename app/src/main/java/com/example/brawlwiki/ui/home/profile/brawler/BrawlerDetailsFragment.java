@@ -1,6 +1,9 @@
 package com.example.brawlwiki.ui.home.profile.brawler;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -25,6 +28,7 @@ public class BrawlerDetailsFragment extends Fragment {
     private static final String TAG = BrawlerDetailsFragment.class.getSimpleName();
 
     private FragmentBrawlerDetailsBinding mBinding;
+    private boolean isConnected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,12 +36,22 @@ public class BrawlerDetailsFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_brawler_details, container, false);
         View root = mBinding.getRoot();
 
-        assert getArguments() != null;
-        BrawlerStat brawlerStat = (BrawlerStat) getArguments().getSerializable("brawler_stat");
-        assert brawlerStat != null;
+
+        BrawlerStat brawlerStat = getBrawlerStat();
         //Log.d(TAG, "onCreateView: " + "\n" + brawlerStat.getName() + "\n" + brawlerStat.getTrophies() + "\n" + brawlerStat.getRank());
         setBrawlerDetails(brawlerStat);
+        setBrawlerImage(brawlerStat);
+        setBrawlerRankIcon(brawlerStat);
+        setBrawlerDescription(brawlerStat);
+        setBrawlerStarPowers(brawlerStat);
+        setBrawlerGadgets(brawlerStat);
+
         return root;
+    }
+
+    private BrawlerStat getBrawlerStat() {
+        assert getArguments() != null;
+        return (BrawlerStat) getArguments().getSerializable("brawler_stat");
     }
 
     private void setBrawlerDetails(BrawlerStat brawlerStat) {
@@ -46,11 +60,7 @@ public class BrawlerDetailsFragment extends Fragment {
         mBinding.tvDetailsBrawlerRank.setText(Integer.toString(brawlerStat.getRank()));
         mBinding.tvDetailsBrawlerPowerLevel.setText(Integer.toString(brawlerStat.getPower()));
         mBinding.tvDetailsBrawlerTrophies.setText(Integer.toString(brawlerStat.getTrophies()));
-        setBrawlerImage(brawlerStat);
-        setBrawlerRankIcon(brawlerStat);
-        setBrawlerDescription(brawlerStat);
-        setBrawlerStarPowers(brawlerStat);
-        setBrawlerGadgets(brawlerStat);
+
     }
 
     private void setBrawlerGadgets(BrawlerStat brawlerStat) {
@@ -203,17 +213,17 @@ public class BrawlerDetailsFragment extends Fragment {
 
         if (rank < 5) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_one);
-        } else if (4 < rank && rank <= 9) {
+        } else if (rank <= 9) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_two);
-        } else if (9 < rank && rank <= 14) {
+        } else if (rank <= 14) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_three);
-        } else if (14 < rank && rank <= 19) {
+        } else if (rank <= 19) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_four);
-        } else if (19 < rank && rank <= 24) {
+        } else if (rank <= 24) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_five);
-        } else if (24 < rank && rank <= 29) {
+        } else if (rank <= 29) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_six);
-        } else if (29 < rank && rank <= 34) {
+        } else if (rank <= 34) {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_seven);
         } else {
             mBinding.ivDetailsBrawlerRankIcon.setImageResource(R.drawable.profile_rank_eight);
