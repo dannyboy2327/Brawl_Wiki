@@ -91,8 +91,8 @@
 
             <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/exoPlayer_tutorial"
-                android:layout_width="271dp"
-                android:layout_height="200dp"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/view"
                 app:layout_constraintStart_toStartOf="parent"
