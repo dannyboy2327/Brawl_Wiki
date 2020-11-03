@@ -94,7 +94,7 @@
             android:layout_marginRight="16dp"
             android:fontFamily="@font/nougat_extra_black"
             android:gravity="center"
-            android:text="Disclaimer: The app is not accountable for the misuse of the clients token. The app does not misuse the use of the clients token besides its purpose to display brawl star data. "
+            android:text="Disclaimer \n The app is not accountable for the misuse of a token due to its sole purpose to display brawl star data. "
             android:textAlignment="gravity"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
