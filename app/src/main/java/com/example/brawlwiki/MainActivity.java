@@ -1,6 +1,8 @@
 package com.example.brawlwiki;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+        int orientation = getResources().getConfiguration().orientation;
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,13 +41,31 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_players, R.id.nav_brawlers, R.id.nav_clubs, R.id.nav_settings)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        if (isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home, R.id.nav_players, R.id.nav_brawlers, R.id.nav_clubs, R.id.nav_settings)
+                    .setOpenableLayout(drawer)
+                    .build();
+            Menu navMenu = navigationView.getMenu();
+            navMenu.findItem(R.id.nav_home).setVisible(false);
+        } else {
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home, R.id.nav_players, R.id.nav_brawlers, R.id.nav_clubs, R.id.nav_settings)
+                    .setOpenableLayout(drawer)
+                    .build();
+        }
+
+
+        if (isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            NavController navSecondaryController = Navigation.findNavController(this, R.id.nav_secondary_host_fragment);
+            NavigationUI.setupActionBarWithNavController(this, navSecondaryController, mAppBarConfiguration);
+            NavigationUI.setupWithNavController(navigationView, navSecondaryController);
+
+        } else {
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+            NavigationUI.setupWithNavController(navigationView, navController);
+        }
 
         displayBanner();
     }
@@ -61,7 +85,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+        int orientation = getResources().getConfiguration().orientation;
+
+        NavController navController;
+        if (isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            navController = Navigation.findNavController(this, R.id.nav_secondary_host_fragment);
+        } else {
+            navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        }
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
