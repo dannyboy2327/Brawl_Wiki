@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_secondary_navigation"
+    app:startDestination="@id/nav_settings">
+
+
+    <fragment
+        android:id="@+id/nav_players"
+        android:name="com.example.brawlwiki.ui.players.PlayerFragment"
+        android:label="@string/menu_players"
+        tools:layout="@layout/fragment_players" />
+
+    <fragment
+        android:id="@+id/nav_brawlers"
+        android:name="com.example.brawlwiki.ui.brawlers.BrawlersFragment"
+        android:label="@string/menu_brawlers"
+        tools:layout="@layout/fragment_brawlers" />
+
+    <fragment
+        android:id="@+id/nav_clubs"
+        android:name="com.example.brawlwiki.ui.clubs.ClubsFragment"
+        android:label="@string/menu_clubs"
+        tools:layout="@layout/fragment_clubs" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.brawlwiki.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_profile_settings"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.ProfileSettingsFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile_settings" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about"/>
+
+</navigation>
