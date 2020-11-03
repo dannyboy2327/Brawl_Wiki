@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -94,6 +95,8 @@ public class ClubsFragment extends Fragment {
             public void onResponse(@NonNull Call<ClubMemberList> call, @NonNull Response<ClubMemberList> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse not successful: " + response.code());
+                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    getActivity().finish();
                 }
 
                 mClubsViewModel.insertClubList(response.body());
@@ -104,6 +107,8 @@ public class ClubsFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<ClubMemberList> call, @NonNull Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                getActivity().finish();
             }
         });
     }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -91,7 +92,9 @@ public class PlayerFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<PlayerRankingList> call, @NonNull Response<PlayerRankingList> response) {
                 if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
+                    //Log.d(TAG, "onResponse not successful: " + response.code());
+                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    getActivity().finish();
                 }
                 mPlayerViewModel.insertPlayerList(response.body());
                 assert response.body() != null;
@@ -100,7 +103,9 @@ public class PlayerFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<PlayerRankingList> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                //Log.d(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                getActivity().finish();
             }
         });
     }

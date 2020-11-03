@@ -18,13 +18,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
+import android.widget.Toast;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.adapters.ProfileAdapter;
@@ -34,8 +33,6 @@ import com.example.brawlwiki.models.profile.Player;
 import com.example.brawlwiki.network.ApiClient;
 import com.example.brawlwiki.network.BrawlStarsApi;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -99,20 +96,24 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<Player> call, @NonNull Response<Player> response) {
                 if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
+                    //Log.d(TAG, "onResponse not successful: " + response.code());
+                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    getActivity().finish();
+                } else {
+                    //Log.d(TAG, "onResponse: ");
+                    assert response.body() != null;
+                    setProfileData(response.body());
+                    setProfileIcon(response.body());
+                    setProfileAdapter(response.body());
+                    mProfileViewModel.insertProfile(response.body());
                 }
-
-                Log.d(TAG, "onResponse: ");
-                assert response.body() != null;
-                setProfileData(response.body());
-                setProfileIcon(response.body());
-                setProfileAdapter(response.body());
-                mProfileViewModel.insertProfile(response.body());
             }
 
             @Override
             public void onFailure(@NonNull Call<Player> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                //Log.d(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                getActivity().finish();
             }
         });
     }
@@ -369,9 +370,13 @@ public class ProfileFragment extends Fragment {
 
     private void setProfileAdapter(Player player) {
         int orientation = getOrientation();
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+
+        if (!isTablet && orientation == Configuration.ORIENTATION_PORTRAIT) {
             mBinding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        } else {
+        } else if (isTablet && orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mBinding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        } else if ((isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE) || (!isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE)) {
             mBinding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 3));
         }
         mBinding.rvProfile.setHasFixedSize(true);

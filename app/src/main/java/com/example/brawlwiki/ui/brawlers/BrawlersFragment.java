@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -79,9 +80,13 @@ public class BrawlersFragment extends Fragment {
 
     private void createBrawlersAdapter(List<Brawler> brawlers) {
         int orientation = getOrientation();
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+
+        if (!isTablet && orientation == Configuration.ORIENTATION_PORTRAIT) {
             mFragmentBrawlersBinding.rvBrawlers.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        } else {
+        } else if (isTablet && orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mFragmentBrawlersBinding.rvBrawlers.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        } else if ((isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE) || (!isTablet && orientation == Configuration.ORIENTATION_LANDSCAPE)) {
             mFragmentBrawlersBinding.rvBrawlers.setLayoutManager(new GridLayoutManager(getContext(), 3));
         }
         mFragmentBrawlersBinding.rvBrawlers.setHasFixedSize(true);
@@ -99,7 +104,9 @@ public class BrawlersFragment extends Fragment {
             @Override
             public void onResponse(@NonNull  Call<BrawlerList> call, @NonNull Response<BrawlerList> response) {
                 if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
+                    //Log.d(TAG, "onResponse not successful: " + response.code());
+                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    getActivity().finish();
                 }
                 assert response.body() != null;
                 mBrawlersViewModel.insert(response.body().getBrawlerList());
@@ -108,7 +115,9 @@ public class BrawlersFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<BrawlerList> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                //Log.d(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                getActivity().finish();
             }
         });
     }
