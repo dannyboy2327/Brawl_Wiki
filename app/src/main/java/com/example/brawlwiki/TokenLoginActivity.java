@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.brawlwiki.databinding.ActivityTokenLoginBinding;
 import com.example.brawlwiki.ui.home.HomeFragment;
@@ -43,7 +44,8 @@ public class TokenLoginActivity extends AppCompatActivity {
     private void checkTokenState() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (!sharedPreferences.getString("MyToken", "").equals("")) {
-            goToHomeActivity();
+            Intent homeIntent = new Intent(this, MainActivity.class);
+            startActivity(homeIntent);
         }
     }
 
@@ -55,9 +57,17 @@ public class TokenLoginActivity extends AppCompatActivity {
     }
 
     private void goToHomeActivity() {
-        setTokenToSharedPreferences();
-        Intent homeIntent = new Intent(this, MainActivity.class);
-        startActivity(homeIntent);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (!mBinding.etTokenInput.getText().toString().equals("")) {
+            setTokenToSharedPreferences();
+            Intent homeIntent = new Intent(this, MainActivity.class);
+            startActivity(homeIntent);
+        } else if (!sharedPreferences.getString("MyToken", "").equals("")) {
+            Intent homeIntent = new Intent(this, MainActivity.class);
+            startActivity(homeIntent);
+        } else {
+                Toast.makeText(TokenLoginActivity.this, "Please enter a token!", Toast.LENGTH_LONG).show();
+            }
     }
 
     private void setTokenToSharedPreferences() {
