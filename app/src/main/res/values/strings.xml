@@ -10,20 +10,15 @@
     <string name="menu_brawlers">Brawlers</string>
     <string name="menu_clubs">Clubs</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_profile_settings">Profile Settings</string>
+    <string name="menu_brawler_details">Brawler Details</string>
+    <string name="menu_about">About</string>
+
 
 
     <!-- Ad Banner Strings -->
     <string name="banner_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-
-    <!-- Api key -->
-    <string name="api_key">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3
-        LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOi
-        JzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjllOTE2ZjhmLTcyMTUtNGJjMC04ODJiLWQ4MGRlY
-        WQzYmZlOSIsImlhdCI6MTYwMDU3MTg4OSwic3ViIjoiZGV2ZWxvcGVyL2VjZDA3MzhhLTI4M2Ut
-        NTNlNS0xZWVhLTU0ODE0YmY3YWFjOSIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI
-        6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcn
-        MiOlsiNzIuMTM0LjE5OS4xMzgiXSwidHlwZSI6ImNsaWVudCJ9XX0.1mOkoNtbw_R3QNGE_LWzB
-        MplrGOuof4e4e14ccYWEvWdlZPHlOkmMFvT1wS5nkUJO6t6elgTZ4YdbqMe6YZOJw</string>
 
     <!-- Brawler Description -->
     <string name="description_shelly">Shelly\'s spread-fire shotgun blasts the other team with
@@ -247,7 +242,169 @@
         you with a fun experience to get a better understanding of your personal stats, past/present game modes, and
         all brawlers currently available in the game, and top rankings of players/clubs across the globe! \n\nThe app will
         be updated at a steady pace to provide you with the best stats/information and new content. </string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+
+    <!-- My token -->
+    <string name="my_token">MyToken</string>
+
+    <!-- My tag -->
+    <string name="my_tag">MyTag</string>
+
+    <!-- Brawl stars API url -->
+    <string name="brawl_stars_api_url">https://developer.brawlstars.com/#/</string>
+
+    <!-- Login -->
+    <string name="enter_token">Please enter a token</string>
+
+    <!-- Error toast -->
+    <string name="toast_error">Please check the status of error: \u0020</string>
+
+    <!-- UI strings -->
+
+        <!-- Settings Fragment -->
+            <!-- Toast messages -->
+            <string name="settings_token_reminder">Please enter your token to access brawl stars data</string>
+            <string name="settings_tag_missing">Tag is missing. Please input your tag on home screen</string>
+            <string name="settings_token_missing">Token is missing. Please input your token on initial screen</string>
+                <!--Profile settings Fragment-->
+                <string name="hash_tag">#</string>
+                <string name="tag_not_set">No tag is set</string>
+                <string name="token_not_set">No token is set</string>
+                <string name="token_is_set">Token is set</string>
+        <!-- Player Fragment -->
+        <string name="bearer">Bearer \u0020</string>
+
+        <!-- Home Fragment -->
+        <string name="percentage">%</string>
+        <string name="bundle_tag">tag</string>
+
+            <!-- Profile Fragment -->
+            <string name="player_hash_tag">#</string>
+            <string name="player_serializable">brawler_stat</string>
+
+    <!-- Image description -->
+        <!-- Star power list item -->
+        <string name="image_of_a_brawlers_star_power_list">Image of a brawlers star power</string>
+
+    <!-- Profile list item -->
+        <string name="trophy_count_for_brawler">Trophy count for brawler</string>
+        <string name="image_of_a_brawler">Image of a brawler</string>
+        <string name="image_of_a_brawlers_gadget">Image of a brawlers gadget</string>
+        <string name="image_of_a_brawlers_star_power">Image of a brawlers star power</string>
+
+        <!-- Profile app widget -->
+        <string name="image_of_a_users_icon">Image of a users icon</string>
+        <string name="trophy_count_for_a_user">Trophy count for a user</string>
+
+        <!-- Players list item -->
+        <string name="image_of_a_players_icon">Image of a players icon</string>
+        <string name="image_of_a_players_trophies">Image of a players trophies</string>
+
+        <!-- Nav header main -->
+        <string name="navigation_header_image_of_brawl_stars">Navigation header image of brawl stars</string>
+
+        <!-- Gadget list item -->
+        <string name="image_of_brawlers_gadget">Image of brawlers gadget</string>
+
+        <!-- Fragment profile -->
+        <string name="image_of_a_player_icon">Image of a players icon</string>
+        <string name="image_of_a_players_experience_level">Image of a players experience level</string>
+        <string name="image_of_a_players_total_trophies">Image of a players total trophies</string>
+        <string name="image_of_a_player_highest_trophies">Image of a players highest trophies</string>
+        <string name="image_of_a_player_highest_power_player_points">Image of a players highest power player points</string>
+        <string name="image_of_a_player_three_versus_three_victories">Image of a players three versus three victories</string>
+        <string name="image_of_a_player_solo_victories">Image of a players solo victories</string>
+        <string name="image_of_a_player_duo_victories">Image of a players duo victories</string>
+        <string name="image_of_a_player_best_robo_rumble_time">Image of a players best robo rumble time</string>
+        <string name="image_of_a_player_best_time_as_a_big_brawler">Image of a players best time as a big brawler</string>
+        <string name="image_of_a_player_championship_qualification">Image of a players championship qualification</string>
+
+        <!-- Fragment brawler details -->
+        <string name="image_of_a_brawlers_icon">Image of a brawlers icon</string>
+        <string name="image_of_a_brawlers_total_trophies">Image of a brawlers total trophies</string>
+        <string name="image_model_of_a_brawler">Image model of a brawler</string>
+        <string name="image_of_a_brawlers_highest_trophies">Image of a brawlers highest trophies</string>
+        <string name="image_of_a_brawlers_power_level">Image of a brawlers power level</string>
+
+        <!-- Clubs list item -->
+        <string name="image_of_a_clubs_icon">Image of a clubs icon</string>
+        <string name="image_of_a_clubs_total_trophies">Image of a clubs total trophies</string>
+
+        <!-- Brawlers list item -->
+        <string name="image_of_a_brawler_list_item">Image of a brawler</string>
+        <string name="image_of_a_brawlers_gadget_list_item">Image of a brawlers gadget</string>
+        <string name="image_of_a_brawlers_star_power_list_item">Image of a brawlers star power</string>
+
+        <!-- Activity token login -->
+        <string name="image_of_the_apps_logo">Image of the apps logo</string>
+
+        <!-- Fragment home -->
+        <string name="image_button_of_a_search_icon">Image button of a search icon</string>
+
+
+    <!-- Strings for layouts -->
+
+        <!-- Profile list item strings -->
+        <string name="trophies_label">Trophies</string>
+        <string name="power_label">Power</string>
+
+        <!-- Profile app widget strings -->
+        <string name="total_trophies_label">Total trophies</string>
+        <string name="update_trophies_label">Update trophies</string>
+
+        <!-- Fragment settings strings -->
+        <string name="profile_label">Profile</string>
+        <string name="about_label">About</string>
+        <string name="rate_the_app_in_google_play_label">Rate the app in Google Play</string>
+
+        <!-- Fragment profile settings strings -->
+        <string name="player_tag_label">Player Tag</string>
+        <string name="reset_tag_label">Reset Tag</string>
+        <string name="player_token_label">Player Token</string>
+        <string name="reset_token_label">Reset Token</string>
+
+        <!-- Fragment profile strings -->
+        <string name="total_exp_label">Total Exp</string>
+        <string name="total_trophies_profile_label">Total Trophies</string>
+        <string name="solo_victories_label">Solo Victories</string>
+        <string name="duo_victories_label">Duo Victories</string>
+        <string name="best_robo_rumble_time_label">Best Robo Rumble Time</string>
+        <string name="best_time_as_big_brawler_label">Best Time As Big Brawler</string>
+        <string name="champions_qualification_label">Champions Qualification</string>
+        <string name="highest_trophies_label">Highest Trophies</string>
+        <string name="highest_power_play_points_label">Highest Power Play Points</string>
+        <string name="_3_vs_3_victories_label">3 VS 3 Victories</string>
+
+        <!-- Fragment players strings -->
+        <string name="rank_label">Rank</string>
+        <string name="username_label">Username</string>
+        <string name="trophies_player_label">Trophies</string>
+
+        <!-- Fragment clubs strings -->
+        <string name="rank_club_label">Rank</string>
+        <string name="club_name_label">Club Name</string>
+        <string name="trophies_club_label">Trophies</string>
+
+        <!-- Fragment brawler details strings -->
+        <string name="highest_trophies_brawler_label">Highest Trophies</string>
+        <string name="power_level_label">Power level</string>
+        <string name="description_label">Description</string>
+        <string name="star_power_label">Star Power</string>
+        <string name="gadgets_label">Gadgets</string>
+
+        <!-- Activity token login strings -->
+        <string name="enter_your_brawl_stars_api_token_label">Enter your brawl stars API token</string>
+        <string name="enter_token_label">Enter token</string>
+        <string name="go_to_home_label">Go to home</string>
+        <string name="don_t_have_a_brawl_stars_token_label">Don\'t have a brawl stars token?</string>
+        <string name="click_here_label">Click here!</string>
+        <string name="disclaimer">
+            Disclaimer \n The app is not accountable for the misuse of a token due to its sole purpose to display brawl star data.</string>
+        <string name="brawl_wiki_label">Brawl Wiki</string>
+
+        <!-- Fragment home strings -->
+        <string name="enter_your_player_tag_to_view_your_stats_label">Enter Your Player Tag to view your stats:</string>
+        <string name="xxxxxxx_label">#XXXXXXX</string>
+        <string name="instructions_on_how_to_find_your_tag_label">Instructions on how to find your tag</string>
+
 
 </resources>
