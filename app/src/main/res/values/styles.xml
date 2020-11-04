@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -23,5 +23,92 @@
         <item name="android:shadowColor">@android:color/black</item>
         <item name="android:shadowRadius">2.0</item>
     </style>
+
+    <!-- Star power list item -->
+        <!-- Text views -->
+        <style name="star_power_list_item_text_view">
+            <item name="android:layout_width">0dp</item>
+            <item name="android:layout_height">wrap_content</item>
+        </style>
+
+        <style name="star_power_list_item_image_view">
+            <item name="android:layout_gravity">center_vertical|center</item>
+        </style>
+
+    <!-- Profile list item -->
+    <style name="profile_list_item_gadget_star_image">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_weight">2</item>
+    </style>
+
+    <style name="profile_list_item_gadget_star_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/lilita_one_regular</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:shadowDx">2.0</item>
+        <item name="android:shadowDy">4.0</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowRadius">2.0</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="profile_list_item_power_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">gravity</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="profile_list_item_trophies">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Profile app widget -->
+
+    <!-- Player list item -->
+
+    <!-- Nav header main  -->
+
+    <!-- Gadget list item -->
+
+    <!-- Fragment settings-->
+
+    <!-- Fragment profile settings -->
+
+    <!-- Fragment profile -->
+
+    <!-- Fragment players-->
+
+    <!-- Fragment home-->
+
+    <!-- Fragment clubs-->
+
+    <!-- Fragment brawlers -->
+
+    <!-- Fragment brawler details -->
+
+    <!-- Fragment about -->
+
+    <!-- Club list item -->
+
+    <!-- Brawler list item -->
+
+    <!-- Activity token login -->
+
+    <!--Activity main -->
+
+
+
+
+
 
 </resources>
