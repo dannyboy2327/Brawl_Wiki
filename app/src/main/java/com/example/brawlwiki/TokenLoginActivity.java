@@ -43,14 +43,14 @@ public class TokenLoginActivity extends AppCompatActivity {
 
     private void checkTokenState() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (!sharedPreferences.getString("MyToken", "").equals("")) {
+        if (!sharedPreferences.getString(getResources().getString(R.string.my_token), "").equals("")) {
             Intent homeIntent = new Intent(this, MainActivity.class);
             startActivity(homeIntent);
         }
     }
 
     private void goToUrl() {
-        String url = "https://developer.brawlstars.com/#/";
+        String url = getResources().getString(R.string.brawl_stars_api_url);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
@@ -62,20 +62,20 @@ public class TokenLoginActivity extends AppCompatActivity {
             setTokenToSharedPreferences();
             Intent homeIntent = new Intent(this, MainActivity.class);
             startActivity(homeIntent);
-        } else if (!sharedPreferences.getString("MyToken", "").equals("")) {
+        } else if (!sharedPreferences.getString(getResources().getString(R.string.my_token), "").equals("")) {
             Intent homeIntent = new Intent(this, MainActivity.class);
             startActivity(homeIntent);
         } else {
-                Toast.makeText(TokenLoginActivity.this, "Please enter a token!", Toast.LENGTH_LONG).show();
+                Toast.makeText(TokenLoginActivity.this, getResources().getText(R.string.enter_token), Toast.LENGTH_LONG).show();
             }
     }
 
     private void setTokenToSharedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (sharedPreferences.getString("MyToken", "").equals("")) {
+        if (sharedPreferences.getString(getResources().getString(R.string.my_token), "").equals("")) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             String token = mBinding.etTokenInput.getText().toString();
-            editor.putString("MyToken", token);
+            editor.putString(getResources().getString(R.string.my_token), token);
             editor.apply();
         }
 

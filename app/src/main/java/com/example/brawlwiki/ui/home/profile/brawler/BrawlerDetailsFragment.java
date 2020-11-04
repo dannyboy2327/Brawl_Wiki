@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,10 +29,9 @@ public class BrawlerDetailsFragment extends Fragment {
     private static final String TAG = BrawlerDetailsFragment.class.getSimpleName();
 
     private FragmentBrawlerDetailsBinding mBinding;
-    private boolean isConnected;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_brawler_details, container, false);
         View root = mBinding.getRoot();
@@ -51,15 +51,15 @@ public class BrawlerDetailsFragment extends Fragment {
 
     private BrawlerStat getBrawlerStat() {
         assert getArguments() != null;
-        return (BrawlerStat) getArguments().getSerializable("brawler_stat");
+        return (BrawlerStat) getArguments().getSerializable(getResources().getString(R.string.player_serializable));
     }
 
     private void setBrawlerDetails(BrawlerStat brawlerStat) {
         mBinding.tvDetailsBrawlerName.setText(brawlerStat.getName());
-        mBinding.tvDetailsBrawlerHighestTrophies.setText(Integer.toString(brawlerStat.getHighestTrophies()));
-        mBinding.tvDetailsBrawlerRank.setText(Integer.toString(brawlerStat.getRank()));
-        mBinding.tvDetailsBrawlerPowerLevel.setText(Integer.toString(brawlerStat.getPower()));
-        mBinding.tvDetailsBrawlerTrophies.setText(Integer.toString(brawlerStat.getTrophies()));
+        mBinding.tvDetailsBrawlerHighestTrophies.setText(String.valueOf(brawlerStat.getHighestTrophies()));
+        mBinding.tvDetailsBrawlerRank.setText(String.valueOf(brawlerStat.getRank()));
+        mBinding.tvDetailsBrawlerPowerLevel.setText(String.valueOf(brawlerStat.getPower()));
+        mBinding.tvDetailsBrawlerTrophies.setText(String.valueOf(brawlerStat.getTrophies()));
 
     }
 

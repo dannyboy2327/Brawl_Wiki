@@ -36,9 +36,9 @@ public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ClubsViewHol
     public void onBindViewHolder(@NonNull ClubsViewHolder holder, int position) {
         ClubRanking clubRanking = this.mClubRankingList.get(position);
         holder.mClubNameTextView.setText(clubRanking.getName());
-        holder.mClubRankTextView.setText(Integer.toString(clubRanking.getRank()));
-        holder.mClubTrophiesTextView.setText(Integer.toString(clubRanking.getTrophies()));
-        holder.mClubMembersTextView.setText(Integer.toString(clubRanking.getMemberCount()));
+        holder.mClubRankTextView.setText(String.valueOf(clubRanking.getRank()));
+        holder.mClubTrophiesTextView.setText(String.valueOf(clubRanking.getTrophies()));
+        holder.mClubMembersTextView.setText(String.valueOf(clubRanking.getMemberCount()));
 
         switch (clubRanking.getBadgeId()) {
             case 8000000:

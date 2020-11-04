@@ -35,9 +35,10 @@ public class BrawlerGadgetsAdapter extends RecyclerView.Adapter<BrawlerGadgetsAd
     @Override
     public void onBindViewHolder(@NonNull BrawlerGadgetsViewHolder holder, int position) {
         BrawlerStatGadget brawlerStatGadget = this.mBrawlerStatGadgetList.get(position);
+        String star_powers_unlocked = "Haven't unlocked any star powers!";
 
         if (mBrawlerStatGadgetList.size() == 0) {
-            holder.mGadgetNameTextView.setText("Haven't unlocked any star powers!");
+            holder.mGadgetNameTextView.setText(star_powers_unlocked);
         } else {
             holder.mGadgetNameTextView.setText(brawlerStatGadget.getName());
         }

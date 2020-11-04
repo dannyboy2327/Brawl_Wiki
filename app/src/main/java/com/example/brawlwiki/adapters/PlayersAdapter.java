@@ -40,10 +40,10 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
     @Override
     public void onBindViewHolder(@NonNull PlayersViewHolder holder, int position) {
         PlayerRanking playerRanking = mPlayerRankingList.get(position);
-        holder.mPlayerRankTextView.setText(Integer.toString(playerRanking.getRank()));
+        holder.mPlayerRankTextView.setText(String.valueOf(playerRanking.getRank()));
         holder.mPlayerNameTextView.setText(playerRanking.getName());
         holder.mPlayerNameTextView.setTextColor(Color.parseColor("#" + playerRanking.getNameColor().substring(2)));
-        holder.mPlayerTrophiesTextView.setText(Integer.toString(playerRanking.getTrophies()));
+        holder.mPlayerTrophiesTextView.setText(String.valueOf(playerRanking.getTrophies()));
 
         switch (playerRanking.getPlayerRankingIcon().getId()) {
             //blue skull

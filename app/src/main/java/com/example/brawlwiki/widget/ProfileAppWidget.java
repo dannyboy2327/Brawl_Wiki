@@ -13,9 +13,6 @@ import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.profile.Player;
 import com.example.brawlwiki.ui.home.HomeFragment;
 
-/**
- * Implementation of App Widget functionality.
- */
 public class ProfileAppWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
@@ -266,9 +263,11 @@ public class ProfileAppWidget extends AppWidgetProvider {
 
             }
         } else {
-            views.setTextViewText(R.id.tv_widget_name, "No name found");
+            String no_name = "No name found";
+            String no_trophy = "No trophies found";
+            views.setTextViewText(R.id.tv_widget_name, no_name);
             views.setImageViewResource(R.id.iv_widget_image, R.drawable.brawl_wiki_logo);
-            views.setTextViewText(R.id.tv_widget_trophies, "No trophy count found");
+            views.setTextViewText(R.id.tv_widget_trophies, no_trophy);
 
         }
 

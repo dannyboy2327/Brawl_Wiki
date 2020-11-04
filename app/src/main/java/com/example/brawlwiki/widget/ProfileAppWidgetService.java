@@ -21,10 +21,6 @@ public class ProfileAppWidgetService extends IntentService {
 
     public static  final String ACTION_UPDATE_TROPHIES = "com.example.android.brawlwiki.action.update_trophies";
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     */
     public ProfileAppWidgetService() {
         super("ProfileAppWidgetService");
     }
@@ -37,7 +33,7 @@ public class ProfileAppWidgetService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        Log.d(TAG, "onHandleIntent: ran2");
+        //Log.d(TAG, "onHandleIntent: ran2");
         if (intent != null) {
             final String action = intent.getAction();
             if (ACTION_UPDATE_TROPHIES.equals(action)) {

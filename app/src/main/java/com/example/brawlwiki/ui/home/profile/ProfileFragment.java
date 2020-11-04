@@ -87,17 +87,17 @@ public class ProfileFragment extends Fragment {
 
     private String getProfileTag() {
         //Log.d(TAG, "onCreateView: " + getArguments().getString("tag"));
-        return getArguments().getString("tag");
+        return getArguments().getString(getResources().getString(R.string.bundle_tag));
     }
 
     private void getProfileData(String tag) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        mBrawlStarsApi.getPlayer("Bearer " + sharedPreferences.getString("MyToken", ""), tag).enqueue(new Callback<Player>() {
+        mBrawlStarsApi.getPlayer(getResources().getString(R.string.bearer) + sharedPreferences.getString(getResources().getString(R.string.my_token), ""), tag).enqueue(new Callback<Player>() {
             @Override
             public void onResponse(@NonNull Call<Player> call, @NonNull Response<Player> response) {
                 if (!response.isSuccessful()) {
                     //Log.d(TAG, "onResponse not successful: " + response.code());
-                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_error) + response.code(), Toast.LENGTH_LONG).show();
                     getActivity().finish();
                 } else {
                     //Log.d(TAG, "onResponse: ");
@@ -119,25 +119,26 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setProfileData(Player player) {
+        String player_tag = getResources().getString(R.string.player_hash_tag) + player.getTag().substring(1);
 
         mBinding.tvProfileName.setText(player.getName());
-        mBinding.tvProfileName.setTextColor(Color.parseColor("#" + player.getNameColor().substring(2)));
-        mBinding.tvProfileTag.setText("#" + player.getTag().substring(1));
+        mBinding.tvProfileName.setTextColor(Color.parseColor(getResources().getString(R.string.player_hash_tag) + player.getNameColor().substring(2)));
+        mBinding.tvProfileTag.setText(player_tag);
 
-        mBinding.tvProfileLevel.setText(Integer.toString(player.getExpLevel()));
-        mBinding.tvProfileExp.setText(Integer.toString(player.getExpPoints()));
-        mBinding.tvProfileTrophies.setText(Integer.toString(player.getTrophies()));
+        mBinding.tvProfileLevel.setText(String.valueOf(player.getExpLevel()));
+        mBinding.tvProfileExp.setText(String.valueOf(player.getExpPoints()));
+        mBinding.tvProfileTrophies.setText(String.valueOf(player.getTrophies()));
 
-        mBinding.tvProfileHighestTrophies.setText(Integer.toString(player.getHighestTrophies()));
+        mBinding.tvProfileHighestTrophies.setText(String.valueOf(player.getHighestTrophies()));
         //mBinding.tvProfilePowerPlayPoints.setText(Integer.toString(player.getPowerPlayPoints()));
-        mBinding.tvProfileHighestPowerPlayPoints.setText(Integer.toString(player.getHighestPowerPlayPoints()));
+        mBinding.tvProfileHighestPowerPlayPoints.setText(String.valueOf(player.getHighestPowerPlayPoints()));
 
-        mBinding.tvProfile3Vs3Victories.setText(Integer.toString(player.get3vs3Victories()));
-        mBinding.tvProfileSoloVictories.setText(Integer.toString(player.getSoloVictories()));
-        mBinding.tvProfileDuoVictories.setText(Integer.toString(player.getDuoVictories()));
+        mBinding.tvProfile3Vs3Victories.setText(String.valueOf(player.get3vs3Victories()));
+        mBinding.tvProfileSoloVictories.setText(String.valueOf(player.getSoloVictories()));
+        mBinding.tvProfileDuoVictories.setText(String.valueOf(player.getDuoVictories()));
 
-        mBinding.tvProfileRoboRumbleTime.setText(Integer.toString(player.getBestRoboRumbleTime()));
-        mBinding.tvProfileBigBrawlerTime.setText(Integer.toString(player.getBestTimeAsBigBrawler()));
+        mBinding.tvProfileRoboRumbleTime.setText(String.valueOf(player.getBestRoboRumbleTime()));
+        mBinding.tvProfileBigBrawlerTime.setText(String.valueOf(player.getBestTimeAsBigBrawler()));
         mBinding.tvProfileQualification.setText(player.getIsQualifiedFromChampionshipChallenge().toString());
 
     }
@@ -384,7 +385,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onBrawlerClick(BrawlerStat brawlerStat) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("brawler_stat", brawlerStat);
+                bundle.putSerializable(getResources().getString(R.string.player_serializable), brawlerStat);
                 Navigation.findNavController(getView()).navigate(R.id.nav_brawler_details, bundle);
             }
         });

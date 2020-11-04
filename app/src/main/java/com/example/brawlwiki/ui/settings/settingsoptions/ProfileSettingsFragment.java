@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -26,7 +27,7 @@ public class ProfileSettingsFragment extends Fragment {
     private FragmentProfileSettingsBinding mBinding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_settings, container, false);
         View root = mBinding.getRoot();
@@ -54,32 +55,33 @@ public class ProfileSettingsFragment extends Fragment {
 
     private void setPlayerTag() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        String tag = sharedPreferences.getString("MyTag", "");
+        String tag = sharedPreferences.getString(getResources().getString(R.string.my_tag), "");
         if (!tag.equals("")) {
-            mBinding.tvPlayerTag.setText("#" + sharedPreferences.getString("MyTag", "").substring(1));
+            String newTag = getResources().getString(R.string.hash_tag) + tag.substring(1);
+            mBinding.tvPlayerTag.setText(newTag);
         } else {
-            mBinding.tvPlayerTag.setText("No tag is set.");
+            mBinding.tvPlayerTag.setText(getResources().getString(R.string.tag_not_set));
         }
     }
 
     private void setStatusOfToken() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        String token = sharedPreferences.getString("MyToken", "");
+        String token = sharedPreferences.getString(getResources().getString(R.string.my_token), "");
         if (token.equals("")) {
-            mBinding.tvPlayerToken.setText("No token is set.");
+            mBinding.tvPlayerToken.setText(getResources().getString(R.string.token_not_set));
         } else {
-            mBinding.tvPlayerToken.setText("Token is set.");
+            mBinding.tvPlayerToken.setText(getResources().getString(R.string.token_is_set));
         }
     }
 
     private void deletePlayerToken() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        String token = sharedPreferences.getString("MyToken", "");
+        String token = sharedPreferences.getString(getResources().getString(R.string.my_token), "");
 
         if (token.equals("")) {
-            Toast.makeText(getContext(), "No token has been set", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getResources().getString(R.string.token_not_set), Toast.LENGTH_SHORT).show();
         } else {
-            sharedPreferences.edit().remove("MyToken").apply();
+            sharedPreferences.edit().remove(getResources().getString(R.string.my_token)).apply();
             goToTokenLoginActivity();
         }
 
@@ -92,13 +94,13 @@ public class ProfileSettingsFragment extends Fragment {
 
     private void deletePlayerTag() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        String tag = sharedPreferences.getString("MyTag", "");
+        String tag = sharedPreferences.getString(getResources().getString(R.string.my_tag), "");
 
         if (tag.equals("")) {
-            Toast.makeText(getContext(), "No tag has been set", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getResources().getString(R.string.tag_not_set), Toast.LENGTH_SHORT).show();
         }
          else {
-            sharedPreferences.edit().remove("MyTag").apply();
+            sharedPreferences.edit().remove(getResources().getString(R.string.my_tag)).apply();
 
             boolean isTablet = getResources().getBoolean(R.bool.isTablet);
             int orientation = getResources().getConfiguration().orientation;

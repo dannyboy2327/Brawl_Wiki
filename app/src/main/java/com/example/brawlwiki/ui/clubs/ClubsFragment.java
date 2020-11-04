@@ -90,12 +90,12 @@ public class ClubsFragment extends Fragment {
 
     private void getClubMemberList() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        brawlStarsApi.getClubList("Bearer " + sharedPreferences.getString("MyToken", "")).enqueue(new Callback<ClubMemberList>() {
+        brawlStarsApi.getClubList(getResources().getString(R.string.bearer) + sharedPreferences.getString(getResources().getString(R.string.my_token), "")).enqueue(new Callback<ClubMemberList>() {
             @Override
             public void onResponse(@NonNull Call<ClubMemberList> call, @NonNull Response<ClubMemberList> response) {
                 if (!response.isSuccessful()) {
-                    Log.d(TAG, "onResponse not successful: " + response.code());
-                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    //Log.d(TAG, "onResponse not successful: " + response.code());
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_error) + response.code(), Toast.LENGTH_LONG).show();
                     getActivity().finish();
                 }
 
@@ -106,7 +106,7 @@ public class ClubsFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<ClubMemberList> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                //Log.d(TAG, "onFailure: " + t.getMessage());
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 getActivity().finish();
             }

@@ -52,19 +52,19 @@ public class SettingsFragment extends Fragment {
 
     private void goToFragment() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String myTag = sharedPreferences.getString("MyTag", "");
-        String myToken = sharedPreferences.getString("MyToken", "");
+        String myTag = sharedPreferences.getString(getResources().getString(R.string.my_tag), "");
+        String myToken = sharedPreferences.getString(getResources().getString(R.string.my_token), "");
         //Log.d(TAG, "goToFragment: " + myTag);
         if (myTag.equals("") && myToken.equals("")) {
-            Toast.makeText(getContext(), "Please input your token to access brawl stars data.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), getResources().getString(R.string.settings_token_reminder), Toast.LENGTH_LONG).show();
             goToLoginActivity();
 
         } else {
 
             if (myTag.equals("")) {
-                Toast.makeText(getContext(), "Tag is missing. Please input your tag on home screen", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), getResources().getString(R.string.settings_tag_missing), Toast.LENGTH_LONG).show();
             } else if(myToken.equals("")) {
-                Toast.makeText(getContext(), "Token is missing. Please input your token on initial screen", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), getResources().getString(R.string.settings_token_missing), Toast.LENGTH_LONG).show();
             }
 
             Navigation.findNavController(getView()).navigate(R.id.nav_profile_settings);

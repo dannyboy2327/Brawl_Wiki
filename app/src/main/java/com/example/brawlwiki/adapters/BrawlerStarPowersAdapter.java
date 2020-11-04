@@ -35,9 +35,10 @@ public class BrawlerStarPowersAdapter extends RecyclerView.Adapter<BrawlerStarPo
     @Override
     public void onBindViewHolder(@NonNull BrawlerStarPowersViewHolder holder, int position) {
         BrawlerStatStarPower brawlerStatStarPower = this.mBrawlerStatStarPowerList.get(position);
+        String not_unlocked = "Haven't unlocked any star powers!";
 
         if (brawlerStatStarPower.getName() == null) {
-            holder.mStarPowerNameTextView.setText("Haven't unlocked any star powers!");
+            holder.mStarPowerNameTextView.setText(not_unlocked);
         } else {
             holder.mStarPowerNameTextView.setText(brawlerStatStarPower.getName());
         }
@@ -459,7 +460,7 @@ public class BrawlerStarPowersAdapter extends RecyclerView.Adapter<BrawlerStarPo
         public BrawlerStarPowersViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mStarPowerNameTextView = itemView.findViewById(R.id.tv_deatils_star_power_name);
+            mStarPowerNameTextView = itemView.findViewById(R.id.tv_details_star_power_name);
             mStarPowerBadgeImageView = itemView.findViewById(R.id.iv_details_star_power_badge);
             mStarPowerDescriptionTextView = itemView.findViewById(R.id.tv_details_start_power_description);
         }

@@ -88,12 +88,12 @@ public class PlayerFragment extends Fragment {
 
     private void getPlayerRankingList() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        brawlStarsApi.getTopPlayerList("Bearer " + sharedPreferences.getString("MyToken", "")).enqueue(new Callback<PlayerRankingList>() {
+        brawlStarsApi.getTopPlayerList(getResources().getString(R.string.bearer) + sharedPreferences.getString(getResources().getString(R.string.my_token), "")).enqueue(new Callback<PlayerRankingList>() {
             @Override
             public void onResponse(@NonNull Call<PlayerRankingList> call, @NonNull Response<PlayerRankingList> response) {
                 if (!response.isSuccessful()) {
                     //Log.d(TAG, "onResponse not successful: " + response.code());
-                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_error) + response.code(), Toast.LENGTH_LONG).show();
                     getActivity().finish();
                 }
                 mPlayerViewModel.insertPlayerList(response.body());

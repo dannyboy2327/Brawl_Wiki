@@ -100,12 +100,12 @@ public class BrawlersFragment extends Fragment {
 
     private void getBrawlerList() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        brawlStarsApi.getBrawlers("Bearer " + sharedPreferences.getString("MyToken", "")).enqueue(new Callback<BrawlerList>() {
+        brawlStarsApi.getBrawlers(getResources().getString(R.string.bearer) + sharedPreferences.getString(getResources().getString(R.string.my_token), "")).enqueue(new Callback<BrawlerList>() {
             @Override
             public void onResponse(@NonNull  Call<BrawlerList> call, @NonNull Response<BrawlerList> response) {
                 if (!response.isSuccessful()) {
                     //Log.d(TAG, "onResponse not successful: " + response.code());
-                    Toast.makeText(getContext(), "Please check the status of error: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_error) + response.code(), Toast.LENGTH_LONG).show();
                     getActivity().finish();
                 }
                 assert response.body() != null;

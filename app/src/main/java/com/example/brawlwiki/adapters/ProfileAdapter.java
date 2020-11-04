@@ -46,11 +46,14 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
     public void onBindViewHolder(@NonNull ProfileViewHolder holder, int position) {
         BrawlerStat brawlerStat = this.mBrawlerStatList.get(position);
 
-        holder.mTrophyTextView.setText(Integer.toString(brawlerStat.getTrophies()));
+        String gadgets_size = brawlerStat.getBrawlerStatGadgetList().size() + "/2";
+        String star_power_size = brawlerStat.getBrawlerStatStarPowerList().size() + "/2";
+
+        holder.mTrophyTextView.setText(String.valueOf(brawlerStat.getTrophies()));
         holder.mBrawlerNameTextView.setText(brawlerStat.getName());
-        holder.mPowerTextView.setText(Integer.toString(brawlerStat.getPower()));
-        holder.mGadgetTextView.setText(brawlerStat.getBrawlerStatGadgetList().size() + "/2");
-        holder.mStarPowerTextView.setText(brawlerStat.getBrawlerStatStarPowerList().size() + "/2");
+        holder.mPowerTextView.setText(String.valueOf(brawlerStat.getPower()));
+        holder.mGadgetTextView.setText(gadgets_size);
+        holder.mStarPowerTextView.setText(star_power_size);
 
         switch (brawlerStat.getId()) {
             case 16000000:

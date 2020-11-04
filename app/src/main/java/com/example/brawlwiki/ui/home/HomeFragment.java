@@ -55,8 +55,9 @@ public class HomeFragment extends Fragment {
 
     private void setTagToEditText() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        if (!sharedPreferences.getString("MyTag", "").isEmpty()) {
-            mBinding.editTextTag.setText("#" + sharedPreferences.getString("MyTag", "").substring(1));
+        if (!sharedPreferences.getString(getResources().getString(R.string.my_tag), "").isEmpty()) {
+            String tag = getResources().getString(R.string.hash_tag) + sharedPreferences.getString(getResources().getString(R.string.my_tag), "").substring(1);
+            mBinding.editTextTag.setText(tag);
         }
     }
 
@@ -64,12 +65,12 @@ public class HomeFragment extends Fragment {
         mBinding.imageButtonSearchPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tag = "%" + mBinding.editTextTag.getText().toString().substring(1);
+                String tag = getResources().getString(R.string.percentage) + mBinding.editTextTag.getText().toString().substring(1);
                 //Log.d(TAG, "onClick: " + tag);
                 setTagToSharePreferences(tag);
 
                 Bundle bundle = new Bundle();
-                bundle.putString("tag", tag);
+                bundle.putString(getResources().getString(R.string.bundle_tag), tag);
 
                 secondNavNavigateToSettings();
 
@@ -91,7 +92,7 @@ public class HomeFragment extends Fragment {
     private void setTagToSharePreferences(String tag) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("MyTag", tag);
+        editor.putString(getResources().getString(R.string.my_tag), tag);
         editor.apply();
     }
 
@@ -102,7 +103,6 @@ public class HomeFragment extends Fragment {
     private void initializePlayer() {
         mSimpleExoPlayer = new SimpleExoPlayer.Builder(getContext()).build();
         mBinding.exoPlayerTutorial.setPlayer(mSimpleExoPlayer);
-        String path = RawResourceDataSource.buildRawResourceUri(R.raw.tutorial).toString();
         Uri uri = RawResourceDataSource.buildRawResourceUri(R.raw.tutorial);
         MediaSource mediaSource = buildMediaSource(uri);
         mSimpleExoPlayer.setPlayWhenReady(playWhenReady);
