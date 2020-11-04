@@ -43,7 +43,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/rank_header"
                 app:layout_constraintStart_toStartOf="@+id/rank_header"
                 app:layout_constraintTop_toBottomOf="@+id/tv_details__brawler_name"
-                tools:src="@drawable/player_colette" />
+                tools:src="@drawable/player_colette"
+                android:contentDescription= "@string/image_of_a_brawlers_icon" />
 
             <FrameLayout
                 android:id="@+id/rank_header"
@@ -73,7 +74,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="24dp"
                             android:layout_marginLeft="24dp"
-                            android:src="@drawable/ic_trophy" />
+                            android:src="@drawable/ic_trophy"
+                            android:contentDescription="@string/image_of_a_brawlers_total_trophies" />
 
                         <TextView
                             android:id="@+id/tv_details_brawler_trophies"
@@ -145,7 +147,8 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/figure_colette" />
+                tools:src="@drawable/figure_colette"
+                android:contentDescription="@string/image_model_of_a_brawler" />
 
             <FrameLayout
                 android:id="@+id/first_header"
@@ -173,7 +176,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/lilita_one_regular"
-                        android:text="Highest Trophies"
+                        android:text="@string/highest_trophies_brawler_label"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
@@ -200,7 +203,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="-1"
-                    android:src="@drawable/ic_trophy" />
+                    android:src="@drawable/ic_trophy"
+                    android:contentDescription="@string/image_of_a_brawlers_highest_trophies" />
 
             </FrameLayout>
 
@@ -231,7 +235,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/lilita_one_regular"
-                        android:text="Power level"
+                        android:text="@string/power_level_label"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
@@ -257,7 +261,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_power_level" />
+                    android:src="@drawable/ic_power_level"
+                    android:contentDescription="@string/image_of_a_brawlers_power_level" />
 
             </FrameLayout>
 
@@ -280,7 +285,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lilita_one_regular"
                     android:gravity="center_horizontal"
-                    android:text="Description"
+                    android:text="@string/description_label"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@android:color/white"
@@ -320,7 +325,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lilita_one_regular"
                     android:gravity="center_horizontal"
-                    android:text="Star Power"
+                    android:text="@string/star_power_label"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@android:color/white"
@@ -357,7 +362,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lilita_one_regular"
                     android:gravity="center_horizontal"
-                    android:text="Gadgets"
+                    android:text="@string/gadgets_label"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@android:color/white"

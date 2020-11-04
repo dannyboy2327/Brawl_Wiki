@@ -38,7 +38,7 @@
                 android:fontFamily="@font/lilita_one_regular"
                 android:textColor="@android:color/white"
                 android:textAllCaps="true"
-                android:text="Rank" />
+                android:text="@string/rank_club_label" />
 
             <TextView
                 android:layout_weight="1"
@@ -50,7 +50,7 @@
                 android:textColor="@android:color/white"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
-                android:text="Club Name"
+                android:text="@string/club_name_label"
                 android:textAllCaps="true"
                 android:gravity="center_horizontal" />
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lilita_one_regular"
                 android:textColor="@android:color/white"
-                android:text="Trophies"
+                android:text="@string/trophies_club_label"
                 android:textAllCaps="true"
                 android:gravity="center_horizontal" />
 

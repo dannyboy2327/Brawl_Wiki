@@ -36,17 +36,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lilita_one_regular"
                 android:text="@string/player_tag_label"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
-                android:fontFamily="@font/lilita_one_regular"/>
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/tv_player_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="#G8U29RL"
-                android:fontFamily="@font/nougat_extra_black"/>
+                android:fontFamily="@font/nougat_extra_black"
+                android:textSize="24sp"
+                tools:text="#G8U29RL" />
 
         </LinearLayout>
 
@@ -54,19 +56,20 @@
             android:id="@+id/bt_reset_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/reset_tag_label"
-            android:textAllCaps="true"
-            android:fontFamily="@font/lilita_one_regular"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimaryDark"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/lilita_one_regular"
+            android:text="@string/reset_tag_label"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_gamer_tag"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_gamer_tag" />
 
         <LinearLayout
             android:id="@+id/layout_token"
@@ -91,40 +94,42 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lilita_one_regular"
                 android:text="@string/player_token_label"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
-                android:fontFamily="@font/lilita_one_regular"/>
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/tv_player_token"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="#G8U29RL"
                 android:ellipsize="end"
-                android:fontFamily="@font/nougat_extra_black"/>
+                android:fontFamily="@font/nougat_extra_black"
+                android:textSize="24sp"
+                tools:text="#G8U29RL" />
 
         </LinearLayout>
-
 
 
         <Button
             android:id="@+id/bt_reset_token"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/reset_token_label"
-            android:textAllCaps="true"
-            android:fontFamily="@font/lilita_one_regular"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimaryDark"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/lilita_one_regular"
+            android:text="@string/reset_token_label"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_token"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_token" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

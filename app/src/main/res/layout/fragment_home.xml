@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Enter Your Player Tag to view your stats:"
+                android:text="@string/enter_your_player_tag_to_view_your_stats_label"
                 android:textAllCaps="true"
                 android:fontFamily="@font/lilita_one_regular"
                 android:textColor="@android:color/white"
@@ -39,7 +39,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="#XXXXXXX"
+                android:hint="@string/xxxxxxx_label"
                 android:paddingStart="8dp"
                 android:background="@color/colorPrimaryDark"
                 android:textColor="@android:color/white"
@@ -49,7 +49,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_PlayerTag"
-                android:paddingLeft="8dp" />
+                android:paddingLeft="8dp"
+                tools:ignore="RtlSymmetry"
+                android:importantForAutofill="no" />
 
             <ImageButton
                 android:id="@+id/imageButton_search_player"
@@ -59,14 +61,15 @@
                 android:src="@drawable/ic_player_tag_search"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextTag"
                 app:layout_constraintStart_toEndOf="@+id/editTextTag"
-                app:layout_constraintTop_toTopOf="@+id/editTextTag" />
+                app:layout_constraintTop_toTopOf="@+id/editTextTag"
+                android:contentDescription="@string/image_button_of_a_search_icon" />
 
             <TextView
                 android:id="@+id/tv_video_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAllCaps="true"
-                android:text="Instructions on how to find your tag"
+                android:text="@string/instructions_on_how_to_find_your_tag_label"
                 android:fontFamily="@font/lilita_one_regular"
                 android:textColor="@android:color/white"
                 style="@style/shadow_text"

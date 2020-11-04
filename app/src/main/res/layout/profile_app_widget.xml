@@ -32,7 +32,8 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/player_colette"
-        android:layout_below="@+id/layout_name" />
+        android:layout_below="@+id/layout_name"
+        android:contentDescription="@string/image_of_a_users_icon" />
 
     <LinearLayout
         android:id="@+id/layout_trophies"
@@ -45,7 +46,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_weight=".5"
-            android:src="@drawable/ic_trophy"/>
+            android:src="@drawable/ic_trophy"
+            android:contentDescription="@string/trophy_count_for_a_user" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +56,7 @@
             android:textColor="@android:color/white"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:text="Total trophies"/>
+            android:text="@string/total_trophies_label"/>
 
     </LinearLayout>
 
@@ -74,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_widget_trophies"
-        android:text="Update trophies"
+        android:text="@string/update_trophies_label"
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimaryDark"
         android:paddingStart="8dp"

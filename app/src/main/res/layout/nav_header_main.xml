@@ -13,5 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/drawer_background" />
+        android:src="@drawable/drawer_background"
+        android:contentDescription="@string/navigation_header_image_of_brawl_stars" />
 </LinearLayout>

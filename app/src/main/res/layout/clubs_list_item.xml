@@ -36,7 +36,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_weight="0.25"
-            tools:src="@drawable/ic_yellow_thunder" />
+            tools:src="@drawable/ic_yellow_thunder"
+            android:contentDescription="@string/image_of_a_clubs_icon" />
 
         <TextView
             android:id="@+id/tv_club_name"
@@ -65,7 +66,8 @@
             android:layout_height="30dp"
             android:layout_weight="0.25"
             android:layout_gravity="center"
-            android:src="@drawable/ic_trophy" />
+            android:src="@drawable/ic_trophy"
+            android:contentDescription="@string/image_of_a_clubs_total_trophies" />
 
         <TextView
             android:id="@+id/tv_club_trophies"

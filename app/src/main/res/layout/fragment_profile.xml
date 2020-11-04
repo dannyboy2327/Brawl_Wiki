@@ -48,7 +48,8 @@
                     android:id="@+id/iv_profile_icon"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    tools:src="@drawable/player_colette" />
+                    tools:src="@drawable/player_colette"
+                    android:contentDescription="@string/image_of_a_player_icon" />
 
                 <TextView
                     android:id="@+id/tv_profile_tag"
@@ -92,7 +93,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginLeft="30dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Total Exp"
+                        android:text="@string/total_exp_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -118,7 +119,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_level" />
+                    android:src="@drawable/ic_level"
+                    android:contentDescription="@string/image_of_a_players_experience_level" />
 
                 <TextView
                     android:id="@+id/tv_profile_level"
@@ -162,7 +164,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginLeft="30dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Total Trophies"
+                        android:text="@string/total_trophies_profile_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -188,7 +190,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_trophy" />
+                    android:src="@drawable/ic_trophy"
+                    android:contentDescription="@string/image_of_a_players_total_trophies" />
 
             </FrameLayout>
 
@@ -219,7 +222,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Highest Trophies"
+                        android:text="@string/highest_trophies_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -245,7 +248,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_trophy" />
+                    android:src="@drawable/ic_trophy"
+                    android:contentDescription="@string/image_of_a_player_highest_trophies" />
 
             </FrameLayout>
 
@@ -275,7 +279,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Highest Power Play Points"
+                        android:text="@string/highest_power_play_points_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -301,7 +305,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_power_play_points" />
+                    android:src="@drawable/ic_power_play_points"
+                    android:contentDescription="@string/image_of_a_player_highest_power_player_points" />
 
             </FrameLayout>
 
@@ -331,7 +336,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="3 VS 3 Victories"
+                        android:text="@string/_3_vs_3_victories_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -357,7 +362,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_three_vs_three_victories" />
+                    android:src="@drawable/ic_three_vs_three_victories"
+                    android:contentDescription="@string/image_of_a_player_three_versus_three_victories" />
 
             </FrameLayout>
 
@@ -387,7 +393,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Solo Victories"
+                        android:text="@string/solo_victories_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -413,7 +419,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_solo_victories" />
+                    android:src="@drawable/ic_solo_victories"
+                    android:contentDescription="@string/image_of_a_player_solo_victories" />
 
             </FrameLayout>
 
@@ -443,7 +450,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Duo Victories"
+                        android:text="@string/duo_victories_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -469,7 +476,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_duo_victories" />
+                    android:src="@drawable/ic_duo_victories"
+                    android:contentDescription="@string/image_of_a_player_duo_victories" />
 
             </FrameLayout>
 
@@ -499,7 +507,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Best Robo Rumble Time"
+                        android:text="@string/best_robo_rumble_time_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -525,7 +533,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_robo_rumble" />
+                    android:src="@drawable/ic_robo_rumble"
+                    android:contentDescription="@string/image_of_a_player_best_robo_rumble_time" />
 
             </FrameLayout>
 
@@ -555,7 +564,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Best Time As Big Brawler"
+                        android:text="@string/best_time_as_big_brawler_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -581,7 +590,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_big_brawler" />
+                    android:src="@drawable/ic_big_brawler"
+                    android:contentDescription="@string/image_of_a_player_best_time_as_a_big_brawler" />
 
             </FrameLayout>
 
@@ -611,7 +621,7 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginLeft="64dp"
                         android:fontFamily="@font/nougat_extra_black"
-                        android:text="Champions Qualification"
+                        android:text="@string/champions_qualification_label"
                         android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -639,7 +649,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="-1"
-                    android:src="@drawable/ic_championship" />
+                    android:src="@drawable/ic_championship"
+                    android:contentDescription="@string/image_of_a_player_championship_qualification" />
 
             </FrameLayout>
 

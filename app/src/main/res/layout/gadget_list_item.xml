@@ -37,19 +37,22 @@
             android:id="@+id/iv_details_gadget_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/brawler_gadget" />
+            android:src="@drawable/brawler_gadget"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_gravity="center_vertical|center"
-            android:background="@drawable/circle_green_drawable" />
+            android:background="@drawable/circle_green_drawable"
+            tools:ignore="ContentDescription" />
         <ImageView
             android:id="@+id/iv_details_gadget_badge"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical|center"
-            tools:src="@drawable/gadget_colette_one" />
+            tools:src="@drawable/gadget_colette_one"
+            android:contentDescription="@string/image_of_brawlers_gadget" />
 
     </FrameLayout>
 

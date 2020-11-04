@@ -37,7 +37,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_weight="0.25"
-            tools:src="@drawable/player_bea" />
+            tools:src="@drawable/player_bea"
+            android:contentDescription="@string/image_of_a_players_icon" />
 
         <TextView
             android:id="@+id/tv_player_name"
@@ -55,7 +56,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_weight="0.25"
-            android:src="@drawable/ic_trophy" />
+            android:src="@drawable/ic_trophy"
+            android:contentDescription="@string/image_of_a_players_trophies" />
 
         <TextView
             android:id="@+id/tv_player_trophies"

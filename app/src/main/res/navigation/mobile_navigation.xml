@@ -38,25 +38,25 @@
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.brawlwiki.ui.home.profile.ProfileFragment"
-        android:label="Profile"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_profile_settings"
         android:name="com.example.brawlwiki.ui.settings.settingsoptions.ProfileSettingsFragment"
-        android:label="Profile"
+        android:label="@string/menu_profile_settings"
         tools:layout="@layout/fragment_profile_settings" />
 
     <fragment
         android:id="@+id/nav_brawler_details"
         android:name="com.example.brawlwiki.ui.home.profile.brawler.BrawlerDetailsFragment"
-        android:label="Brawler"
+        android:label="@string/menu_brawler_details"
         tools:layout="@layout/fragment_brawler_details" />
 
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.brawlwiki.ui.settings.settingsoptions.AboutFragment"
-        android:label="About"
+        android:label="@string/menu_about"
         tools:layout="@layout/fragment_about"/>
 
 </navigation>

@@ -29,7 +29,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:fontFamily="@font/lilita_one_regular"
-                android:text="Enter Your Player Tag to view your stats:"
+                android:text="@string/enter_your_player_tag_to_view_your_stats_label"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
@@ -45,7 +45,7 @@
                 android:background="@color/colorPrimaryDark"
                 android:ems="10"
                 android:fontFamily="@font/lilita_one_regular"
-                android:hint="#XXXXXXX"
+                android:hint="@string/xxxxxxx_label"
                 android:inputType="textCapCharacters"
                 android:maxLength="9"
                 android:paddingStart="8dp"
@@ -54,7 +54,9 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_PlayerTag" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_PlayerTag"
+                tools:ignore="RtlSymmetry"
+                android:importantForAutofill="no" />
 
             <ImageButton
                 android:id="@+id/imageButton_search_player"
@@ -64,7 +66,8 @@
                 android:src="@drawable/ic_player_tag_search"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextTag"
                 app:layout_constraintStart_toEndOf="@+id/editTextTag"
-                app:layout_constraintTop_toTopOf="@+id/editTextTag" />
+                app:layout_constraintTop_toTopOf="@+id/editTextTag"
+                android:contentDescription="@string/image_button_of_a_search_icon" />
 
             <TextView
                 android:id="@+id/tv_video_label"
@@ -73,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/lilita_one_regular"
-                android:text="Instructions on how to find your tag"
+                android:text="@string/instructions_on_how_to_find_your_tag_label"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"

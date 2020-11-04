@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rank"
+                android:text="@string/rank_label"
                 android:textAllCaps="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username"
+                android:text="@string/username_label"
                 android:textAllCaps="true"
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trophies"
+                android:text="@string/trophies_player_label"
                 android:textAllCaps="true"
                 android:layout_weight=".75"
                 android:textAlignment="center"

@@ -39,7 +39,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:scaleType="fitStart"
-                        android:src="@drawable/brawler_leon" />
+                        android:src="@drawable/brawler_leon"
+                        android:contentDescription="@string/image_of_a_brawler_list_item" />
 
                     <TextView
                         android:id="@+id/tv_brawler_name"
@@ -76,7 +77,8 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:src="@drawable/brawler_gadget"
-                            android:layout_weight="2"/>
+                            android:layout_weight="2"
+                            android:contentDescription="@string/image_of_a_brawlers_gadget_list_item" />
 
                         <TextView
                             android:id="@+id/tv_brawler_gadget"
@@ -96,7 +98,8 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:src="@drawable/brawler_star_power"
-                            android:layout_weight="2"/>
+                            android:layout_weight="2"
+                            android:contentDescription="@string/image_of_a_brawlers_star_power_list_item" />
 
                         <TextView
                             android:id="@+id/tv_brawler_star_power"
