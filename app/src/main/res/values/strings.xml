@@ -276,8 +276,9 @@
         <!-- Home Fragment -->
         <string name="percentage">%</string>
         <string name="bundle_tag">tag</string>
+        <string name="firebase_tag_key">FirebaseKey</string>
 
-            <!-- Profile Fragment -->
+    <!-- Profile Fragment -->
             <string name="player_hash_tag">#</string>
             <string name="player_serializable">brawler_stat</string>
 
@@ -324,8 +325,10 @@
         <string name="image_model_of_a_brawler">Image model of a brawler</string>
         <string name="image_of_a_brawlers_highest_trophies">Image of a brawlers highest trophies</string>
         <string name="image_of_a_brawlers_power_level">Image of a brawlers power level</string>
+        <string name="image_of_a_brawlers_rank">Image of a brawlers rank</string>
 
-        <!-- Clubs list item -->
+
+    <!-- Clubs list item -->
         <string name="image_of_a_clubs_icon">Image of a clubs icon</string>
         <string name="image_of_a_clubs_total_trophies">Image of a clubs total trophies</string>
 
@@ -390,8 +393,9 @@
         <string name="description_label">Description</string>
         <string name="star_power_label">Star Power</string>
         <string name="gadgets_label">Gadgets</string>
+        <string name="brawler_rank_label">rank</string>
 
-        <!-- Activity token login strings -->
+    <!-- Activity token login strings -->
         <string name="enter_your_brawl_stars_api_token_label">Enter your brawl stars API token</string>
         <string name="enter_token_label">Enter token</string>
         <string name="go_to_home_label">Go to home</string>
