@@ -104,7 +104,8 @@
                         android:id="@+id/iv_details__brawler_rank_icon"
                         android:layout_width="37dp"
                         android:layout_height="match_parent"
-                        tools:src="@drawable/profile_rank_three" />
+                        tools:src="@drawable/profile_rank_three"
+                        android:contentDescription="@string/image_of_a_brawlers_rank" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -113,11 +114,12 @@
                         android:layout_marginTop="6dp"
                         android:fontFamily="@font/lilita_one_regular"
                         android:rotation="-8"
-                        android:text="rank"
+                        android:text="@string/brawler_rank_label"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="10sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="SmallSp" />
 
                     <TextView
                         android:id="@+id/tv_details_brawler_rank"

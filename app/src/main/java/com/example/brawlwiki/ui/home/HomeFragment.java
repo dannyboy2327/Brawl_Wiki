@@ -1,14 +1,10 @@
 package com.example.brawlwiki.ui.home;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,22 +26,26 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class HomeFragment extends Fragment {
 
-    private static final String TAG = HomeFragment.class.getSimpleName();
+    //private static final String TAG = HomeFragment.class.getSimpleName();
 
     private FragmentHomeBinding mBinding;
     private SimpleExoPlayer mSimpleExoPlayer;
     private boolean playWhenReady = false;
     private int currentWindow = 0;
     private long playbackPosition = 0;
+    private static FirebaseAnalytics firebaseAnalytics;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, final Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View root = mBinding.getRoot();
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
 
         setTagToEditText();
         onSearchProfileClick();
@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
                 secondNavNavigateToSettings();
 
                 Navigation.findNavController(v).navigate(R.id.nav_profile, bundle);
-
+                firebaseAnalytics.logEvent(getString(R.string.firebase_tag_key), bundle);
             }
         });
     }

@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.preference.PreferenceManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +21,7 @@ import com.example.brawlwiki.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
 
-    private static final String TAG = SettingsFragment.class.getSimpleName();
+    //private static final String TAG = SettingsFragment.class.getSimpleName();
 
     private FragmentSettingsBinding mBinding;
 

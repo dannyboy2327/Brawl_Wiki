@@ -14,7 +14,7 @@ import java.util.List;
 
 public class PlayerRepository {
 
-    private static final String TAG = PlayerRepository.class.getSimpleName();
+    //private static final String TAG = PlayerRepository.class.getSimpleName();
 
     private PlayerDao mPlayerDao;
     private PlayerRankingList mPlayerRankingList;

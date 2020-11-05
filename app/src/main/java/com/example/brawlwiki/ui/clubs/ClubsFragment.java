@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +36,7 @@ import retrofit2.Response;
 
 public class ClubsFragment extends Fragment {
 
-    private static final String TAG = ClubsFragment.class.getSimpleName();
+    //private static final String TAG = ClubsFragment.class.getSimpleName();
 
     private final BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
     private ClubsViewModel mClubsViewModel;

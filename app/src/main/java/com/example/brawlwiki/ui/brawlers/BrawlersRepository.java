@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BrawlersRepository {
 
-    private static final String TAG = BrawlersRepository.class.getSimpleName();
+    //private static final String TAG = BrawlersRepository.class.getSimpleName();
 
     private BrawlersDao mBrawlersDao;
     private LiveData<List<Brawler>> mBrawlerLiveData;
@@ -25,12 +25,6 @@ public class BrawlersRepository {
         mBrawlersDao = brawlStarsDatabase.BrawlersDao();
         mBrawlerLiveData = mBrawlersDao.getBrawlers();
     }
-
-    /**
-     * Method to insert a brawler's own personal data as well a brawlers start powers and gadgets
-     *
-     * @param brawlerList
-     */
 
     public void insert(final List<Brawler> brawlerList) {
         AppExecutors.getInstance().getDiskIO().execute(new Runnable() {

@@ -6,14 +6,12 @@ import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -38,7 +36,7 @@ import retrofit2.Response;
 
 public class BrawlersFragment extends Fragment {
 
-    private static final String TAG = BrawlersFragment.class.getSimpleName();
+    //private static final String TAG = BrawlersFragment.class.getSimpleName();
 
     private final BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
     private BrawlersViewModel mBrawlersViewModel;

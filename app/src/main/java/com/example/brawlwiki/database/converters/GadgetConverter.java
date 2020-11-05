@@ -3,7 +3,6 @@ package com.example.brawlwiki.database.converters;
 import androidx.room.TypeConverter;
 
 import com.example.brawlwiki.models.brawlers.Gadget;
-import com.example.brawlwiki.models.brawlers.StarPower;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

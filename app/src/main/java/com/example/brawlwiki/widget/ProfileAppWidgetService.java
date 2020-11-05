@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 
 import androidx.annotation.Nullable;
@@ -17,7 +16,7 @@ import com.example.brawlwiki.models.profile.Player;
 
 public class ProfileAppWidgetService extends IntentService {
 
-    private static final String TAG = ProfileAppWidgetService.class.getSimpleName();
+    //private static final String TAG = ProfileAppWidgetService.class.getSimpleName();
 
     public static  final String ACTION_UPDATE_TROPHIES = "com.example.android.brawlwiki.action.update_trophies";
 

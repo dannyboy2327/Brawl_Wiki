@@ -1,9 +1,6 @@
 package com.example.brawlwiki.ui.home.profile.brawler;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +8,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +17,11 @@ import com.example.brawlwiki.adapters.BrawlerGadgetsAdapter;
 import com.example.brawlwiki.adapters.BrawlerStarPowersAdapter;
 import com.example.brawlwiki.databinding.FragmentBrawlerDetailsBinding;
 import com.example.brawlwiki.models.profile.BrawlerStat;
-import com.squareup.picasso.Picasso;
 
 
 public class BrawlerDetailsFragment extends Fragment {
 
-    private static final String TAG = BrawlerDetailsFragment.class.getSimpleName();
+    //private static final String TAG = BrawlerDetailsFragment.class.getSimpleName();
 
     private FragmentBrawlerDetailsBinding mBinding;
 

@@ -2,7 +2,6 @@ package com.example.brawlwiki.database.converters;
 
 import androidx.room.TypeConverter;
 
-import com.example.brawlwiki.models.playerranking.PlayerRankingClub;
 import com.example.brawlwiki.models.profile.PlayerIcon;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

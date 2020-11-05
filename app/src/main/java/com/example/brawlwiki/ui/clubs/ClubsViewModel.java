@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClubsViewModel extends AndroidViewModel {
 
-    private static final String TAG = ClubsViewModel.class.getSimpleName();
+    //private static final String TAG = ClubsViewModel.class.getSimpleName();
 
     private ClubsRepository mClubsRepository;
     private LiveData<List<ClubRanking>> mListLiveData;

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ClubsRepository {
 
-    private static final String TAG = ClubsRepository.class.getSimpleName();
+    //private static final String TAG = ClubsRepository.class.getSimpleName();
 
     private ClubDao mClubDao;
     private ClubMemberList mClubMemberList;

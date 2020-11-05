@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.brawlwiki.databinding.ActivityTokenLoginBinding;
-import com.example.brawlwiki.ui.home.HomeFragment;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class TokenLoginActivity extends AppCompatActivity {
 

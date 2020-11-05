@@ -5,11 +5,9 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,7 +34,7 @@ import retrofit2.Response;
 
 public class PlayerFragment extends Fragment {
 
-    private static final String TAG = PlayerFragment.class.getSimpleName();
+    //private static final String TAG = PlayerFragment.class.getSimpleName();
 
     private final BrawlStarsApi brawlStarsApi = ApiClient.getBrawlStarsClient().create(BrawlStarsApi.class);
     private PlayerViewModel mPlayerViewModel;

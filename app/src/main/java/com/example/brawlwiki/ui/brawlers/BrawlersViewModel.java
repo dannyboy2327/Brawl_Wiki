@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BrawlersViewModel extends AndroidViewModel {
 
-    private static final String TAG = BrawlersViewModel.class.getSimpleName();
+    //private static final String TAG = BrawlersViewModel.class.getSimpleName();
 
     private BrawlersRepository mBrawlersRepository;
     private LiveData<List<Brawler>> mListLiveData;

@@ -5,13 +5,11 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.widget.RemoteViews;
 
 import com.example.brawlwiki.MainActivity;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.profile.Player;
-import com.example.brawlwiki.ui.home.HomeFragment;
 
 public class ProfileAppWidget extends AppWidgetProvider {
 

@@ -19,7 +19,6 @@ import androidx.navigation.Navigation;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +39,7 @@ import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
-    private static final String TAG = ProfileFragment.class.getSimpleName();
+    //private static final String TAG = ProfileFragment.class.getSimpleName();
 
     private ProfileViewModel mProfileViewModel;
     private FragmentProfileBinding mBinding;
