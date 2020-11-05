@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -21,11 +22,20 @@ android {
         }
     }
 
+    signingConfigs {
+        Config {
+            storeFile file('C:\\Users\\dtori\\Udacity_Paid_Courses\\BrawlWiki\\app\\MyBrawlWikiKey.jks')
+            storePassword 'dannytoy23'
+            keyAlias 'BrawlWikiKey'
+            keyPassword 'dannytoy23'
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.Config
         }
     }
 
