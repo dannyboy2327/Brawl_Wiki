@@ -325,7 +325,7 @@ public class BrawlerGadgetsAdapter extends RecyclerView.Adapter<BrawlerGadgetsAd
         return mBrawlerStatGadgetList.size();
     }
 
-    public class BrawlerGadgetsViewHolder extends RecyclerView.ViewHolder {
+    public static class BrawlerGadgetsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mGadgetNameTextView;
         private ImageView mGadgetBadgeImageView;

@@ -142,7 +142,7 @@ public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ClubsViewHol
         return mClubRankingList.size();
     }
 
-    public class ClubsViewHolder extends RecyclerView.ViewHolder {
+    public static class ClubsViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mClubBadgeImageView;
         private TextView mClubNameTextView;

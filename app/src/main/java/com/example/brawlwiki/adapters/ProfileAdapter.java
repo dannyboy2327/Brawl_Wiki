@@ -14,8 +14,6 @@ import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.profile.BrawlerStat;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder> {

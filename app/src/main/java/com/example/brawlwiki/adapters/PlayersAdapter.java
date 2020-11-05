@@ -2,7 +2,6 @@ package com.example.brawlwiki.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -280,7 +279,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
         return mPlayerRankingList.size();
     }
 
-    public class PlayersViewHolder extends RecyclerView.ViewHolder {
+    public static class PlayersViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mPlayerRankTextView;
         private ImageView mPlayerIconImageView;

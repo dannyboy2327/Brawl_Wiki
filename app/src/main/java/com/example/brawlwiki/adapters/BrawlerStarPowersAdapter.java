@@ -451,7 +451,7 @@ public class BrawlerStarPowersAdapter extends RecyclerView.Adapter<BrawlerStarPo
         return mBrawlerStatStarPowerList.size();
     }
 
-    public class BrawlerStarPowersViewHolder extends RecyclerView.ViewHolder {
+    public static class BrawlerStarPowersViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mStarPowerNameTextView;
         private ImageView mStarPowerBadgeImageView;

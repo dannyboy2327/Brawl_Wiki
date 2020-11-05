@@ -1,7 +1,6 @@
 package com.example.brawlwiki.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.models.brawlers.Brawler;
-import com.example.brawlwiki.models.brawlers.StarPower;
-import com.example.brawlwiki.models.profile.BrawlerStat;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -299,7 +297,7 @@ public class BrawlersAdapter extends RecyclerView.Adapter<BrawlersAdapter.Brawle
         return mBrawlerList.size();
     }
 
-    public class BrawlersViewHolder extends RecyclerView.ViewHolder {
+    public static class BrawlersViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mBrawlerNameTextView;
         private ImageView mBrawlerImageView;
