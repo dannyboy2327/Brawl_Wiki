@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:230711924835:android:cfeb32459993f5cfb00056",
+        "mobilesdk_app_id": "1:230711924835:android:af73ab4c2db76e51b00056",
         "android_client_info": {
-          "package_name": "com.example.brawlwiki"
+          "package_name": "com.brawl.brawlwiki"
         }
       },
       "oauth_client": [
