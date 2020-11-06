@@ -7,55 +7,55 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.brawl.brawlwiki.ui.home.HomeFragment"
+        android:name="com.example.brawlwiki.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_players"
-        android:name="com.brawl.brawlwiki.ui.players.PlayerFragment"
+        android:name="com.example.brawlwiki.ui.players.PlayerFragment"
         android:label="@string/menu_players"
         tools:layout="@layout/fragment_players" />
 
     <fragment
         android:id="@+id/nav_brawlers"
-        android:name="com.brawl.brawlwiki.ui.brawlers.BrawlersFragment"
+        android:name="com.example.brawlwiki.ui.brawlers.BrawlersFragment"
         android:label="@string/menu_brawlers"
         tools:layout="@layout/fragment_brawlers" />
 
     <fragment
         android:id="@+id/nav_clubs"
-        android:name="com.brawl.brawlwiki.ui.clubs.ClubsFragment"
+        android:name="com.example.brawlwiki.ui.clubs.ClubsFragment"
         android:label="@string/menu_clubs"
         tools:layout="@layout/fragment_clubs" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.brawl.brawlwiki.ui.settings.SettingsFragment"
+        android:name="com.example.brawlwiki.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings"/>
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.brawl.brawlwiki.ui.home.profile.ProfileFragment"
+        android:name="com.example.brawlwiki.ui.home.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_profile_settings"
-        android:name="com.brawl.brawlwiki.ui.settings.settingsoptions.ProfileSettingsFragment"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.ProfileSettingsFragment"
         android:label="@string/menu_profile_settings"
         tools:layout="@layout/fragment_profile_settings" />
 
     <fragment
         android:id="@+id/nav_brawler_details"
-        android:name="com.brawl.brawlwiki.ui.home.profile.brawler.BrawlerDetailsFragment"
+        android:name="com.example.brawlwiki.ui.home.profile.brawler.BrawlerDetailsFragment"
         android:label="@string/menu_brawler_details"
         tools:layout="@layout/fragment_brawler_details" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.brawl.brawlwiki.ui.settings.settingsoptions.AboutFragment"
+        android:name="com.example.brawlwiki.ui.settings.settingsoptions.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about"/>
 
