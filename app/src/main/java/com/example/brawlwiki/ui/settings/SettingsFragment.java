@@ -1,7 +1,9 @@
 package com.example.brawlwiki.ui.settings;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import com.example.brawlwiki.R;
 import com.example.brawlwiki.TokenLoginActivity;
 import com.example.brawlwiki.databinding.FragmentSettingsBinding;
+
+import java.net.URL;
 
 
 public class SettingsFragment extends Fragment {
@@ -45,7 +49,29 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        mBinding.tvSettingsRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToGooglePlayStore();
+            }
+        });
+
         return view;
+    }
+
+    private void goToGooglePlayStore() {
+        Uri googleUri = Uri.parse("market://details?id=com.brawl.brawlwiki");
+        Intent intent = new Intent(Intent.ACTION_VIEW, googleUri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.brawl.brawlwiki");
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(webIntent);
+        }
     }
 
     private void goToFragment() {
